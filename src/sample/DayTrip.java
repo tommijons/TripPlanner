@@ -2,7 +2,9 @@ package sample;
 
 import java.util.Date;
 
-class DayTrip {
+public class DayTrip {
+
+
     private String Location;
     private Date Date;
     private int Price;
@@ -21,5 +23,37 @@ class DayTrip {
         tags = t;
         transport = tr;
         URL = u;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public java.util.Date getDate() {
+        return Date;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public Boolean getHandicap() {
+        return handicap;
+    }
+
+    public Boolean getPhysical() {
+        return Physical;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public Boolean getTransport() {
+        return transport;
+    }
+
+    public String getURL() {
+        return URL;
     }
 }
