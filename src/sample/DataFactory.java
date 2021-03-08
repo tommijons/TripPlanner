@@ -11,6 +11,10 @@ public class DataFactory {
     }
     public ObservableList<TravelPackage> getTravelPackages(){
         ObservableList<TravelPackage> travelPackages = FXCollections.observableArrayList();
+        ArrayList<DayTrip> dayTrips = getDayTrips();
+        ArrayList<Flight> flights = getFlights();
+        ArrayList<Hotel> hotels = getHotels();
+        TravelPackage travelPackage1 = new TravelPackage(hotels.get(0),flights.get(0),dayTrips.get(0));
         return travelPackages;
     }
     public ArrayList<DayTrip> getDayTrips(){
