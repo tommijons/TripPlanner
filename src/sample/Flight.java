@@ -5,18 +5,18 @@ import java.util.Date;
 public class Flight {
     private String departureLocation;
     private String arrivalLocation;
-    private Date departureDate;
-    private Date arrivalDate;
+    private String departureDate;
+    private String arrivalDate;
     private int price;
-    private FlightSeat flightSeat;
 
-    public Flight(String departureLocation, String arrivalLocation, Date departureDate, Date arrivalDate, int price, FlightSeat flightSeat) {
+
+    public Flight(String departureLocation, String arrivalLocation, String departureDate, String arrivalDate, int price) {
         this.departureLocation = departureLocation;
         this.arrivalLocation = arrivalLocation;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
         this.price = price;
-        this.flightSeat = flightSeat;
+
     }
 
     public String getDepartureLocation() {
