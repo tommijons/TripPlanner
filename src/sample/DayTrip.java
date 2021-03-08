@@ -6,30 +6,28 @@ public class DayTrip {
 
 
     private String Location;
-    private Date Date;
+    private String Date;
     private int Price;
     private Boolean handicap;
     private Boolean Physical;
-    private String[] tags;
     private Boolean transport;
     private String URL;
 
-    DayTrip(String l, Date d, int p, Boolean h, Boolean ph, String[] t, Boolean tr, String u) {
-        Location = l;
-        Date = d;
-        Price = p;
-        handicap = h;
-        Physical = ph;
-        tags = t;
-        transport = tr;
-        URL = u;
+    public DayTrip(String location, String date, int price, Boolean handicap, Boolean physical, Boolean transport, String url) {
+        this.Location = location;
+        this.Date = date;
+        this.Price = price;
+        this.handicap = handicap;
+        this.Physical = physical;
+        this.transport = transport;
+        this.URL = url;
     }
 
     public String getLocation() {
         return Location;
     }
 
-    public java.util.Date getDate() {
+    public String getDate() {
         return Date;
     }
 
@@ -43,10 +41,6 @@ public class DayTrip {
 
     public Boolean getPhysical() {
         return Physical;
-    }
-
-    public String[] getTags() {
-        return tags;
     }
 
     public Boolean getTransport() {
