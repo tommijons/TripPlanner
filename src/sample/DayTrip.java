@@ -13,6 +13,7 @@ public class DayTrip {
     private Boolean transport;
     private String URL;
 
+
     public DayTrip(String location, String date, int price, Boolean handicap, Boolean physical, Boolean transport, String url) {
         this.Location = location;
         this.Date = date;

@@ -9,6 +9,7 @@ public class Hotel {
     private int rating;
     private int price;
 
+
     public String getName() {
         return name;
     }

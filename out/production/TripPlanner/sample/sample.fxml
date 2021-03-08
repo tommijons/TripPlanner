@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="302.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView layoutX="6.0" layoutY="11.0" prefHeight="579.0" prefWidth="293.0" />
+            <ListView fx:id="travelPackageView" layoutX="21.0" layoutY="25.0" onMouseClicked="#selectPackage" prefHeight="555.0" prefWidth="255.0" />
          </children>
       </AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView layoutX="7.0" layoutY="360.0" prefHeight="234.0" prefWidth="682.0" />
-            <ListView layoutX="7.0" layoutY="8.0" prefHeight="235.0" prefWidth="681.0" />
+            <ListView fx:id="attributeView" layoutX="7.0" layoutY="360.0" prefHeight="234.0" prefWidth="682.0" />
+            <ListView fx:id="hfdView" layoutX="7.0" layoutY="8.0" onMouseClicked="#selectPackage" prefHeight="235.0" prefWidth="681.0" />
             <Button layoutX="25.0" layoutY="261.0" mnemonicParsing="false" text="Button" />
          </children>
       </AnchorPane>

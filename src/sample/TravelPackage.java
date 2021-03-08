@@ -35,4 +35,9 @@ public class TravelPackage {
     public void setDaytrip(DayTrip daytrip) {
         this.daytrip = daytrip;
     }
+
+    @Override
+    public String toString() {
+        return "Travel Package";
+    }
 }

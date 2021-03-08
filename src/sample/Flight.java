@@ -19,6 +19,14 @@ public class Flight {
 
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "departureLocation='" + departureLocation + '\'' +
+                ", arrivalLocation='" + arrivalLocation + '\'' +
+                '}';
+    }
+
     public String getDepartureLocation() {
         return departureLocation;
     }
@@ -27,11 +35,11 @@ public class Flight {
         return arrivalLocation;
     }
 
-    public Date getDepartureDate() {
+    public String getDepartureDate() {
         return departureDate;
     }
 
-    public Date getArrivalDate() {
+    public String getArrivalDate() {
         return arrivalDate;
     }
 

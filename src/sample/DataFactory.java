@@ -15,6 +15,11 @@ public class DataFactory {
         ArrayList<Flight> flights = getFlights();
         ArrayList<Hotel> hotels = getHotels();
         TravelPackage travelPackage1 = new TravelPackage(hotels.get(0),flights.get(0),dayTrips.get(0));
+        TravelPackage travelPackage2 = new TravelPackage(hotels.get(1),flights.get(1),dayTrips.get(1));
+        TravelPackage travelPackage3 = new TravelPackage(hotels.get(2),flights.get(2),dayTrips.get(2));
+        travelPackages.add(travelPackage1);
+        travelPackages.add(travelPackage2);
+        travelPackages.add(travelPackage3);
         return travelPackages;
     }
     public ArrayList<DayTrip> getDayTrips(){
