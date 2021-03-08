@@ -5,7 +5,8 @@ public class TravelPackage {
     private Flight flight;
     private DayTrip daytrip;
     private int totalPrice;
-    TravelPackage(Hotel hotel, Flight flight, DayTrip daytrip){
+
+    public TravelPackage(Hotel hotel, Flight flight, DayTrip daytrip){
         this.hotel = hotel;
         this.flight = flight;
         this.daytrip = daytrip;
