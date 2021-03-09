@@ -3,8 +3,6 @@ package sample;
 import java.util.Date;
 
 public class DayTrip {
-
-
     private String Location;
     private String Date;
     private int Price;
@@ -22,6 +20,19 @@ public class DayTrip {
         this.Physical = physical;
         this.transport = transport;
         this.URL = url;
+    }
+
+    @Override
+    public String toString() {
+        return "DayTrip{" +
+                "Location='" + Location + '\'' +
+                ", Date='" + Date + '\'' +
+                ", Price=" + Price +
+                ", handicap=" + handicap +
+                ", Physical=" + Physical +
+                ", transport=" + transport +
+                ", URL='" + URL + '\'' +
+                '}';
     }
 
     public String getLocation() {

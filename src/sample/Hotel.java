@@ -9,6 +9,16 @@ public class Hotel {
     private int rating;
     private int price;
 
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", url='" + url + '\'' +
+                ", rating=" + rating +
+                ", price=" + price +
+                '}';
+    }
 
     public String getName() {
         return name;

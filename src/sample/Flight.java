@@ -24,6 +24,9 @@ public class Flight {
         return "Flight{" +
                 "departureLocation='" + departureLocation + '\'' +
                 ", arrivalLocation='" + arrivalLocation + '\'' +
+                ", departureDate='" + departureDate + '\'' +
+                ", arrivalDate='" + arrivalDate + '\'' +
+                ", price=" + price +
                 '}';
     }
 
