@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <left>
-      <AnchorPane prefHeight="600.0" prefWidth="302.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="220.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="travelPackageView" layoutX="9.0" layoutY="8.0" onMouseClicked="#selectPackage" prefHeight="586.0" prefWidth="267.0" />
+            <Text layoutX="46.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure" />
+            <Text layoutX="46.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Destination" />
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="600.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="220.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="daytripView" layoutX="138.0" layoutY="407.0" prefHeight="187.0" prefWidth="551.0" />
-            <ListView fx:id="hotelView" layoutX="139.0" layoutY="14.0" prefHeight="166.0" prefWidth="549.0" />
-            <ListView fx:id="flightView" layoutX="140.0" layoutY="200.0" prefHeight="180.0" prefWidth="548.0" />
-            <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hótel" />
-            <Text layoutX="17.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flug" />
-            <Text layoutX="4.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dagsferð" />
-            <Text layoutX="101.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nafn" />
-            <Text layoutX="97.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staður" />
-            <Text layoutX="103.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="verð" />
-            <Text layoutX="98.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rating" />
-            <Text layoutX="103.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL" />
+            <Text layoutX="98.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text layoutX="44.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" />
+            <Text layoutX="44.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price Range" />
          </children>
       </AnchorPane>
    </right>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="600.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <DatePicker layoutX="42.0" layoutY="41.0" />
+            <DatePicker layoutX="304.0" layoutY="41.0" />
+            <ChoiceBox fx:id="destinationChoice" layoutX="42.0" layoutY="90.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="priceBox" layoutX="304.0" layoutY="90.0" prefWidth="150.0" />
+         </children></AnchorPane>
    </center>
 </BorderPane>
