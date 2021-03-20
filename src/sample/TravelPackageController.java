@@ -18,10 +18,18 @@ public class TravelPackageController {
     public void changeDayTrip(TravelPackage travelPackage, DayTrip dayTrip){
         travelPackage.setDaytrip(dayTrip);
     }
-    public void createPackages(Flight[] flights, Hotel[] hotels, DayTrip[] dayTrips){
-        //TODO
+    public TravelPackage createStandardPackage(Hotel[] hotels, Flight[] flights, DayTrip[] dayTrips){
+        return new TravelPackage(hotels[Math.floorDiv(hotels.length, 2)],
+                flights[Math.floorDiv(flights.length, 2)],
+                dayTrips[Math.floorDiv(dayTrips.length, 2)]);
     }
-    public void createCheaperPackages(){
-        //TODO
+    public TravelPackage createCheapPackage(Hotel[] hotels, Flight[] flights, DayTrip[] dayTrips){
+        return new TravelPackage(hotels[0], flights[0], dayTrips[0]);
     }
+    public TravelPackage createLuxuryPackage(Hotel[] hotels, Flight[] flights, DayTrip[] dayTrips){
+        return new TravelPackage(hotels[hotels.length - 1],
+                flights[flights.length - 1],
+                dayTrips[dayTrips.length - 1]);
+    }
+
 }

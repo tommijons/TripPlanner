@@ -42,28 +42,16 @@ public class TravelPackageAssembler {
 
     private void SortByPrice(){
         Arrays.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
-
         Arrays.sort(availableHotels, Comparator.comparingInt(Hotel::getPrice));
-
         Arrays.sort(availableDayTrips, Comparator.comparingInt(DayTrip::getPrice));
     }
-
     public TravelPackage getCheapPackage() {
-        //TODO: use TravelPackageController to create packages
-        return new TravelPackage(availableHotels[0], availableFlights[0], availableDayTrips[0]);
+        return tpc.createCheapPackage(availableHotels,availableFlights,availableDayTrips);
     }
-
     public TravelPackage getStandardPackage() {
-        //TODO: use TravelPackageController to create packages
-        return new TravelPackage(availableHotels[Math.floorDiv(availableHotels.length, 2)],
-                availableFlights[Math.floorDiv(availableFlights.length, 2)],
-                availableDayTrips[Math.floorDiv(availableDayTrips.length, 2)]);
+        return tpc.createStandardPackage(availableHotels,availableFlights,availableDayTrips);
     }
-
     public TravelPackage getLuxuryPackage() {
-        //TODO: use TravelPackageController to create packages
-        return new TravelPackage(availableHotels[availableHotels.length - 1],
-                availableFlights[availableFlights.length - 1],
-                availableDayTrips[availableDayTrips.length - 1]);
+        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableDayTrips);
     }
 }
