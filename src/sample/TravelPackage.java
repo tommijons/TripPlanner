@@ -4,6 +4,11 @@ public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
     private DayTrip daytrip;
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
     private int totalPrice;
 
     public TravelPackage(Hotel hotel, Flight flight, DayTrip daytrip){
