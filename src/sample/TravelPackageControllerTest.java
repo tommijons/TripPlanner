@@ -19,12 +19,22 @@ class TravelPackageControllerTest {
     private ArrayList<Flight> flights;
     private ArrayList<Hotel> hotels;
     private ArrayList<DayTrip> dayTrips;
+    private DayTrip newDayTrip;
+    private DayTrip oldDayTrip;
+    private Hotel oldHotel;
+    private Flight oldFlight;
+    private TravelPackage changeMe;
     @BeforeEach
     void setUp() {
         tpc = new TravelPackageController();
         flights = df.getFlights();
         hotels = df.getHotels();
         dayTrips = df.getDayTrips();
+        newDayTrip = new DayTrip("Geldingadalur", "310321", 0, false, true,true, "www.visitgrindavik.is");
+        oldDayTrip = new DayTrip("Húsavík", "310321", 10490, true, false,true, "www.gentlegiants.is");
+        oldHotel = new Hotel("Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
+        oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
+        changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
         hotels.sort(Comparator.comparingInt(Hotel::getPrice));
         dayTrips.sort(Comparator.comparingInt(DayTrip::getPrice));
@@ -40,11 +50,17 @@ class TravelPackageControllerTest {
         tp2 = null;
         tp3 = null;
         tpc = null;
+        changeMe = null;
+        oldFlight = null;
+        oldHotel = null;
+        oldDayTrip = null;
+        newDayTrip = null;
     }
 
     @Test
     void changeDayTrip() {
-        Assertions.assertEquals(1,1);
+        tpc.changeDayTrip(changeMe,newDayTrip);
+        Assertions.assertEquals(newDayTrip,changeMe.getDaytrip());
     }
 
     @Test
