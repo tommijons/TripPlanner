@@ -1,12 +1,15 @@
 package sample;
 
+import javafx.collections.ObservableList;
+
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class TravelPackageAssembler {
     private Flight[] availableFlights;
     private Hotel[] availableHotels;
-    private Tour[] availableDayTrips;
+    private ObservableList<Tour> availableDayTrips;
     private TravelPackageController tpc;
 
     public Flight[] getAvailableFlights() {
@@ -25,25 +28,25 @@ public class TravelPackageAssembler {
         this.availableHotels = availableHotels;
     }
 
-    public Tour[] getAvailableDayTrips() {
+    public ObservableList<Tour> getAvailableDayTrips() {
         return availableDayTrips;
     }
 
-    public void setAvailableDayTrips(Tour[] availableDayTrips) {
+    public void setAvailableDayTrips(ObservableList<Tour> availableDayTrips) {
         this.availableDayTrips = availableDayTrips;
     }
 
-    public TravelPackageAssembler(Flight[] flights, Hotel[] hotels, Tour[] daytrips) {
+    public TravelPackageAssembler(Flight[] flights, Hotel[] hotels, ObservableList<Tour> tours) {
         availableFlights = flights.clone();
         availableHotels = hotels.clone();
-        availableDayTrips = daytrips.clone();
+        Collections.copy(availableDayTrips, tours);
         SortByPrice();
     }
 
     private void SortByPrice(){
         Arrays.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
         Arrays.sort(availableHotels, Comparator.comparingInt(Hotel::getHotel_base_price));
-        Arrays.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
+        Collections.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
     }
     public TravelPackage getCheapPackage() {
         return tpc.createCheapPackage(availableHotels,availableFlights,availableDayTrips);
