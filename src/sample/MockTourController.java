@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MockTourController implements TourSearchService {
+    ObservableList<Tour> tours = null;
+
     public ArrayList<String> getTourEmailList(int tourID) {
         ArrayList<String> results = new ArrayList<String>();
         results.add("tester@testing.test");
         return results;
     }
 
-    public ObservableList<Tour> tourRegionSearch(String region) {
+    public ObservableList<Tour> tourRegionSearch(String region, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
                 "Horseriding in " + region,"Bring warm clothes",
@@ -24,7 +26,7 @@ public class MockTourController implements TourSearchService {
         return results;
     }
 
-    public ObservableList<Tour> tourServicesSearch(String services) {
+    public ObservableList<Tour> tourServicesSearch(String services, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
                 "Horseriding in Eyjafjörður","Bring warm clothes",
@@ -33,15 +35,15 @@ public class MockTourController implements TourSearchService {
         return results;
     }
 
-    public ObservableList<Tour> tourDurationSearch(int duration) {
+    public ObservableList<Tour> tourDurationSearch(int duration1, int duration2, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
                 "Horseriding in Eyjafjörður","Bring warm clothes",
                 LocalDate.of(2020, 7, 7), 10,10000, "Akureyri",
-                duration,"Family friendly"));
+                (duration1+duration2)/2,"Family friendly"));
         return results;
     }
-    public ObservableList<Tour> tourDateSearch(Date startDate, Date endDate) {
+    public ObservableList<Tour> tourDateSearch(Date startDate, Date endDate, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
                 "Horseriding in Eyjafjörður","Bring warm clothes",

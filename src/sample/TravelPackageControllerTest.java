@@ -43,9 +43,9 @@ class TravelPackageControllerTest {
         hotels.sort(Comparator.comparingInt(Hotel::getPrice));
         tours.sort(Comparator.comparingInt(Tour::getTourPrice));
 
-        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
-        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
-        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
+        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
+        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
+        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
     }
 
     @AfterEach

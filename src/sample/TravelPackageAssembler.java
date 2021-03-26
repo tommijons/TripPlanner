@@ -1,12 +1,16 @@
 package sample;
 
+import javafx.collections.ObservableList;
+
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class TravelPackageAssembler {
     private Flight[] availableFlights;
     private Hotel[] availableHotels;
-    private Tour[] availableDayTrips;
+    private ObservableList<Tour> availableTours;
     private TravelPackageController tpc;
 
     public Flight[] getAvailableFlights() {
@@ -25,33 +29,33 @@ public class TravelPackageAssembler {
         this.availableHotels = availableHotels;
     }
 
-    public Tour[] getAvailableDayTrips() {
-        return availableDayTrips;
+    public ObservableList<Tour> getAvailableTours() {
+        return availableTours;
     }
 
-    public void setAvailableDayTrips(Tour[] availableDayTrips) {
-        this.availableDayTrips = availableDayTrips;
+    public void setAvailableTours(ObservableList<Tour> availableTours) {
+        this.availableTours = availableTours;
     }
 
-    public TravelPackageAssembler(Flight[] flights, Hotel[] hotels, Tour[] daytrips) {
-        availableFlights = flights.clone();
-        availableHotels = hotels.clone();
-        availableDayTrips = daytrips.clone();
+    public TravelPackageAssembler(Flight[] flights, Hotel[] hotels, ObservableList<Tour> tours) {
+        this.availableFlights = flights;
+        this.availableHotels = hotels;
+        this.availableTours = tours;
         SortByPrice();
     }
 
     private void SortByPrice(){
         Arrays.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
         Arrays.sort(availableHotels, Comparator.comparingInt(Hotel::getPrice));
-        Arrays.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
+        Collections.sort(availableTours, Comparator.comparingInt(Tour::getTourPrice));
     }
     public TravelPackage getCheapPackage() {
-        return tpc.createCheapPackage(availableHotels,availableFlights,availableDayTrips);
+        return tpc.createCheapPackage(availableHotels,availableFlights, availableTours);
     }
     public TravelPackage getStandardPackage() {
-        return tpc.createStandardPackage(availableHotels,availableFlights,availableDayTrips);
+        return tpc.createStandardPackage(availableHotels,availableFlights, availableTours);
     }
     public TravelPackage getLuxuryPackage() {
-        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableDayTrips);
+        return tpc.createLuxuryPackage(availableHotels,availableFlights, availableTours);
     }
 }

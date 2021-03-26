@@ -9,17 +9,19 @@ public class TourFilter {
     private final String location;
     private final int maxPrice;
     private final String services;
+    private final int minDuration;
     private final int maxDuration;
     private final int minSpots;
 
 
-    public TourFilter(Date earliest, Date latest, String location, int maxPrice, String services, int maxDuration, int minSpots) {
+    public TourFilter(Date earliest, Date latest, String location, int maxPrice, String services, int minDuration, int maxDuration, int minSpots) {
         earliestDate = earliest;
         latestDate = latest;
         this.location = location;
         this.maxPrice = maxPrice;
         this.services = services;
         this.maxDuration = maxDuration;
+        this.minDuration = minDuration;
         this.minSpots = minSpots;
     }
 
@@ -30,7 +32,8 @@ public class TourFilter {
         location = "Here";
         maxPrice = Integer.MAX_VALUE;
         services = "";
-        maxDuration = -1;
+        minDuration = 0;
+        maxDuration = Integer.MAX_VALUE;
         this.minSpots = 1;
     }
 
@@ -49,6 +52,8 @@ public class TourFilter {
     public int getMaxPrice() {
         return maxPrice;
     }
+
+    public int getMinDuration() { return minDuration; }
 
     public int getMaxDuration() { return maxDuration; }
 
