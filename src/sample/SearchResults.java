@@ -3,14 +3,14 @@ package sample;
 public class SearchResults {
     Flight[] availableFlights;
     Hotel[] availableHotels;
-    DayTrip[] availableDayTrips;
+    Tour[] availableDayTrips;
     TravelPackage cheapPackage;
     TravelPackage standardPackage;
     TravelPackage luxuryPackage;
 
 
 
-    public SearchResults(Flight[] flights, Hotel[] hotels, DayTrip[] dayTrips,
+    public SearchResults(Flight[] flights, Hotel[] hotels, Tour[] dayTrips,
                          TravelPackage cheapPackage, TravelPackage standardPackage, TravelPackage luxuryPackage) {
         availableFlights = flights;
         availableHotels = hotels;
@@ -28,7 +28,7 @@ public class SearchResults {
         return availableHotels;
     }
 
-    public DayTrip[] getAvailableDayTrips() {
+    public Tour[] getAvailableDayTrips() {
         return availableDayTrips;
     }
 

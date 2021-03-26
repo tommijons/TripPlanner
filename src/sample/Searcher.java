@@ -1,6 +1,5 @@
 package sample;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Searcher {
@@ -17,10 +16,10 @@ public class Searcher {
         return df.getHotels().toArray(new Hotel[0]);
     }
 
-    public DayTrip[] searchForDayTrips(DayTripFilter filter){
+    public Tour[] searchForDayTrips(DayTripFilter filter){
         //This is a dummy function
         //TODO Implement Real function
-        return df.getDayTrips().toArray(new DayTrip[0]);
+        return df.getTours().toArray(new Tour[0]);
     }
 
     public SearchResults searchForPackages(){
@@ -29,7 +28,7 @@ public class Searcher {
         HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
         Hotel[] hotels = searchForHotels(hf);
         DayTripFilter dtf = new DayTripFilter();//TODO Get Information to construct filter
-        DayTrip[] dayTrips = searchForDayTrips(dtf);
+        Tour[] dayTrips = searchForDayTrips(dtf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, hotels, dayTrips);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();

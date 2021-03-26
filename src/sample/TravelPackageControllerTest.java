@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TravelPackageControllerTest {
     private DataFactory df = new DataFactory();
@@ -18,20 +17,20 @@ class TravelPackageControllerTest {
     private TravelPackageController tpc;
     private ArrayList<Flight> flights;
     private ArrayList<Hotel> hotels;
-    private ArrayList<DayTrip> dayTrips;
+    private ObservableList<Tour> tours;
     @BeforeEach
     void setUp() {
         tpc = new TravelPackageController();
         flights = df.getFlights();
         hotels = df.getHotels();
-        dayTrips = df.getDayTrips();
+        tours = df.getTours();
         flights.sort(Comparator.comparingInt(Flight::getPrice));
         hotels.sort(Comparator.comparingInt(Hotel::getPrice));
-        dayTrips.sort(Comparator.comparingInt(DayTrip::getPrice));
+        tours.sort(Comparator.comparingInt(Tour::getTourPrice));
 
-        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
-        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
-        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
+        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
+        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
+        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
     }
 
     @AfterEach
