@@ -16,7 +16,7 @@ public class Searcher {
         return df.getHotels().toArray(new Hotel[0]);
     }
 
-    public Tour[] searchForDayTrips(DayTripFilter filter){
+    public Tour[] searchForDayTrips(TourFilter filter){
         //This is a dummy function
         //TODO Implement Real function
         return df.getTours().toArray(new Tour[0]);
@@ -27,7 +27,7 @@ public class Searcher {
         Flight[] flights = searchForFlights(ff);
         HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
         Hotel[] hotels = searchForHotels(hf);
-        DayTripFilter dtf = new DayTripFilter();//TODO Get Information to construct filter
+        TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
         Tour[] dayTrips = searchForDayTrips(dtf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, hotels, dayTrips);
         TravelPackage cheap = assembler.getCheapPackage();
