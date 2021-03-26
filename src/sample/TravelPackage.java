@@ -15,7 +15,7 @@ public class TravelPackage {
         this.hotel = hotel;
         this.flight = flight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getPrice() + flight.getPrice() + daytrip.getTourPrice();
+        this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + daytrip.getTourPrice();
     }
 
     public Hotel getHotel() {

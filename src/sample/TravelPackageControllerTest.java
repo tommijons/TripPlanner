@@ -22,6 +22,8 @@ class TravelPackageControllerTest {
     private Tour newDayTrip;
     private Tour oldDayTrip;
     private Hotel oldHotel;
+    private ArrayList<Room> oldRoom;
+    private boolean[] h_amenities1 = {false, false, false};
     private Flight oldFlight;
     private TravelPackage changeMe;
     @BeforeEach
@@ -35,12 +37,13 @@ class TravelPackageControllerTest {
         newDayTrip = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
                 "Akureyri",7,"Family friendly"));
         oldDayTrip = (new Tour( "Buggy Tour in Rauðhólar","Children must be under parent supervision",
-                d2,20,20000, "Reykjavík",5, "Action"));;
-        oldHotel = new Hotel("Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
+                d2,20,20000, "Reykjavík",5, "Action"));
+        oldHotel = new Hotel(1, "Hotel Edda Reykjavik", "Reykjavík", 5550000,
+                2, h_amenities1, oldRoom, 3, 10000);
         oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
         changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
-        hotels.sort(Comparator.comparingInt(Hotel::getPrice));
+        hotels.sort(Comparator.comparingInt(Hotel::getHotel_base_price));
         tours.sort(Comparator.comparingInt(Tour::getTourPrice));
 
         tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
