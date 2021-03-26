@@ -12,7 +12,7 @@ public class DayTripFilter {
     private String[] tags;
 
 
-    public DayTripFilter(Date earliest, Date latest, String location,boolean mustBeHandicapAccessible, int maxPrice, String[] tags) {
+    public DayTripFilter(Date earliest, Date latest, String location, boolean mustBeHandicapAccessible, int maxPrice, String[] tags) {
         earliestDate = earliest;
         latestDate = latest;
         this.location = location;
