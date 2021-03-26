@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class TravelPackageControllerTest {
     private DataFactory df = new DataFactory();
@@ -17,20 +18,30 @@ class TravelPackageControllerTest {
     private TravelPackageController tpc;
     private ArrayList<Flight> flights;
     private ArrayList<Hotel> hotels;
-    private ObservableList<Tour> tours;
+    private ArrayList<DayTrip> dayTrips;
+    private DayTrip newDayTrip;
+    private DayTrip oldDayTrip;
+    private Hotel oldHotel;
+    private Flight oldFlight;
+    private TravelPackage changeMe;
     @BeforeEach
     void setUp() {
         tpc = new TravelPackageController();
         flights = df.getFlights();
         hotels = df.getHotels();
-        tours = df.getTours();
+        dayTrips = df.getDayTrips();
+        newDayTrip = new DayTrip("Geldingadalur", "310321", 0, false, true,true, "www.visitgrindavik.is");
+        oldDayTrip = new DayTrip("Húsavík", "310321", 10490, true, false,true, "www.gentlegiants.is");
+        oldHotel = new Hotel("Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
+        oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
+        changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
         hotels.sort(Comparator.comparingInt(Hotel::getPrice));
-        tours.sort(Comparator.comparingInt(Tour::getTourPrice));
+        dayTrips.sort(Comparator.comparingInt(DayTrip::getPrice));
 
-        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
-        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
-        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));
+        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
+        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
+        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
     }
 
     @AfterEach
@@ -39,11 +50,17 @@ class TravelPackageControllerTest {
         tp2 = null;
         tp3 = null;
         tpc = null;
+        changeMe = null;
+        oldFlight = null;
+        oldHotel = null;
+        oldDayTrip = null;
+        newDayTrip = null;
     }
 
     @Test
     void changeDayTrip() {
-        Assertions.assertEquals(1,1);
+        tpc.changeDayTrip(changeMe,newDayTrip);
+        Assertions.assertEquals(newDayTrip,changeMe.getDaytrip());
     }
 
     @Test
