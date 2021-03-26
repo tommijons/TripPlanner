@@ -5,8 +5,12 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import static sample.Room.RoomAmmenities;
+import static sample.Room.RoomAmmenities.*;
+import static sample.Room.RoomCategory.*;
 
 public class DataFactory {
+    public ArrayList<Room> all_rooms = this.createRooms();
     public DataFactory(){
     }
     public ObservableList<TravelPackage> getTravelPackages(){
@@ -84,11 +88,76 @@ public class DataFactory {
         flights.add(new Flight("Akureyri","Reykjavík","12/03/21" , "17/03/21",  25900));
         return flights;
     }
-    public ArrayList<Hotel> getHotels(){
-        ArrayList<Hotel> hotels = new ArrayList<>();
-        hotels.add(new Hotel("Hótel Edda", "Akureyri", "www.edda.is", 4, 12000));
-        hotels.add(new Hotel("Hótel Ísafjörður", "Ísafjörður", "www.hotelis.is", 3, 10000));
-        hotels.add(new Hotel("Fosshótel", "Reykjavík", "fosshotel.is", 3, 12000));
+    public ArrayList<Hotel> getHotels() {
+        // Get all rooms!!
+        ArrayList<ArrayList<Room>> all_rooms = getRooms();
+
+        // Listinn af ollum hotelunum okkar
+        ArrayList<Hotel> hotels = new ArrayList();
+
+        // Hotel Reykjavik
+        boolean[] h_amenities1 = {false, false, false};
+        hotels.add(new Hotel(1, "Hotel Edda Reykjavik", "Reykjavík", 5550000,
+                2, h_amenities1, all_rooms.get(0), 3, 10000));
+
+        // Hotel Reykjavik
+        boolean[] h_amenities2 = {false, false, false};
+        hotels.add(new Hotel(2, "Hotel Icelandair Reykjavik", "Reykjavík", 5550001,
+                4, h_amenities2, all_rooms.get(0), 3, 10000));
+
+        // Hotel Egilstaðir
+        boolean[] h_amenities3 = {false, false, false};
+        hotels.add(new Hotel(3, "Hotel Edda Egilstadir", "Egilsstaðir", 4550000,
+                1, h_amenities3, all_rooms.get(0), 3, 10000));
         return hotels;
+
     }
+    ArrayList<LocalDate> room_occupancy_setup = new ArrayList<>();
+
+    public ArrayList<Room> createRooms() {
+        ArrayList<Room> all_rooms = new ArrayList<>();
+
+        all_rooms.add(new Room(1, SINGLE, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1, 2));
+        all_rooms.add(new Room(2, DOUBLE, 1.5, new RoomAmmenities[]{TV, OCEAN_VIEW}, room_occupancy_setup, 2,2));
+        all_rooms.add(new Room(3, FAMILY, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1,1));
+
+        return all_rooms;
+    }
+
+    public ArrayList<Room> getRoomsByHotelId(int hotel_id) {
+        ArrayList<Room> filtered_rooms = new ArrayList<Room>();
+
+        for (Room room : this.all_rooms) {
+            if (room.getHotel_id() == hotel_id) {
+                filtered_rooms.add(room);
+            }
+        }
+
+        return filtered_rooms;
+    }
+    public ArrayList<ArrayList<Room>> getRooms() {
+
+        // Listi af listum af herbergjum
+        ArrayList<ArrayList<Room>> all_rooms = new ArrayList<>();
+
+        // Listi númer 1 af herbergjum
+        ArrayList<Room> rooms_for_hotel_1 = new ArrayList<>();
+        // Eitt eintak af herbergi
+        boolean[] r_amenities1 = {false, false, false};
+        rooms_for_hotel_1.add(new Room(1, SINGLE, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 2,2));
+
+        // Annad eintak af herbergi
+        boolean[] r_amenities2 = {false, false, false};
+        rooms_for_hotel_1.add(new Room(2, SINGLE, 2.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1,2));
+
+        // Thridja eintak af herbergi
+        boolean[] r_amenities3 = {false, false, false};
+        rooms_for_hotel_1.add(new Room(3, SINGLE, 2.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 0,1));
+
+        // Setjum oll herbergi fyrir hotel 1 inn i adallistann
+        all_rooms.add(rooms_for_hotel_1);
+        return all_rooms;
+    }
+
+}
 }

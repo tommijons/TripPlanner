@@ -36,7 +36,7 @@ class TravelPackageControllerTest {
                 "Akureyri",7,"Family friendly"));
         oldDayTrip = (new Tour( "Buggy Tour in Rauðhólar","Children must be under parent supervision",
                 d2,20,20000, "Reykjavík",5, "Action"));;
-        oldHotel = new Hotel("Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
+        oldHotel = new Hotel(1, "Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
         oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
         changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
