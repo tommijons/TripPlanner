@@ -12,7 +12,7 @@ public class TravelPackageController {
     public void changeHotel(TravelPackage travelPackage, Hotel hotel){
         travelPackage.setHotel(hotel);
     }
-    public void changeHotelRoom(TravelPackage travelPackage, HotelRoom hotelRoom){
+    public void changeHotelRoom(TravelPackage travelPackage, Room hotelRoom){
         //TODO
     }
     public void changeDayTrip(TravelPackage travelPackage, Tour dayTrip){

@@ -40,7 +40,7 @@ class TravelPackageControllerTest {
         oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
         changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
-        hotels.sort(Comparator.comparingInt(Hotel::getPrice));
+        hotels.sort(Comparator.comparingInt(Hotel::getHotel_base_price));
         tours.sort(Comparator.comparingInt(Tour::getTourPrice));
 
         tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours.toArray(new Tour[0]));

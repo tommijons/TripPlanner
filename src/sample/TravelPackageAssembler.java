@@ -42,7 +42,7 @@ public class TravelPackageAssembler {
 
     private void SortByPrice(){
         Arrays.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
-        Arrays.sort(availableHotels, Comparator.comparingInt(Hotel::getPrice));
+        Arrays.sort(availableHotels, Comparator.comparingInt(Hotel::getHotel_base_price));
         Arrays.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
     }
     public TravelPackage getCheapPackage() {
