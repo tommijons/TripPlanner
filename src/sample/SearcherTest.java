@@ -37,10 +37,11 @@ public class SearcherTest {
     }
     @Test
     void searchForTours2() {
-        Assertions.assertEquals(2,searcher.searchForTours(tourFilter2).size());
+        Assertions.assertEquals(1,searcher.searchForTours(tourFilter2).size());
     }
     @Test
     void searchForTours3() {
-        Assertions.assertEquals(0,searcher.searchForTours(tourFilter3).size());
+        int testResult = searcher.searchForTours(tourFilter3).size();
+        Assertions.assertEquals(2, testResult);
     }
 }

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Date;
@@ -34,11 +35,19 @@ public class Searcher {
         tours = ts.tourDateSearch(filter.getEarliestDate(), filter.getLatestDate(), tours);
         tours = ts.tourRegionSearch(filter.getLocation(), tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
+        ObservableList<Tour> removeTours = FXCollections.observableArrayList();
         for (Tour tour:tours) {
             if(filter.getMinSpots() > tour.getAvailableSpots()) {
-                tours.remove(tour);
+                removeTours.add(tour);
+            } else if(filter.getMaxPrice() < tour.getTourPrice()) {
+                removeTours.add(tour);
             }
-            if(filter.getMaxPrice() < tour.getTourPrice()) {
+        }
+
+        for (Tour tour:removeTours) {
+            if(filter.getMinSpots() > tour.getAvailableSpots()) {
+                tours.remove(tour);
+            } else if(filter.getMaxPrice() < tour.getTourPrice()) {
                 tours.remove(tour);
             }
         }
