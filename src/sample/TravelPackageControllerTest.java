@@ -40,7 +40,7 @@ class TravelPackageControllerTest {
                 d2,20,20000, "Reykjavík",5, "Action"));
         oldHotel = new Hotel(1, "Hotel Edda Reykjavik", "Reykjavík", 5550000,
                 2, h_amenities1, oldRoom, 3, 10000);
-        oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
+        oldFlight = new Flight(123,"Reykjavík","Akureyri","2200" , "2300",  "121212", 12420,"fluglygar",true);
         changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
         hotels.sort(Comparator.comparingInt(Hotel::getHotel_base_price));

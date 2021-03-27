@@ -83,9 +83,9 @@ public class DataFactory {
 
     public ArrayList<Flight> getFlights(){
         ArrayList<Flight> flights = new ArrayList<>();
-        flights.add(new Flight("Reykjavík","Akureyri","02/03/21" , "12/03/21",  23900));
-        flights.add(new Flight("Reykjavík","Ísafjörður","03/03/21" , "14/03/21",  22900));
-        flights.add(new Flight("Akureyri","Reykjavík","12/03/21" , "17/03/21",  25900));
+        flights.add(new Flight(123,"Reykjavík","Akureyri","2200" , "2300",  "121212", 12420,"fluglygar",true));
+        flights.add(new Flight(123,"Reykjavík","Akureyri","2200" , "2300",  "121212", 12420,"Andsetiðflug",true));
+        flights.add(new Flight(123,"Reykjavík","Akureyri","2200" , "2300",  "121212", 12420,"Lélegarflugferðir",true));
         return flights;
     }
     public ArrayList<Hotel> getHotels() {
