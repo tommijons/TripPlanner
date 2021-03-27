@@ -11,6 +11,11 @@ import java.util.Date;
 public class MockTourController implements TourSearchService {
     ObservableList<Tour> tours = null;
 
+
+    public MockTourController(ObservableList<Tour> tours) {
+        this.tours = tours;
+    }
+
     public ArrayList<String> getTourEmailList(int tourID) {
         ArrayList<String> results = new ArrayList<String>();
         results.add("tester@testing.test");
@@ -38,8 +43,16 @@ public class MockTourController implements TourSearchService {
     public ObservableList<Tour> tourDurationSearch(int duration1, int duration2, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
-                "Horseriding in Eyjafjörður","Bring warm clothes",
-                LocalDate.of(2020, 7, 7), 10,10000, "Akureyri",
+                "Horseriding in Eyjafjörður A","Bring warm clothes",
+                LocalDate.of(2020, 7, 7), 3,10000, "Akureyri",
+                (duration1+duration2)/2,"Family friendly"));
+        results.add(new Tour(
+                "Horseriding in Eyjafjörður B","Bring warm clothes",
+                LocalDate.of(2020, 7, 7), 3,20000, "Akureyri",
+                (duration1+duration2)/2,"Family friendly"));
+        results.add(new Tour(
+                "Horseriding in Eyjafjörður C","Bring warm clothes",
+                LocalDate.of(2020, 7, 7), 1,10000, "Akureyri",
                 (duration1+duration2)/2,"Family friendly"));
         return results;
     }
@@ -51,6 +64,7 @@ public class MockTourController implements TourSearchService {
                 new Date(endDate.getTime() - startDate.getTime()).getHours(),"Family friendly"));
         return results;
     }
+
     public boolean isFullyBooked(int tourID){
         return tourID != 0;
     }
