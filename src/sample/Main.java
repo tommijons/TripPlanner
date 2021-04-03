@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -12,7 +14,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("TravelPackages");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(false);
+        Scene scene = new Scene(root, 210,530, Color.rgb(255, 52, 120));
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
