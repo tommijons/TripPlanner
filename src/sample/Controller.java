@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller extends CommonMethods implements Initializable {
     @FXML
     private ChoiceBox fxPrice;
     @FXML
@@ -76,9 +76,7 @@ public class Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void closeMenu(ActionEvent actionEvent){
-        System.exit(0);
-    }
+
 }
 
 

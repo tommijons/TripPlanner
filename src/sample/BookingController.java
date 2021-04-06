@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BookingController implements Initializable {
+public class BookingController extends CommonMethods implements Initializable {
 
     @FXML
     private TextField fxName;
@@ -27,9 +27,7 @@ public class BookingController implements Initializable {
     private TextField fxCCNo;
 
     private Booking booking;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,14 +41,6 @@ public class BookingController implements Initializable {
     public void removeBooking() {
         //
     }
-    public void closeMenu(ActionEvent actionEvent){
-        System.exit(0);
-    }
-    public void BookingButtonClicked(MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Booking.fxml"));
-        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
+
 }
