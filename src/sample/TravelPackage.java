@@ -3,7 +3,7 @@ package sample;
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
-    private DayTrip daytrip;
+    private Tour daytrip;
 
     public int getTotalPrice() {
         return totalPrice;
@@ -11,11 +11,11 @@ public class TravelPackage {
 
     private int totalPrice;
 
-    public TravelPackage(Hotel hotel, Flight flight, DayTrip daytrip){
+    public TravelPackage(Hotel hotel, Flight flight, Tour daytrip){
         this.hotel = hotel;
         this.flight = flight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getPrice() + flight.getPrice() + daytrip.getPrice();
+        this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + daytrip.getTourPrice();
     }
 
     public Hotel getHotel() {
@@ -34,11 +34,11 @@ public class TravelPackage {
         this.flight = flight;
     }
 
-    public DayTrip getDaytrip() {
+    public Tour getDaytrip() {
         return daytrip;
     }
 
-    public void setDaytrip(DayTrip daytrip) {
+    public void setDaytrip(Tour daytrip) {
         this.daytrip = daytrip;
     }
 

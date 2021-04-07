@@ -1,14 +1,14 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TravelPackageControllerTest {
     private DataFactory df = new DataFactory();
@@ -18,10 +18,12 @@ class TravelPackageControllerTest {
     private TravelPackageController tpc;
     private ArrayList<Flight> flights;
     private ArrayList<Hotel> hotels;
-    private ArrayList<DayTrip> dayTrips;
-    private DayTrip newDayTrip;
-    private DayTrip oldDayTrip;
+    private ObservableList<Tour> tours;
+    private Tour newDayTrip;
+    private Tour oldDayTrip;
     private Hotel oldHotel;
+    private ArrayList<Room> oldRoom;
+    private boolean[] h_amenities1 = {false, false, false};
     private Flight oldFlight;
     private TravelPackage changeMe;
     @BeforeEach
@@ -29,19 +31,24 @@ class TravelPackageControllerTest {
         tpc = new TravelPackageController();
         flights = df.getFlights();
         hotels = df.getHotels();
-        dayTrips = df.getDayTrips();
-        newDayTrip = new DayTrip("Geldingadalur", "310321", 0, false, true,true, "www.visitgrindavik.is");
-        oldDayTrip = new DayTrip("Húsavík", "310321", 10490, true, false,true, "www.gentlegiants.is");
-        oldHotel = new Hotel("Húsavík Cape Hotel", "Húsavík", "www.husavikhotel.com", 5, 9999);
-        oldFlight = new Flight("Reykjavík", "Egilstaðir", "300321", "010421",5999);
+        tours = df.getTours();
+        LocalDate d1 = LocalDate.of(2021,4,1);
+        LocalDate d2 = LocalDate.of(2021,4,5);
+        newDayTrip = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
+                "Akureyri",7,"Family friendly"));
+        oldDayTrip = (new Tour( "Buggy Tour in Rauðhólar","Children must be under parent supervision",
+                d2,20,20000, "Reykjavík",5, "Action"));
+        oldHotel = new Hotel(1, "Hotel Edda Reykjavik", "Reykjavík", 5550000,
+                2, h_amenities1, oldRoom, 3, 10000);
+        oldFlight = new Flight(123,"Reykjavík","Akureyri","2200" , "2300",  "121212", 12420,"fluglygar",true);
         changeMe = new TravelPackage(oldHotel,oldFlight,oldDayTrip);
         flights.sort(Comparator.comparingInt(Flight::getPrice));
-        hotels.sort(Comparator.comparingInt(Hotel::getPrice));
-        dayTrips.sort(Comparator.comparingInt(DayTrip::getPrice));
+        hotels.sort(Comparator.comparingInt(Hotel::getHotel_base_price));
+        tours.sort(Comparator.comparingInt(Tour::getTourPrice));
 
-        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
-        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
-        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), dayTrips.toArray(new DayTrip[0]));
+        tp1 = tpc.createCheapPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
+        tp2 = tpc.createLuxuryPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
+        tp3 = tpc.createStandardPackage(hotels.toArray(new Hotel[0]), flights.toArray(new Flight[0]), tours);
     }
 
     @AfterEach

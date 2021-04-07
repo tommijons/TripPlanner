@@ -1,20 +1,22 @@
 package sample;
 
+import javafx.collections.ObservableList;
+
 public class SearchResults {
     Flight[] availableFlights;
     Hotel[] availableHotels;
-    DayTrip[] availableDayTrips;
+    ObservableList<Tour> availableTours;
     TravelPackage cheapPackage;
     TravelPackage standardPackage;
     TravelPackage luxuryPackage;
 
 
 
-    public SearchResults(Flight[] flights, Hotel[] hotels, DayTrip[] dayTrips,
+    public SearchResults(Flight[] flights, Hotel[] hotels, ObservableList<Tour> tours,
                          TravelPackage cheapPackage, TravelPackage standardPackage, TravelPackage luxuryPackage) {
         availableFlights = flights;
         availableHotels = hotels;
-        availableDayTrips = dayTrips;
+        availableTours = tours;
         this.cheapPackage = cheapPackage;
         this.standardPackage = standardPackage;
         this.luxuryPackage = luxuryPackage;
@@ -28,8 +30,8 @@ public class SearchResults {
         return availableHotels;
     }
 
-    public DayTrip[] getAvailableDayTrips() {
-        return availableDayTrips;
+    public ObservableList<Tour> getAvailableTours() {
+        return availableTours;
     }
 
     public TravelPackage getCheapPackage() {
