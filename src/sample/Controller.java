@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,21 +26,21 @@ import java.util.ResourceBundle;
 
 public class Controller extends CommonMethods implements Initializable {
     @FXML
-    private ChoiceBox fxPrice;
+    private ComboBox fxPrice;
     @FXML
     private DatePicker fxArrivalDate;
     @FXML
     private DatePicker fxDepartureDate;
     @FXML
-    private ChoiceBox fxDestination;
+    private ComboBox fxDestination;
     @FXML
     private Button fxSearchButton;
     @FXML
-    private ChoiceBox fxDepartureLoc;
+    private ComboBox fxDepartureLoc;
     @FXML
-    private ChoiceBox fxNoTravellers;
+    private ComboBox fxNoTravellers;
     @FXML
-    private ChoiceBox fxInterests;
+    private ComboBox fxInterests;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -76,7 +73,9 @@ public class Controller extends CommonMethods implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void closeMenu(MouseEvent actionEvent){
+        System.exit(0);
+    }
 }
 
 

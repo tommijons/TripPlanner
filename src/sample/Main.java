@@ -16,7 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("TravelPackages");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setResizable(false);
-        Scene scene = new Scene(root, 210,530, Color.rgb(255, 52, 120));
+        Scene scene = new Scene(root, 941,702, Color.rgb(255, 52, 120));
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
