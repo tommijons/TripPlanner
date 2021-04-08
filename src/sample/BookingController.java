@@ -27,7 +27,9 @@ public class BookingController extends CommonMethods implements Initializable {
     private TextField fxCCNo;
 
     private Booking booking;
-
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,6 +43,14 @@ public class BookingController extends CommonMethods implements Initializable {
     public void removeBooking() {
         //
     }
-
-
+    public void BackButtonClicked(MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
+        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void closeMenu(MouseEvent actionEvent){
+        System.exit(0);
+    }
 }

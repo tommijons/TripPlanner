@@ -1,63 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="600.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <AnchorPane prefHeight="44.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="891.0" layoutY="14.0" onMouseClicked="#closeMenu">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@x.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="855.0" layoutY="14.0" prefHeight="17.0" prefWidth="27.0">
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@-.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="570.0" prefWidth="325.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="33.0" prefHeight="30.0" prefWidth="100.0" text="Departure Date" />
-            <Label layoutX="14.0" layoutY="73.0" prefHeight="30.0" prefWidth="100.0" text="Arrival Date" />
-            <DatePicker fx:id="fxArrivalDate" layoutX="137.0" layoutY="73.0" prefHeight="30.0" />
-            <DatePicker fx:id="fxDepartureDate" layoutX="137.0" layoutY="33.0" prefHeight="30.0" />
-            <Label layoutX="14.0" layoutY="119.0" prefHeight="30.0" prefWidth="100.0" text="Destination" />
-            <ChoiceBox fx:id="fxDestination" layoutX="137.0" layoutY="119.0" prefHeight="30.0" prefWidth="174.0" />
-            <Label layoutX="14.0" layoutY="273.0" prefHeight="30.0" prefWidth="100.0" text="Price range" />
-            <Label layoutX="14.0" layoutY="225.0" prefHeight="30.0" prefWidth="100.0" text="Interests" />
-            <ChoiceBox fx:id="fxNoTravellers" layoutX="137.0" layoutY="172.0" prefHeight="30.0" prefWidth="173.0" />
-            <Label layoutX="14.0" layoutY="172.0" prefHeight="30.0" prefWidth="116.0" text="Number of travelers" />
-            <ChoiceBox fx:id="fxInterests" layoutX="136.0" layoutY="225.0" prefHeight="30.0" prefWidth="173.0" />
-            <Button fx:id="fxSearchButton" layoutX="122.0" layoutY="377.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Search" />
-            <ChoiceBox fx:id="fxPrice" layoutX="136.0" layoutY="273.0" prefHeight="30.0" prefWidth="173.0" />
+            <DatePicker fx:id="fxDepartureDate" layoutX="13.0" layoutY="84.0" promptText="Departure" />
+            <DatePicker fx:id="fxArrivalDate" layoutX="13.0" layoutY="145.0" promptText="Return" />
+            <ComboBox fx:id="fxDepartureLoc" layoutX="25.0" layoutY="200.0" prefWidth="150.0" promptText="From" />
+            <ComboBox fx:id="fxDestination" layoutX="25.0" layoutY="263.0" prefWidth="150.0" promptText="To" />
+            <ComboBox fx:id="fxNoTravellers" layoutX="25.0" layoutY="329.0" prefWidth="150.0" promptText="No. of Travellers" />
+            <ComboBox fx:id="fxInterests" layoutX="25.0" layoutY="400.0" prefWidth="150.0" promptText="Interests" />
+            <ComboBox fx:id="fxPrice" layoutX="25.0" layoutY="469.0" prefWidth="150.0" promptText="Price Range" />
+            <Button fx:id="fxSearchButton" layoutX="74.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#searchButtonClicked" text="Search" />
          </children>
       </AnchorPane>
    </left>
-   <right>
-      <ScrollPane prefHeight="570.0" prefWidth="438.0" BorderPane.alignment="CENTER">
-         <content>
-            <ListView fx:id="fxTripList" prefHeight="509.0" prefWidth="434.0" />
-         </content>
-      </ScrollPane>
-   </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
