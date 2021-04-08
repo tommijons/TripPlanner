@@ -110,7 +110,4 @@ public class Flight {
         return s2;
     }
 
-
-
-
 }
