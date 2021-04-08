@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 
 public class SearchResults {
     Flight[] availableFlights;
-    Hotel[] availableHotels;
+    ObservableList<Hotel> availableHotels;
     ObservableList<Tour> availableTours;
     TravelPackage cheapPackage;
     TravelPackage standardPackage;
@@ -12,7 +12,7 @@ public class SearchResults {
 
 
 
-    public SearchResults(Flight[] flights, Hotel[] hotels, ObservableList<Tour> tours,
+    public SearchResults(Flight[] flights, ObservableList<Hotel> hotels, ObservableList<Tour> tours,
                          TravelPackage cheapPackage, TravelPackage standardPackage, TravelPackage luxuryPackage) {
         availableFlights = flights;
         availableHotels = hotels;
@@ -26,7 +26,7 @@ public class SearchResults {
         return availableFlights;
     }
 
-    public Hotel[] getAvailableHotels() {
+    public ObservableList<Hotel> getAvailableHotels() {
         return availableHotels;
     }
 

@@ -3,14 +3,15 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Searcher {
-    DataFactory df = new DataFactory(); 
+    DataFactory df = new DataFactory();
+    HotelDataFactory hdf = new HotelDataFactory();
     //TODO remove Datafactory, replace with actual datasources
     TourSearchService ts;
     //FlightSearchService fs;
-    //HotelSearchService hs;
     
     public Searcher(int FlightSearchService, int HotelSearchService, TourSearchService tourSearcher) {
         ts = tourSearcher;
@@ -23,10 +24,13 @@ public class Searcher {
         return df.getFlights().toArray(new Flight[0]);
     }
 
-    public Hotel[] searchForHotels(HotelFilter filter){
+    public ObservableList<Hotel> searchForHotels(HotelFilter filter){
         //This is a dummy function
         //TODO Implement Real function
-        return df.getHotels().toArray(new Hotel[0]);
+        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
+                filter.getCheckIn(), filter.getCheckOut(),
+        filter.getMinBeds(),filter.getMinSize(),
+        true, true, true);
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
@@ -58,7 +62,7 @@ public class Searcher {
         FlightFilter ff = new FlightFilter(new Date());//TODO Get Information to construct filter
         Flight[] flights = searchForFlights(ff);
         HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
-        Hotel[] hotels = searchForHotels(hf);
+        ObservableList<Hotel> hotels = searchForHotels(hf);
         TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
         ObservableList<Tour> tours = searchForTours(dtf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, hotels, tours);
