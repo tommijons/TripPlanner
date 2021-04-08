@@ -41,12 +41,27 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox fxNoTravellers;
     @FXML
     private ComboBox fxInterests;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
+    private Searcher searcher;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        UIinitialize();
+        try {
+            searcher = loadSearchResults();
+        } catch(IOException e) {
+                e.printStackTrace();
+        }
+
+    }
+
+    private Searcher loadSearchResults() throws java.io.IOException{
+        FXMLLoader dLoader = new FXMLLoader(getClass().getResource("SearchResult.fxml"));
+        dLoader.load();
+        return dLoader.getController();
+    }
+
+    private void UIinitialize() {
         ObservableList<String> departureChoices = FXCollections.observableArrayList();
         ObservableList<String> destinationChoices = FXCollections.observableArrayList();
         ObservableList<String> priceBoxChoice = FXCollections.observableArrayList();
@@ -66,12 +81,10 @@ public class Controller extends CommonMethods implements Initializable {
         fxInterests.setValue("Interests");
     }
 
-    public void searchButtonClicked(MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
-        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    @FXML
+    private void searchButtonClicked(MouseEvent mouseEvent) throws IOException {
+        searcher.searchForPackages();
+        //TODO
     }
     public void closeMenu(MouseEvent actionEvent){
         System.exit(0);

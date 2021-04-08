@@ -3,12 +3,12 @@ package sample;
 public class User {
     private String userName;
     private String email;
-    private long userID;
+    private String password;
 
-    public User(String userName, String email, long userID) {
+    public User(String userName, String email, String password) {
         this.userName = userName;
         this.email = email;
-        this.userID = userID;
+        this.password = password;
     }
 
     public String getUserName() {
@@ -27,12 +27,12 @@ public class User {
         this.email = email;
     }
 
-    public long getUserID() {
-        return userID;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
+    public void setPassword(long userID) {
+        this.password = password;
     }
 
 }
