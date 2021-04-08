@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -28,5 +29,14 @@ public class SearchResultsController extends CommonMethods implements Initializa
         stage.setScene(scene);
         stage.show();
     }
-
+    public void BackButtonClicked(MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void closeMenu(MouseEvent actionEvent){
+        System.exit(0);
+    }
 }
