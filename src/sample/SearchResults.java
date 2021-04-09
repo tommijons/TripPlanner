@@ -3,8 +3,8 @@ package sample;
 import javafx.collections.ObservableList;
 
 public class SearchResults {
-    Flight[] availableFlights;
-    Hotel[] availableHotels;
+    ObservableList<Flight> availableFlights;
+    ObservableList<Hotel> availableHotels;
     ObservableList<Tour> availableTours;
     TravelPackage cheapPackage;
     TravelPackage standardPackage;
@@ -12,7 +12,7 @@ public class SearchResults {
 
 
 
-    public SearchResults(Flight[] flights, Hotel[] hotels, ObservableList<Tour> tours,
+    public SearchResults(ObservableList<Flight> flights, ObservableList<Hotel> hotels, ObservableList<Tour> tours,
                          TravelPackage cheapPackage, TravelPackage standardPackage, TravelPackage luxuryPackage) {
         availableFlights = flights;
         availableHotels = hotels;
@@ -22,11 +22,11 @@ public class SearchResults {
         this.luxuryPackage = luxuryPackage;
     }
 
-    public Flight[] getAvailableFlights() {
+    public ObservableList<Flight> getAvailableFlights() {
         return availableFlights;
     }
 
-    public Hotel[] getAvailableHotels() {
+    public ObservableList<Hotel> getAvailableHotels() {
         return availableHotels;
     }
 

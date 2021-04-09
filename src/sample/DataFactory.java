@@ -5,8 +5,12 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import static sample.Room.RoomAmmenities;
-import static sample.Room.RoomAmmenities.*;
+
+import static sample.Hotel.HotelAmenities.BREAKFAST_INCLUDED;
+import static sample.Hotel.HotelAmenities.PARKING;
+import static sample.Hotel.StarRating.THREE;
+import static sample.Room.RoomAmenities;
+import static sample.Room.RoomAmenities.*;
 import static sample.Room.RoomCategory.*;
 
 public class DataFactory {
@@ -97,29 +101,30 @@ public class DataFactory {
 
         // Hotel Reykjavik
         boolean[] h_amenities1 = {false, false, false};
-        hotels.add(new Hotel(1, "Hotel Edda Reykjavik", "Reykjavík", 5550000,
-                2, h_amenities1, all_rooms.get(0), 3, 10000));
+        hotels.add(new Hotel(1, "Economy Hotel Reykjavik", "Reykjavík", "Þórunnartún 1", 105, 5550000,
+                THREE, new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING}, getRoomsByHotelId(1), 1, 10000));
 
         // Hotel Reykjavik
         boolean[] h_amenities2 = {false, false, false};
-        hotels.add(new Hotel(2, "Hotel Icelandair Reykjavik", "Reykjavík", 5550001,
-                4, h_amenities2, all_rooms.get(0), 3, 10000));
+        hotels.add(new Hotel(1, "Economy Hotel Reykjavik", "Reykjavík", "Þórunnartún 1", 105, 5550000,
+                THREE, new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING}, getRoomsByHotelId(1), 1, 10000));
 
         // Hotel Egilstaðir
         boolean[] h_amenities3 = {false, false, false};
-        hotels.add(new Hotel(3, "Hotel Edda Egilstadir", "Egilsstaðir", 4550000,
-                1, h_amenities3, all_rooms.get(0), 3, 10000));
+        hotels.add(new Hotel(1, "Economy Hotel Reykjavik", "Reykjavík", "Þórunnartún 1", 105, 5550000,
+                THREE, new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING}, getRoomsByHotelId(1), 1, 10000));
         return hotels;
 
     }
     ArrayList<LocalDate> room_occupancy_setup = new ArrayList<>();
+    ArrayList<ArrayList<LocalDate>> room_occupancy = new ArrayList<>();
 
     public ArrayList<Room> createRooms() {
         ArrayList<Room> all_rooms = new ArrayList<>();
 
-        all_rooms.add(new Room(1, SINGLE, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1, 2));
-        all_rooms.add(new Room(2, DOUBLE, 1.5, new RoomAmmenities[]{TV, OCEAN_VIEW}, room_occupancy_setup, 2,2));
-        all_rooms.add(new Room(3, FAMILY, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1,1));
+        all_rooms.add(new Room(1, SINGLE, 1.5, new Room.RoomAmenities[]{TV}, room_occupancy, 1, SINGLE));
+        all_rooms.add(new Room(2, DOUBLE, 1.5, new Room.RoomAmenities[]{TV, REFRIGERATOR}, room_occupancy, 1, DOUBLE));
+        all_rooms.add(new Room(3, FAMILY, 1.5, new Room.RoomAmenities[]{TV, REFRIGERATOR, BALCONY}, room_occupancy, 1, FAMILY));
 
         return all_rooms;
     }
@@ -144,15 +149,15 @@ public class DataFactory {
         ArrayList<Room> rooms_for_hotel_1 = new ArrayList<>();
         // Eitt eintak af herbergi
         boolean[] r_amenities1 = {false, false, false};
-        rooms_for_hotel_1.add(new Room(1, SINGLE, 1.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 2,2));
+        rooms_for_hotel_1.add(new Room(1, SINGLE, 1.5, new Room.RoomAmenities[]{TV}, room_occupancy, 1, SINGLE));
 
         // Annad eintak af herbergi
         boolean[] r_amenities2 = {false, false, false};
-        rooms_for_hotel_1.add(new Room(2, SINGLE, 2.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 1,2));
+        rooms_for_hotel_1.add(new Room(2, DOUBLE, 1.5, new Room.RoomAmenities[]{TV, REFRIGERATOR}, room_occupancy, 1, DOUBLE));
 
         // Thridja eintak af herbergi
         boolean[] r_amenities3 = {false, false, false};
-        rooms_for_hotel_1.add(new Room(3, SINGLE, 2.5, new RoomAmmenities[]{TV, BALCONY}, room_occupancy_setup, 0,1));
+        rooms_for_hotel_1.add(new Room(3, FAMILY, 1.5, new Room.RoomAmenities[]{TV, REFRIGERATOR, BALCONY}, room_occupancy, 1, FAMILY));
 
         // Setjum oll herbergi fyrir hotel 1 inn i adallistann
         all_rooms.add(rooms_for_hotel_1);

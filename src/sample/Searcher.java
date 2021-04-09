@@ -3,30 +3,39 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Searcher {
-    DataFactory df = new DataFactory(); 
+    DataFactory df = new DataFactory();
+    HotelDataFactory hdf = new HotelDataFactory();
+    FlightDataFactory fdf = new FlightDataFactory();
+    FlightSearchController fsc;
     //TODO remove Datafactory, replace with actual datasources
     TourSearchService ts;
     //FlightSearchService fs;
-    //HotelSearchService hs;
     
-    public Searcher(int FlightSearchService, int HotelSearchService, TourSearchService tourSearcher) {
+    public Searcher(FlightSearchController flightSearchController , int HotelSearchService, TourSearchService tourSearcher) {
         ts = tourSearcher;
+        fsc = flightSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.
     }
     
-    public Flight[] searchForFlights(FlightFilter filter){
-        //This is a dummy function
+    public ObservableList<Flight> searchForFlights(FlightFilter filter){
+        ObservableList<Flight> flights = fsc.flightList;
+        flights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getFlightDate(), filter.getMeal());
+
         //TODO Implement Real function
-        return df.getFlights().toArray(new Flight[0]);
+        return flights;
     }
 
-    public Hotel[] searchForHotels(HotelFilter filter){
+    public ObservableList<Hotel> searchForHotels(HotelFilter filter){
         //This is a dummy function
         //TODO Implement Real function
-        return df.getHotels().toArray(new Hotel[0]);
+        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
+                filter.getCheckIn(), filter.getCheckOut(),
+        filter.getMinBeds(),filter.getMinSize(),
+                filter.isThreeStar(), filter.isFourStar(), filter.isThreeStar());
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
@@ -55,10 +64,10 @@ public class Searcher {
     }
 
     public SearchResults searchForPackages(){
-        FlightFilter ff = new FlightFilter(new Date());//TODO Get Information to construct filter
-        Flight[] flights = searchForFlights(ff);
-        HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
-        Hotel[] hotels = searchForHotels(hf);
+        FlightFilter ff = new FlightFilter();//TODO Get Information to construct filter
+        ObservableList<Flight> flights = searchForFlights(ff);
+        HotelFilter hf = new HotelFilter();
+        ObservableList<Hotel> hotels = searchForHotels(hf);
         TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
         ObservableList<Tour> tours = searchForTours(dtf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, hotels, tours);

@@ -43,19 +43,19 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox fxInterests;
 
     private Searcher searcher;
+    private SearchResultsController searchResultsController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UIinitialize();
         try {
-            searcher = loadSearchResults();
+            searchResultsController = loadSearchResults();
         } catch(IOException e) {
                 e.printStackTrace();
         }
-
     }
 
-    private Searcher loadSearchResults() throws java.io.IOException{
+    private SearchResultsController loadSearchResults() throws java.io.IOException{
         FXMLLoader dLoader = new FXMLLoader(getClass().getResource("SearchResult.fxml"));
         dLoader.load();
         return dLoader.getController();
@@ -82,13 +82,16 @@ public class Controller extends CommonMethods implements Initializable {
     }
 
     @FXML
-    private void searchButtonClicked(MouseEvent mouseEvent) throws IOException {
+    public void searchHandler(ActionEvent actionEvent) {
         searcher.searchForPackages();
         //TODO
     }
+
     public void closeMenu(MouseEvent actionEvent){
         System.exit(0);
     }
+
+
 }
 
 
