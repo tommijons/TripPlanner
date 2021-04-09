@@ -47,11 +47,11 @@ public class Controller extends CommonMethods implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UIinitialize();
-        try {
+    /*    try {
             searcher = loadSearchResults();
         } catch(IOException e) {
                 e.printStackTrace();
-        }
+        }*/
 
     }
 

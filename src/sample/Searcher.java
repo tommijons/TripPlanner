@@ -35,7 +35,7 @@ public class Searcher {
         return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
                 filter.getCheckIn(), filter.getCheckOut(),
         filter.getMinBeds(),filter.getMinSize(),
-        true, true, true);
+                filter.isThreeStar(), filter.isFourStar(), filter.isThreeStar());
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
@@ -66,7 +66,7 @@ public class Searcher {
     public SearchResults searchForPackages(){
         FlightFilter ff = new FlightFilter();//TODO Get Information to construct filter
         ObservableList<Flight> flights = searchForFlights(ff);
-        HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
+        HotelFilter hf = new HotelFilter();
         ObservableList<Hotel> hotels = searchForHotels(hf);
         TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
         ObservableList<Tour> tours = searchForTours(dtf);
