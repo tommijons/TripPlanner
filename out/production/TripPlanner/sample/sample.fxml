@@ -45,11 +45,11 @@
             <ComboBox fx:id="fxNoTravellers" layoutX="25.0" layoutY="186.0" prefWidth="150.0" promptText="No. of Travellers" />
             <ComboBox fx:id="fxServices" layoutX="23.0" layoutY="288.0" prefWidth="150.0" promptText="Services" />
             <Button fx:id="fxSearchButton" layoutX="74.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#searchHandler" text="Search" />
-            <ComboBox fx:id="fxInterests1" layoutX="23.0" layoutY="238.0" prefWidth="150.0" promptText="No. of Hotel Rooms" />
-            <CheckBox layoutX="23.0" layoutY="337.0" mnemonicParsing="false" text="In-flight-meal" />
-            <CheckBox layoutX="23.0" layoutY="366.0" mnemonicParsing="false" text="3-Star Hotel" />
-            <CheckBox layoutX="23.0" layoutY="395.0" mnemonicParsing="false" text="4-Star Hotel" />
-            <CheckBox layoutX="23.0" layoutY="423.0" mnemonicParsing="false" text="5-Star Hotel" />
+            <ComboBox fx:id="fxNoHotel" layoutX="23.0" layoutY="238.0" prefWidth="150.0" promptText="No. of Hotel Rooms" />
+            <CheckBox fx:id="fxMeal" layoutX="23.0" layoutY="337.0" mnemonicParsing="false" text="In-flight-meal" />
+            <CheckBox fx:id="fx3Star" layoutX="23.0" layoutY="366.0" mnemonicParsing="false" text="3-Star Hotel" />
+            <CheckBox fx:id="fx4Star" layoutX="23.0" layoutY="395.0" mnemonicParsing="false" text="4-Star Hotel" />
+            <CheckBox fx:id="fx5Star" layoutX="23.0" layoutY="423.0" mnemonicParsing="false" text="5-Star Hotel" />
          </children>
       </AnchorPane>
    </left>

@@ -77,15 +77,18 @@ public class Controller extends CommonMethods implements Initializable {
     private void UIinitialize() {
         ObservableList<String> departureChoices = FXCollections.observableArrayList();
         ObservableList<String> destinationChoices = FXCollections.observableArrayList();
-        ObservableList<String> priceBoxChoice = FXCollections.observableArrayList();
+      //  ObservableList<String> priceBoxChoice = FXCollections.observableArrayList();
         ObservableList<String> travelersChoice = FXCollections.observableArrayList();
         ObservableList<String> serviceChoice = FXCollections.observableArrayList();
+        ObservableList<String> NrHotelChoice = FXCollections.observableArrayList();
         departureChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilstaðir");
         fxDepartureLoc.setItems(departureChoices);
         destinationChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilstaðir");
         fxDestination.setItems(destinationChoices);
       //  priceBoxChoice.addAll("Cheap Package", "Standard Package", "Luxury Package");
       //  fxPrice.setItems(priceBoxChoice);
+        NrHotelChoice.addAll("1","2","3","4");
+        fxNoHotel.setItems(NrHotelChoice);
         travelersChoice.addAll("1","2","3");
         fxNoTravellers.setItems(travelersChoice);
         serviceChoice.addAll("Family Friendly", "Action", "Wheelchair Access");
@@ -111,6 +114,7 @@ public class Controller extends CommonMethods implements Initializable {
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
                                 noHotelRooms,threeStar,fourStar,fiveStar);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,0,100,travellers);
+        searcher = new Searcher(new FlightSearchController(),1,new TourController());
         AppState appState = AppState.getInstance();
         appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));
         try {

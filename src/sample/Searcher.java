@@ -10,12 +10,14 @@ public class Searcher {
     DataFactory df = new DataFactory();
     HotelDataFactory hdf = new HotelDataFactory();
     FlightDataFactory fdf = new FlightDataFactory();
+    TourDataFactory tdf = new TourDataFactory();
     FlightSearchController fsc;
-    //TODO remove Datafactory, replace with actual datasources
-    TourSearchService ts;
-    //FlightSearchService fs;
+    TourController ts;
+
+
+
     
-    public Searcher(FlightSearchController flightSearchController , int HotelSearchService, TourSearchService tourSearcher) {
+    public Searcher(FlightSearchController flightSearchController , int HotelSearchService, TourController tourSearcher) {
         ts = tourSearcher;
         fsc = flightSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.
@@ -46,7 +48,7 @@ public class Searcher {
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
-        ObservableList<Tour> tours = ts.tours;
+     /*   ObservableList<Tour> tours = ts.tours;
         tours = ts.tourServicesSearch(filter.getServices(), tours);
         tours = ts.tourDateSearch(filter.getEarliestDate(), filter.getLatestDate(), tours);
         tours = ts.tourRegionSearch(filter.getLocation(), tours);
@@ -67,6 +69,11 @@ public class Searcher {
                 tours.remove(tour);
             }
         }
+        return tours;*/
+        ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
+        tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
+        tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
+        tours = ts.tourServicesSearch(filter.getServices(),tours);
         return tours;
     }
 
