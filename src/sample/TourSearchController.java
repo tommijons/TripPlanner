@@ -4,30 +4,50 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.IOException;
 
+import java.time.LocalDate;
 public class TourSearchController {
 
-    private final TourDataFactory dataFactory = new TourDataFactory();
-    public ObservableList<Tour> tourList = FXCollections.observableArrayList();
-    ObservableList<String> Departure_LocationsList = FXCollections.observableArrayList("","REY","EGS","AEY","IFJ","VEY","KEF");
-    ObservableList<String> Arrival_LocationsList = FXCollections.observableArrayList("","REY","EGS","AEY","IFJ","VEY","KEF");
+    //frá 5D
+    private TourDataFactory dataFactory = new TourDataFactory();
+    private ObservableList<Tour> allTours = FXCollections.observableArrayList(tourdataFactory.getTours());
+                                 //new TourController???
+    TourSearchController filteredTours = new TourSearchController();
+    ObservableList<Tour> filteredListRegion = FXCollections.observableArrayList();
+    ObservableList<Tour> filteredListDuration = FXCollections.observableArrayList();
+    ObservableList<Tour> filteredListServices = FXCollections.observableArrayList();
 
+
+    //private final TourDataFactory dataFactory = new TourDataFactory();
+    //public ObservableList<Tour> tourList = FXCollections.observableArrayList();
+    //ObservableList<String> RegionList = FXCollections.observableArrayList(/*eitthvað regions list?"","REY","EGS","AEY","IFJ","VEY","KEF"*/);
+    //ObservableList<String> ServiceList = FXCollections.observableArrayList(/*eitthvað service list?"","REY","EGS","AEY","IFJ","VEY","KEF"*/);
 
 
     /**
-     * Leitar af flugi eftir attributum
-     * @param departureLocation brottfararstaður, departureLocation = null ef ekki á að leita eftir
-     * @param arrivalLocation komustaður, arrivalLocation = null ef ekki á að leita eftir
-     * @param tourDate dagsetning (ár-mánuður-dagur), tourDate = null ef ekki á að leita eftir
-     * @param meal máltíð í flugi eða ekki, meal = null ef ekki á að leita eftir
-     * @return listi af flugum
+     * Leitar að tour eftir attributum
+     * @param region
+     * @param duration1 min duration
+     * @param duration2 max duration
+     * @param service service???
+     * @param startDate tourDate verður að vera eftir startDate
+     * @param endDate tourDate verður að vera á undan endDate
+     * @return listi af tours
      */
 
-    public ObservableList<Tour> searchByAttribute(String departureLocation, String arrivalLocation, String tourDate, Boolean meal) {
-        String dep = departureLocation == null || departureLocation.equals("") ? "%" : departureLocation;
-        String arr = arrivalLocation == null || arrivalLocation.equals("") ? "%" : arrivalLocation;
-        String date = tourDate == null || tourDate.equals("") ? "%" : tourDate;
+    public ObservableList<Tour> searchByAttribute(String region, int duration1, int duration2, String service, LocalDate startDate, LocalDate endDate) {
 
-        return dataFactory.getTours(dep, arr, date, meal);
+        //???
+        //ég get ekki látið int eða localdate vera "%"...
+        //ég nota null í staðinn.
+        String reg = region == null || region.equals("") ? null : region;
+        String d1 = duration1 == null ? null : duration1;
+        String d2 = duration2 == null ? null : duration2;
+        String ser = service == null || service.equals("") ? null : service;
+        String sdat = startDate == null ? null : startDate;
+        String edat = endDate == null ? null : endDate;
+
+
+        return dataFactory.getTours(reg, d1, d2, ser, sdat, edat);
     }
 
 
@@ -39,8 +59,7 @@ public class TourSearchController {
         ObservableList<Tour> searchedTours = searcher.searchByAttribute("REY", null, null, null);
         // Prenta útkomu
         for(Tour tour: searchedTours) {
-            System.out.println(tour);
-        }
+            System.out.println(tour);}
     }
 
 }
