@@ -56,12 +56,12 @@ public class MockTourController implements TourSearchService {
                 (duration1+duration2)/2,"Family friendly"));
         return results;
     }
-    public ObservableList<Tour> tourDateSearch(Date startDate, Date endDate, ObservableList<Tour> tours) {
+    public ObservableList<Tour> tourDateSearch(LocalDate startDate, LocalDate endDate, ObservableList<Tour> tours) {
         ObservableList<Tour> results = FXCollections.observableArrayList();
         results.add(new Tour(
                 "Horseriding in Eyjafjörður","Bring warm clothes",
-                LocalDate.of(startDate.getYear(),startDate.getMonth(), startDate.getDay()), 10,10000, "Akureyri",
-                new Date(endDate.getTime() - startDate.getTime()).getHours(),"Family friendly"));
+                LocalDate.of(startDate.getYear(),startDate.getMonth(), startDate.getDayOfMonth()), 10,10000, "Akureyri",
+                10,"Family friendly"));
         return results;
     }
 

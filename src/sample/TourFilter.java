@@ -1,11 +1,12 @@
 package sample;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class TourFilter {
 
-    private final Date earliestDate;
-    private final Date latestDate;
+    private final LocalDate earliestDate;
+    private final LocalDate latestDate;
     private final String location;
     private final int maxPrice;
     private final String services;
@@ -14,7 +15,8 @@ public class TourFilter {
     private final int minSpots;
 
 
-    public TourFilter(Date earliest, Date latest, String location, int maxPrice, String services, int minDuration, int maxDuration, int minSpots) {
+    public TourFilter(LocalDate earliest, LocalDate latest, String location, int maxPrice,
+                      String services, int minDuration, int maxDuration, int minSpots) {
         earliestDate = earliest;
         latestDate = latest;
         this.location = location;
@@ -27,8 +29,8 @@ public class TourFilter {
 
     public TourFilter() {
         //TODO get rid of this function! (change callers to use the other constructor)
-        earliestDate = new Date();
-        latestDate = new Date();
+        earliestDate = LocalDate.of(2021,6,7);
+        latestDate = LocalDate.of(2021,6,12);
         location = "Here";
         maxPrice = Integer.MAX_VALUE;
         services = "";
@@ -37,11 +39,11 @@ public class TourFilter {
         this.minSpots = 1;
     }
 
-    public Date getEarliestDate() {
+    public LocalDate getEarliestDate() {
         return earliestDate;
     }
 
-    public Date getLatestDate() {
+    public LocalDate getLatestDate() {
         return latestDate;
     }
 

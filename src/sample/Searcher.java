@@ -23,14 +23,14 @@ public class Searcher {
     
     public ObservableList<Flight> searchForFlights(FlightFilter filter){
         ObservableList<Flight> flights = fsc.flightList;
-        flights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getFlightDate(), filter.getMeal());
+        flights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getDepartureDate().toString(), filter.getMeal());
 
         //TODO Implement Real function
         return flights;
     }
     public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
         ObservableList<Flight> returnFlights = fsc.flightList;
-        returnFlights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getFlightDate(), filter.getMeal());
+        returnFlights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getReturnDate().toString(), filter.getMeal());
 
         //TODO Implement Real function
         return returnFlights;
@@ -41,7 +41,7 @@ public class Searcher {
         //TODO Implement Real function
         return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
                 filter.getCheckIn(), filter.getCheckOut(),
-        filter.getMinBeds(),filter.getMinSize(),
+                filter.getSelectedNumOfGuests(),filter.getSelectedNumOfRooms(),
                 filter.isThreeStar(), filter.isFourStar(), filter.isThreeStar());
     }
 
@@ -70,15 +70,11 @@ public class Searcher {
         return tours;
     }
 
-    public SearchResults searchForPackages(){
-        FlightFilter ff = new FlightFilter();//TODO Get Information to construct filter
+    public SearchResults searchForPackages(FlightFilter ff, HotelFilter hf, TourFilter tf){
         ObservableList<Flight> flights = searchForFlights(ff);
-        FlightFilter rff = new FlightFilter();//TODO Get Information to construct filter
         ObservableList<Flight> returnFlights = searchForFlights(ff);
-        HotelFilter hf = new HotelFilter();
         ObservableList<Hotel> hotels = searchForHotels(hf);
-        TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
-        ObservableList<Tour> tours = searchForTours(dtf);
+        ObservableList<Tour> tours = searchForTours(tf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
