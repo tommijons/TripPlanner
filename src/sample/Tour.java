@@ -7,7 +7,7 @@ public class Tour {
     private int tourID;
     private String tourName;
     private String tourInfo;
-    private LocalDate tourDate;
+    private String tourDate;
     private int availableSpots;
     private int bookedSpots;
     private int tourPrice;
@@ -21,7 +21,7 @@ public class Tour {
         return tourName;
     }
 
-    public Tour(String tourName, String tourInfo, LocalDate tourDate, int availableSpots, int tourPrice, String tourRegion, int duration, String services) {
+    public Tour(String tourName, String tourInfo, String tourDate, int availableSpots, int tourPrice, String tourRegion, int duration, String services) {
         this.tourName = tourName;
         this.tourInfo = tourInfo;
         this.tourDate = tourDate;
@@ -56,11 +56,11 @@ public class Tour {
         this.tourInfo = tourInfo;
     }
 
-    public LocalDate getTourDate() {
+    public String getTourDate() {
         return tourDate;
     }
 
-    public void setTourDate(LocalDate tourDate) {
+    public void setTourDate(String tourDate) {
         this.tourDate = tourDate;
     }
 

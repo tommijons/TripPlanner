@@ -133,10 +133,20 @@ public class TourDataFactory implements TourDataFactoryInterface {
             pstmt.setString(1, departureLocation);
             pstmt.setString(2, arrivalLocation);
             pstmt.setString(3, tourDate);
+
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
                 // read the result set
                 tours.add(new Tour(
+                        rs.getString("tourName"),
+                        rs.getString("tourInfo"),
+                        rs.getLocalDate("tourDate"),
+                        rs.getInt("availableSpots"),
+                        rs.getInt("tourPrice"),
+                        rs.getString("tourRegion"),
+                        rs.getInt("duration"),
+                        rs.getString("services")
+
                         rs.getInt("id"),
                         rs.getString("departureLocation"),
                         rs.getString("arrivalLocation"),
