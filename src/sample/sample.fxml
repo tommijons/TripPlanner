@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
       <AnchorPane prefHeight="44.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -45,7 +39,7 @@
             <ComboBox fx:id="fxNoTravellers" layoutX="25.0" layoutY="329.0" prefWidth="150.0" promptText="No. of Travellers" />
             <ComboBox fx:id="fxInterests" layoutX="25.0" layoutY="400.0" prefWidth="150.0" promptText="Interests" />
             <ComboBox fx:id="fxPrice" layoutX="25.0" layoutY="469.0" prefWidth="150.0" promptText="Price Range" />
-            <Button fx:id="fxSearchButton" layoutX="74.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#searchButtonClicked" text="Search" />
+            <Button fx:id="fxSearchButton" layoutX="74.0" layoutY="539.0" mnemonicParsing="false" onAction="#searchHandler" text="Search" />
          </children>
       </AnchorPane>
    </left>
