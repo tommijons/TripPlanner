@@ -9,19 +9,24 @@ import java.util.Date;
 public class Searcher {
     DataFactory df = new DataFactory();
     HotelDataFactory hdf = new HotelDataFactory();
+    FlightDataFactory fdf = new FlightDataFactory();
+    FlightSearchController fsc;
     //TODO remove Datafactory, replace with actual datasources
     TourSearchService ts;
     //FlightSearchService fs;
     
-    public Searcher(int FlightSearchService, int HotelSearchService, TourSearchService tourSearcher) {
+    public Searcher(FlightSearchController flightSearchController , int HotelSearchService, TourSearchService tourSearcher) {
         ts = tourSearcher;
+        fsc = flightSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.
     }
     
-    public Flight[] searchForFlights(FlightFilter filter){
-        //This is a dummy function
+    public ObservableList<Flight> searchForFlights(FlightFilter filter){
+        ObservableList<Flight> flights = fsc.flightList;
+        flights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getFlightDate(), filter.getMeal());
+
         //TODO Implement Real function
-        return df.getFlights().toArray(new Flight[0]);
+        return flights;
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
@@ -59,8 +64,8 @@ public class Searcher {
     }
 
     public SearchResults searchForPackages(){
-        FlightFilter ff = new FlightFilter(new Date());//TODO Get Information to construct filter
-        Flight[] flights = searchForFlights(ff);
+        FlightFilter ff = new FlightFilter();//TODO Get Information to construct filter
+        ObservableList<Flight> flights = searchForFlights(ff);
         HotelFilter hf = new HotelFilter();//TODO Get Information to construct filter
         ObservableList<Hotel> hotels = searchForHotels(hf);
         TourFilter dtf = new TourFilter();//TODO Get Information to construct filter

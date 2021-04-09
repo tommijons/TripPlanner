@@ -20,17 +20,17 @@ public class TravelPackageController {
     public void changeDayTrip(TravelPackage travelPackage, Tour dayTrip){
         travelPackage.setDaytrip(dayTrip);
     }
-    public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, Flight[] flights, ObservableList<Tour> tours){
+    public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Tour> tours){
         return new TravelPackage(hotels.get(Math.floorDiv(hotels.size(), 2)),
-                flights[Math.floorDiv(flights.length, 2)],
+                flights.get(Math.floorDiv(flights.size(), 2)),
                 tours.get(Math.floorDiv(tours.size(), 2)));
     }
-    public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, Flight[] flights, ObservableList<Tour> tours){
-        return new TravelPackage(hotels.get(0), flights[0], tours.get(0));
+    public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Tour> tours){
+        return new TravelPackage(hotels.get(0), flights.get(0), tours.get(0));
     }
-    public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, Flight[] flights, ObservableList<Tour> tours){
+    public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Tour> tours){
         return new TravelPackage(hotels.get(hotels.size()-1),
-                flights[flights.length - 1],
+                flights.get(flights.size() - 1),
                 tours.get(tours.size() - 1));
     }
 

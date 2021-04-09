@@ -7,16 +7,16 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class TravelPackageAssembler {
-    private Flight[] availableFlights;
+    private ObservableList<Flight> availableFlights;
     private ObservableList<Hotel> availableHotels;
     private ObservableList<Tour> availableDayTrips;
     private TravelPackageController tpc;
 
-    public Flight[] getAvailableFlights() {
+    public ObservableList<Flight> getAvailableFlights() {
         return availableFlights;
     }
 
-    public void setAvailableFlights(Flight[] availableFlights) {
+    public void setAvailableFlights(ObservableList<Flight> availableFlights) {
         this.availableFlights = availableFlights;
     }
 
@@ -36,15 +36,15 @@ public class TravelPackageAssembler {
         this.availableDayTrips = availableDayTrips;
     }
 
-    public TravelPackageAssembler(Flight[] flights, ObservableList<Hotel> hotels, ObservableList<Tour> tours) {
-        availableFlights = flights.clone();
+    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Hotel> hotels, ObservableList<Tour> tours) {
+        Collections.copy(availableFlights, flights);
         Collections.copy(availableHotels, hotels);
         Collections.copy(availableDayTrips, tours);
         SortByPrice();
     }
 
     private void SortByPrice(){
-        Arrays.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
+        Collections.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
         Collections.sort(availableHotels, Comparator.comparingInt(Hotel::getHotel_base_price));
         Collections.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
     }
