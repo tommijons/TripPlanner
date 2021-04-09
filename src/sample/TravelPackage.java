@@ -3,19 +3,16 @@ package sample;
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
+    private Flight returnFlight;
     private Tour daytrip;
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
     private int totalPrice;
 
-    public TravelPackage(Hotel hotel, Flight flight, Tour daytrip){
+    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip){
         this.hotel = hotel;
         this.flight = flight;
+        this.returnFlight = returnFlight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + daytrip.getTourPrice();
+        this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + returnFlight.getPrice() + daytrip.getTourPrice();
     }
 
     public Hotel getHotel() {
@@ -34,6 +31,10 @@ public class TravelPackage {
         this.flight = flight;
     }
 
+    public Flight getReturnFlight() { return returnFlight; }
+
+    public void setReturnFlight(Flight returnFlight) { this.returnFlight = returnFlight; }
+
     public Tour getDaytrip() {
         return daytrip;
     }
@@ -41,6 +42,8 @@ public class TravelPackage {
     public void setDaytrip(Tour daytrip) {
         this.daytrip = daytrip;
     }
+
+    public int getTotalPrice() { return totalPrice; }
 
     @Override
     public String toString() {

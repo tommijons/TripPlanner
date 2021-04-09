@@ -17,6 +17,7 @@ public class DataFactory {
     public ArrayList<Room> all_rooms = this.createRooms();
     public DataFactory(){
     }
+    /*
     public ObservableList<TravelPackage> getTravelPackages(){
         ObservableList<TravelPackage> travelPackages = FXCollections.observableArrayList();
         ObservableList<Tour> tours = getTours();
@@ -29,7 +30,7 @@ public class DataFactory {
         travelPackages.add(travelPackage2);
         travelPackages.add(travelPackage3);
         return travelPackages;
-    }
+    }*/
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 

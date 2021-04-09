@@ -28,6 +28,13 @@ public class Searcher {
         //TODO Implement Real function
         return flights;
     }
+    public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
+        ObservableList<Flight> returnFlights = fsc.flightList;
+        returnFlights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getFlightDate(), filter.getMeal());
+
+        //TODO Implement Real function
+        return returnFlights;
+    }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
         //This is a dummy function
@@ -66,15 +73,17 @@ public class Searcher {
     public SearchResults searchForPackages(){
         FlightFilter ff = new FlightFilter();//TODO Get Information to construct filter
         ObservableList<Flight> flights = searchForFlights(ff);
+        FlightFilter rff = new FlightFilter();//TODO Get Information to construct filter
+        ObservableList<Flight> returnFlights = searchForFlights(ff);
         HotelFilter hf = new HotelFilter();
         ObservableList<Hotel> hotels = searchForHotels(hf);
         TourFilter dtf = new TourFilter();//TODO Get Information to construct filter
         ObservableList<Tour> tours = searchForTours(dtf);
-        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, hotels, tours);
+        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
         TravelPackage luxury = assembler.getLuxuryPackage();
 
-        return new SearchResults(flights, hotels, tours, cheap, standard, luxury);
+        return new SearchResults(flights, returnFlights, hotels, tours, cheap, standard, luxury);
     }
 }
