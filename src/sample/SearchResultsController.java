@@ -26,6 +26,12 @@ public class SearchResultsController extends CommonMethods implements Initializa
         scene = new Scene(fxPane);
     }
 
+    public void results() {
+        Stage window = new Stage();
+        window. setScene(scene);
+        window.show();
+    }
+
     public void BookingButtonClicked(MouseEvent mouseEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Booking.fxml"));
         stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();

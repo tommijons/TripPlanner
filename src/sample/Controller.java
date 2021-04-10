@@ -107,10 +107,10 @@ public class Controller extends CommonMethods implements Initializable {
         int travellers = Integer.parseInt(String.valueOf(fxNoTravellers.getValue()));
         int noHotelRooms = Integer.parseInt(String.valueOf(fxNoHotel.getValue()));
         String services = String.valueOf(fxServices.getValue());
-        Boolean threeStar = fx3Star.isSelected();
-        Boolean fourStar = fx4Star.isSelected();
-        Boolean fiveStar = fx5Star.isSelected();
-        Boolean meal = fxMeal.isSelected();
+        boolean threeStar = fx3Star.isSelected();
+        boolean fourStar = fx4Star.isSelected();
+        boolean fiveStar = fx5Star.isSelected();
+        boolean meal = fxMeal.isSelected();
 
         FlightFilter ff = new FlightFilter("REY","AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),meal);
        /* HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
@@ -122,13 +122,14 @@ public class Controller extends CommonMethods implements Initializable {
         searcher = new Searcher(new FlightSearchController(),1,new TourController());
         AppState appState = AppState.getInstance();
         appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));
-        try {
+        searchResultsController.results();
+       /* try {
         root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
         stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        }catch (IOException io){}
+        }catch (IOException io){}*/
     }
 
     public void closeMenu(MouseEvent actionEvent){
