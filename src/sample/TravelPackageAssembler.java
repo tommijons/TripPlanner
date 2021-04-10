@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Arrays;
@@ -45,7 +46,7 @@ public class TravelPackageAssembler {
     }
 
     public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours) {
-        Collections.copy(availableFlights, flights);
+       Collections.copy(availableFlights, flights);
         Collections.copy(availableReturnFlights, returnFlights);
         Collections.copy(availableHotels, hotels);
         Collections.copy(availableDayTrips, tours);

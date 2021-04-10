@@ -110,7 +110,8 @@ public class Controller extends CommonMethods implements Initializable {
         Boolean fourStar = fx4Star.isSelected();
         Boolean fiveStar = fx5Star.isSelected();
         Boolean meal = fxMeal.isSelected();
-        FlightFilter ff = new FlightFilter(from,to,depDate,retDate,meal);
+
+        FlightFilter ff = new FlightFilter("REY","AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),meal);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
                                 noHotelRooms,threeStar,fourStar,fiveStar);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,0,100,travellers);

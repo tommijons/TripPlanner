@@ -26,7 +26,6 @@ public class FlightSearchController {
         String dep = departureLocation == null || departureLocation.equals("") ? "%" : departureLocation;
         String arr = arrivalLocation == null || arrivalLocation.equals("") ? "%" : arrivalLocation;
         String date = flightDate == null || flightDate.equals("") ? "%" : flightDate;
-
         return dataFactory.getFlights(dep, arr, date, meal);
     }
 

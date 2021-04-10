@@ -24,23 +24,13 @@ public class Searcher {
     }
     
     public ObservableList<Flight> searchForFlights(FlightFilter filter){
-        ObservableList<Flight> flights = fsc.flightList;
-        flights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getDepartureDate().toString(), filter.getMeal());
-
-        //TODO Implement Real function
-        return flights;
+        return fsc.searchByAttribute("REY","AEY", LocalDate.of(2021,01,01).toString(), filter.getMeal());
     }
     public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
-        ObservableList<Flight> returnFlights = fsc.flightList;
-        returnFlights = fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getReturnDate().toString(), filter.getMeal());
-
-        //TODO Implement Real function
-        return returnFlights;
+        return fsc.searchByAttribute("AEY", "REY",LocalDate.of(2021,01,01).toString(), filter.getMeal());
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-        //This is a dummy function
-        //TODO Implement Real function
         return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
                 filter.getCheckIn(), filter.getCheckOut(),
                 filter.getSelectedNumOfGuests(),filter.getSelectedNumOfRooms(),
@@ -70,10 +60,14 @@ public class Searcher {
             }
         }
         return tours;*/
-        ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
+     /*   ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());FXCollections.observableArrayList();
         tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
         tours = ts.tourServicesSearch(filter.getServices(),tours);
+        return tours;*/
+        ObservableList<Tour> tours = FXCollections.observableArrayList();
+        tours.add(new Tour("Buggy Tour in Rauðhólar","Children must be under parent supervision",
+                LocalDate.now(),20,20000, "Reykjavík",5, "Action"));
         return tours;
     }
 
