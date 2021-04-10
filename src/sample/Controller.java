@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 public class Controller extends CommonMethods implements Initializable {
@@ -61,7 +62,7 @@ public class Controller extends CommonMethods implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UIinitialize();
-        try {
+       try {
             searchResultsController = loadSearchResults();
         } catch(IOException e) {
                 e.printStackTrace();
@@ -91,7 +92,7 @@ public class Controller extends CommonMethods implements Initializable {
         fxNoHotel.setItems(NrHotelChoice);
         travelersChoice.addAll("1","2","3");
         fxNoTravellers.setItems(travelersChoice);
-        serviceChoice.addAll("Family Friendly", "Action", "Wheelchair Access");
+        serviceChoice.addAll("Family Friendly", "Action", "Wheelchair accessible");
         fxServices.setItems(serviceChoice);
 
 
@@ -112,9 +113,12 @@ public class Controller extends CommonMethods implements Initializable {
         Boolean meal = fxMeal.isSelected();
 
         FlightFilter ff = new FlightFilter("REY","AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),meal);
-        HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
-                                noHotelRooms,threeStar,fourStar,fiveStar);
-        TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,0,100,travellers);
+       /* HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
+                                noHotelRooms,threeStar,fourStar,fiveStar);*/
+        HotelFilter hf = new HotelFilter(LocalDate.now().plus(3, ChronoUnit.DAYS),LocalDate.now().plus(6,ChronoUnit.DAYS),
+                "Akureyri",1,
+                1,true,true,true);
+        TourFilter tf = new TourFilter(LocalDate.now(),LocalDate.now().plus(1,ChronoUnit.DAYS),"Reykjavík",99999,"Action",0,100,1);
         searcher = new Searcher(new FlightSearchController(),1,new TourController());
         AppState appState = AppState.getInstance();
         appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));

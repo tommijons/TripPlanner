@@ -36,11 +36,17 @@ public class Main extends Application {
                 filter.getCheckIn(), filter.getCheckOut(),
                 filter.getSelectedNumOfGuests(),filter.getSelectedNumOfRooms(),
                 filter.isThreeStar(), filter.isFourStar(), filter.isThreeStar());
-        System.out.println(list);
+        System.out.println(list.get(0).getHotel_name());
         FlightSearchController fsc = new FlightSearchController();
-        ObservableList<Flight> flist = fsc.searchByAttribute("REY", "AEY", LocalDate.of(2021,01,01).toString(), true);
-        System.out.println(flist.get(0).getAirline());
-        System.out.print(LocalDate.of(2021,01,01).toString());
+        ObservableList<Flight> flist = fsc.searchByAttribute("REY", "AEY",
+                LocalDate.of(2021,01,01).toString(), true);
+        System.out.println(flist.size());
+        System.out.println(fsc.searchByAttribute("REY", "AEY",
+                LocalDate.of(2021,01,01).toString(), true).size());
+        TourDataFactory tdf = new TourDataFactory();
+        ObservableList<Tour> tours = tdf.getTours();
+        TourController tc = new TourController();
+        System.out.println(tc.tourDateSearch(LocalDate.of(2021,4,01),LocalDate.of(2021,5,01), tc.tourRegionSearch("Reykjavík",tours)));
         launch(args);
     }
 

@@ -21,6 +21,7 @@ public class Booking {
         this.user = user;
         this.travelPackage = travelPackage;
         this.ccinfo = ccinfo;
+
     }
 
     public void setTravelPackage(TravelPackage travelPackage) {

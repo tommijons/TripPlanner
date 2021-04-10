@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Searcher {
@@ -31,10 +32,10 @@ public class Searcher {
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
-                filter.getCheckIn(), filter.getCheckOut(),
-                filter.getSelectedNumOfGuests(),filter.getSelectedNumOfRooms(),
-                filter.isThreeStar(), filter.isFourStar(), filter.isThreeStar());
+        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), "Akureyri",
+                LocalDate.now().plus(3,ChronoUnit.DAYS), LocalDate.now().plus(6,ChronoUnit.DAYS),
+                1,1,
+                true, true, true);
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
@@ -76,6 +77,10 @@ public class Searcher {
         ObservableList<Flight> returnFlights = searchForFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
+        System.out.println(flights.size());
+        System.out.println(returnFlights.size());
+        System.out.println(hotels.size());
+        System.out.println(tours.size());
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();

@@ -12,7 +12,7 @@ public class TravelPackageAssembler {
     private ObservableList<Flight> availableReturnFlights;
     private ObservableList<Hotel> availableHotels;
     private ObservableList<Tour> availableDayTrips;
-    private TravelPackageController tpc;
+    private TravelPackageController tpc = new TravelPackageController();
 
     public ObservableList<Flight> getAvailableFlights() {
         return availableFlights;
@@ -46,10 +46,14 @@ public class TravelPackageAssembler {
     }
 
     public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours) {
-       Collections.copy(availableFlights, flights);
-        Collections.copy(availableReturnFlights, returnFlights);
-        Collections.copy(availableHotels, hotels);
-        Collections.copy(availableDayTrips, tours);
+        availableFlights = FXCollections.observableArrayList();
+        availableReturnFlights = FXCollections.observableArrayList();
+        availableHotels = FXCollections.observableArrayList();
+        availableDayTrips = FXCollections.observableArrayList();
+        availableFlights.addAll(flights);
+        availableReturnFlights.addAll(returnFlights);
+        availableHotels.addAll(hotels);
+        availableDayTrips.addAll(tours);
         SortByPrice();
     }
 
