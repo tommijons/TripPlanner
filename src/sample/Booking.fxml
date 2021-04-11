@@ -14,7 +14,7 @@
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="39.0" onMouseClicked="#closeMenu" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@x.png" />
+                        <Image url="@images/x.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -44,7 +44,7 @@
             <Label layoutX="532.0" layoutY="55.0" prefHeight="17.0" prefWidth="26.0" />
             <ImageView fitHeight="23.0" fitWidth="39.0" layoutX="364.0" layoutY="32.0" onMouseClicked="#BackButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@TilBaka.png" />
+                  <Image url="@images/TilBaka.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="504.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">

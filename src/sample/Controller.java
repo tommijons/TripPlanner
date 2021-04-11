@@ -94,12 +94,10 @@ public class Controller extends CommonMethods implements Initializable {
         fxNoTravellers.setItems(travelersChoice);
         serviceChoice.addAll("Family Friendly", "Action", "Wheelchair accessible");
         fxServices.setItems(serviceChoice);
-
-
     }
 
     @FXML
-    public void searchHandler(MouseEvent mouseEvent) {
+    private void searchHandler(MouseEvent mouseEvent) {
         LocalDate depDate = fxDepartureDate.getValue();
         LocalDate retDate = fxArrivalDate.getValue();
         String from = String.valueOf(fxDepartureLoc.getValue());
@@ -112,7 +110,7 @@ public class Controller extends CommonMethods implements Initializable {
         boolean fiveStar = fx5Star.isSelected();
         boolean meal = fxMeal.isSelected();
 
-        FlightFilter ff = new FlightFilter("REY","AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),meal);
+        FlightFilter ff = new FlightFilter(from,to,depDate,retDate,meal);
        /* HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
                                 noHotelRooms,threeStar,fourStar,fiveStar);*/
         HotelFilter hf = new HotelFilter(LocalDate.now().plus(3, ChronoUnit.DAYS),LocalDate.now().plus(6,ChronoUnit.DAYS),
