@@ -31,6 +31,16 @@ public class Tour {
         this.duration = duration;
         this.services = services;
     }
+    public Tour() {
+        this.tourName = "Enginn túr";
+        this.tourInfo = "Engar upplýsingar";
+        this.tourDate = LocalDate.now();
+        this.availableSpots = 0;
+        this.tourPrice = 0;
+        this.tourRegion = "Hvergi";
+        this.duration = 0;
+        this.services = "Engar";
+    }
 
     public int getTourID() {
         return tourID;

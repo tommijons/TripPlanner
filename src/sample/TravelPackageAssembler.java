@@ -67,11 +67,11 @@ public class TravelPackageAssembler {
     }*/
 
     public TravelPackage getCheapPackage() {
-        return tpc.createCheapPackage(availableHotels,availableFlights, availableReturnFlights,availableDayTrips);
+        return tpc.createCheapPackage(availableHotels,availableFlights, availableReturnFlights,availableDayTrips,fdf);
     }
 
     public TravelPackage getStandardPackage() {
-        return tpc.createStandardPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips);
+        return tpc.createStandardPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,fdf);
     }
 
     public TravelPackage getLuxuryPackage() {

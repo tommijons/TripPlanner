@@ -47,6 +47,9 @@ public class TravelPackage {
 
     @Override
     public String toString() {
-        return "Travel Package";
+        return "Flug út: " + getFlight().getDepartureTime().toString() + "\n"
+                + "Flug heim: " + getReturnFlight().getDepartureTime().toString() + "\n"
+                + "Hótel " + getHotel().getHotel_name() + "\n"
+                + "Dagsferð " + getDaytrip().getTourName() + "\n";
     }
 }
