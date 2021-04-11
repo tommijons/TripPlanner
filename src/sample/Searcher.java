@@ -28,7 +28,7 @@ public class Searcher {
         return fsc.searchByAttribute("REY","AEY", LocalDate.of(2021,01,01).toString(), filter.getMeal());
     }
     public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
-        return fsc.searchByAttribute("AEY", "REY",LocalDate.of(2021,01,01).toString(), filter.getMeal());
+        return fsc.searchByAttribute("AEY", "REY",filter.getReturnDate().toString(), filter.getMeal());
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
@@ -81,7 +81,7 @@ public class Searcher {
         System.out.println(returnFlights.size());
         System.out.println(hotels.size());
         System.out.println(tours.size());
-        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours);
+        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours, fdf);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
         TravelPackage luxury = assembler.getLuxuryPackage();
