@@ -23,12 +23,12 @@ public class Searcher {
         fsc = flightSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.
     }
-    
+
     public ObservableList<Flight> searchForFlights(FlightFilter filter){
-        return fsc.searchByAttribute("REY","AEY", LocalDate.of(2021,01,01).toString(), filter.getMeal());
+        return fsc.searchByAttribute(filter.getDepartureLocation(),filter.getArrivalLocation(), filter.getDepartureDate().toString(), filter.isMeal());
     }
     public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
-        return fsc.searchByAttribute("AEY", "REY",filter.getReturnDate().toString(), filter.getMeal());
+        return fsc.searchByAttribute(filter.getArrivalLocation(), filter.getDepartureLocation(), filter.getReturnDate().toString(), filter.isMeal());
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
@@ -74,7 +74,7 @@ public class Searcher {
 
     public SearchResults searchForPackages(FlightFilter ff, HotelFilter hf, TourFilter tf){
         ObservableList<Flight> flights = searchForFlights(ff);
-        ObservableList<Flight> returnFlights = searchForFlights(ff);
+        ObservableList<Flight> returnFlights = searchForReturnFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
         System.out.println(flights.size());
