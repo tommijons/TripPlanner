@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Flight {
@@ -24,7 +25,17 @@ public class Flight {
         this.airline = airline;
         this.mealService = mealService;
     }
-
+    public Flight() {
+        this.id = 999;
+        this.departureLocation = "REY";
+        this.arrivalLocation = "AEY";
+        this.departureTime = LocalDate.of(2021,01,01).toString();
+        this.arrivalTime = LocalDate.of(2021,01,01).toString();
+        this.flightDate = LocalDate.of(2021,01,01).toString();
+        this.price = 9999;
+        this.airline = "Flugleiðir";
+        this.mealService = true;
+    }
     public String getAirline() {
         return airline;
     }

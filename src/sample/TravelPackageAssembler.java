@@ -13,6 +13,7 @@ public class TravelPackageAssembler {
     private ObservableList<Hotel> availableHotels;
     private ObservableList<Tour> availableDayTrips;
     private TravelPackageController tpc = new TravelPackageController();
+    FlightDataFactory fdf;
 
     public ObservableList<Flight> getAvailableFlights() {
         return availableFlights;
@@ -45,7 +46,7 @@ public class TravelPackageAssembler {
         this.availableDayTrips = availableDayTrips;
     }
 
-    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours) {
+    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours,FlightDataFactory fdf) {
         availableFlights = FXCollections.observableArrayList();
         availableReturnFlights = FXCollections.observableArrayList();
         availableHotels = FXCollections.observableArrayList();
@@ -54,15 +55,16 @@ public class TravelPackageAssembler {
         availableReturnFlights.addAll(returnFlights);
         availableHotels.addAll(hotels);
         availableDayTrips.addAll(tours);
-        SortByPrice();
+        this.fdf = fdf;
+        //SortByPrice();
     }
 
-    private void SortByPrice(){
+  /*  private void SortByPrice(){
         Collections.sort(availableFlights, Comparator.comparingInt(Flight::getPrice));
         Collections.sort(availableReturnFlights, Comparator.comparingInt(Flight::getPrice));
         Collections.sort(availableHotels, Comparator.comparingInt(Hotel::getHotel_base_price));
         Collections.sort(availableDayTrips, Comparator.comparingInt(Tour::getTourPrice));
-    }
+    }*/
 
     public TravelPackage getCheapPackage() {
         return tpc.createCheapPackage(availableHotels,availableFlights, availableReturnFlights,availableDayTrips);
@@ -73,6 +75,6 @@ public class TravelPackageAssembler {
     }
 
     public TravelPackage getLuxuryPackage() {
-        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips);
+        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,fdf);
     }
 }
