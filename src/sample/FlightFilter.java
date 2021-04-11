@@ -6,14 +6,55 @@ import java.util.Date;
 public class FlightFilter {
     private String departureLocation;
     private String arrivalLocation;
-    private LocalDate DepartureDate;
-    private LocalDate ReturnDate;
-    private Boolean meal;
-    public FlightFilter(String departureLocation, String arrivalLocation, LocalDate DepartureDate, LocalDate ReturnDate, Boolean meal) {
+    private LocalDate departureDate;
+    private LocalDate returnDate;
+    private boolean meal;
+
+    public FlightFilter(String depLoc, String arrLoc, LocalDate d, LocalDate r , boolean m) {
+        departureLocation = depLoc;
+        arrivalLocation = arrLoc;
+        departureDate = d;
+        returnDate = r;
+        meal = m;
+    }
+
+    public String getDepartureLocation() {
+        return departureLocation;
+    }
+
+    public void setDepartureLocation(String departureLocation) {
         this.departureLocation = departureLocation;
+    }
+
+    public String getArrivalLocation() {
+        return arrivalLocation;
+    }
+
+    public void setArrivalLocation(String arrivalLocation) {
         this.arrivalLocation = arrivalLocation;
-        this.DepartureDate = DepartureDate;
-        this.ReturnDate = ReturnDate;
+    }
+
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public boolean isMeal() {
+        return meal;
+    }
+
+    public void setMeal(boolean meal) {
         this.meal = meal;
     }
     /*
@@ -28,19 +69,4 @@ public class FlightFilter {
     }*/
 
 
-    public String getDepartureLocation() {
-        return departureLocation;
-    }
-
-    public LocalDate getDepartureDate() { return DepartureDate; }
-
-    public LocalDate getReturnDate() { return ReturnDate; }
-
-    public String getArrivalLocation() {
-        return arrivalLocation;
-    }
-
-    public Boolean getMeal() {
-        return meal;
-    }
 }
