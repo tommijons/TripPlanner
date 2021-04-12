@@ -18,6 +18,17 @@ public class FlightFilter {
         meal = m;
     }
 
+    @Override
+    public String toString() {
+        return "FlightFilter{" +
+                "departureLocation='" + departureLocation + '\'' +
+                ", arrivalLocation='" + arrivalLocation + '\'' +
+                ", departureDate=" + departureDate +
+                ", returnDate=" + returnDate +
+                ", meal=" + meal +
+                '}';
+    }
+
     public String getDepartureLocation() {
         return departureLocation;
     }

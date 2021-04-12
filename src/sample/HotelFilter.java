@@ -24,18 +24,18 @@ public class HotelFilter {
         this.fourStar = fourStar;
         this.fiveStar = fiveStar;
     }
-/*
+
     public HotelFilter(){
         //TODO get rid of this function! (change callers to use the other constructor)
-        checkIn = LocalDate.now();
-        checkOut = checkIn.plus(1, ChronoUnit.DAYS);
+        checkIn = LocalDate.of(2021,01,01);
+        checkOut = LocalDate.of(2021,02,01);
         location = "Reykjavík";
-        minSize = 0;
-        minBeds = 1;
+        selectedNumOfGuests = 1;
+        selectedNumOfRooms = 1;
         threeStar = true;
         fourStar = true;
         fiveStar = true;
-    }*/
+    }
 
     public String getLocation() { return location; }
 

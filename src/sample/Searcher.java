@@ -25,10 +25,12 @@ public class Searcher {
     }
     
     public ObservableList<Flight> searchForFlights(FlightFilter filter){
-        return fsc.searchByAttribute("REY","AEY", LocalDate.of(2021,01,01).toString(), filter.getMeal());
+        System.out.println("to "+ filter.getDepartureDate().toString());
+        return fsc.searchByAttribute(filter.getDepartureLocation(), filter.getArrivalLocation(), filter.getDepartureDate().toString(), filter.isMeal());
     }
     public ObservableList<Flight> searchForReturnFlights(FlightFilter filter){
-        return fsc.searchByAttribute("AEY", "REY",filter.getReturnDate().toString(), filter.getMeal());
+        System.out.println("from " + filter.getReturnDate().toString());
+        return fsc.searchByAttribute(filter.getArrivalLocation(), filter.getDepartureLocation(),filter.getReturnDate().toString(), filter.isMeal());
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
@@ -60,8 +62,8 @@ public class Searcher {
                 tours.remove(tour);
             }
         }
-        return tours;*/
-     /*   ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());FXCollections.observableArrayList();
+        return tours;
+        ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());FXCollections.observableArrayList();
         tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
         tours = ts.tourServicesSearch(filter.getServices(),tours);
@@ -74,13 +76,14 @@ public class Searcher {
 
     public SearchResults searchForPackages(FlightFilter ff, HotelFilter hf, TourFilter tf){
         ObservableList<Flight> flights = searchForFlights(ff);
-        ObservableList<Flight> returnFlights = searchForFlights(ff);
+        ObservableList<Flight> returnFlights = searchForReturnFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
         System.out.println(flights.size());
         System.out.println(returnFlights.size());
         System.out.println(hotels.size());
         System.out.println(tours.size());
+        System.out.println("ff: "+ ff.toString());
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours, fdf);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
