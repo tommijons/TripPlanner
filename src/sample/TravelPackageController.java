@@ -28,7 +28,7 @@ public class TravelPackageController {
     }
 
     public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
-        Hotel hotel = hotels.get(0);
+        Hotel hotel = hotels.get(1);
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
         Tour tour = new Tour();
@@ -92,12 +92,12 @@ public class TravelPackageController {
         System.out.println(hotel);
         System.out.println(flights);
         System.out.println(returnFlights);
-      /* for (int i = 0; i < hotels.size();i++){
+       for (int i = 0; i < hotels.size();i++){
             if (hotels.get(i).getHotel_star_rating() == Hotel.StarRating.FIVE){
-                hotel = hotels.get(i).getHotel();
+                hotel = hotels.get(i);
                 break;
             }
-        }
+        }/*
         for (int i = 0; i < flights.size();i++){
             for (int j = 0;j<fdf.getSeats(flights.get(i).getId()).size(); j++) {
                 if (fdf.getSeats(flights.get(i).getId()).get(j).isFirstClass() && fdf.getSeats(flights.get(i).getId()).get(j).isAvailable()){

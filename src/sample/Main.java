@@ -42,7 +42,7 @@ public class Main extends Application {
         ObservableList<Tour> list3 = s.searchForTours(new TourFilter());
        // System.out.println(list);
         for(int i = 0; i < list2.size();i++) {
-            System.out.println(list2.get(i));
+            System.out.println(list2.get(i).getHotel_star_rating());
         }
         //System.out.println(list3);
         FlightFilter filter = new FlightFilter("REY", "AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),true);

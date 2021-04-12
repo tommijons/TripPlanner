@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import static sample.Hotel.HotelAmenities.*;
+
 public class Searcher {
     DataFactory df = new DataFactory();
     HotelDataFactory hdf = new HotelDataFactory();
@@ -34,10 +36,13 @@ public class Searcher {
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), "Akureyri",
-                LocalDate.now().plus(3,ChronoUnit.DAYS), LocalDate.now().plus(6,ChronoUnit.DAYS),
-                1,1,
-                true, true, true);
+        ObservableList<Hotel> hotels = FXCollections.observableArrayList();
+        hotels.add(new Hotel(1,"economy", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.THREE,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
+        hotels.add(new Hotel(1,"first class", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.FOUR,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
+        hotels.add(new Hotel(1,"luxury", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.FIVE,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
+        /*return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
+                filter.getCheckIn(),filter.getCheckOut(),filter.getSelectedNumOfGuests(), filter.getSelectedNumOfRooms(),true,true,true);*/
+        return hotels;
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
