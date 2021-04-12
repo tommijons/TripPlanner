@@ -109,10 +109,50 @@ public class Controller extends CommonMethods implements Initializable {
         boolean fourStar = fx4Star.isSelected();
         boolean fiveStar = fx5Star.isSelected();
         boolean meal = fxMeal.isSelected();
-
+        String toFlug = "";
+        String fromFlug = "";
+        /*System.out.println(depDate);
+        System.out.println(retDate);
+        System.out.println(from);
+        System.out.println(to);
+        System.out.println(travellers);
+        System.out.println(noHotelRooms);
+        System.out.println(services);
+        System.out.println(threeStar);
+        System.out.println(fourStar);
+        System.out.println(fiveStar);*/
+        if (from.equals("Reykjavík")){
+            fromFlug = "REY";
+        }else if (from.equals("Akureyri")) {
+            fromFlug = "AEY";
+        }else if (from.equals("Ísafjörður")) {
+            fromFlug = "ÍSF";
+        }else if (from.equals("Egilsstaðir")) {
+            fromFlug = "EGS";
+        }
+        if (to.equals("Reykjavík")){
+            toFlug = "REY";
+        }else if (to.equals("Akureyri")) {
+            toFlug = "AEY";
+        }else if (to.equals("Ísafjörður")) {
+            toFlug = "ÍSF";
+        }else if (to.equals("Egilsstaðir")) {
+            toFlug = "EGS";
+        }
+        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,meal);
+        HotelFilter hf = new HotelFilter(LocalDate.now(),LocalDate.now().plus(1,ChronoUnit.DAYS),to,travellers,noHotelRooms,true,true,true);
+        TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
+        FlightSearchController fsc = new FlightSearchController();
+        TourController tsc = new TourController();
+        searcher = new Searcher(fsc,1,tsc);
+        SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
+        System.out.println(searchResults.getCheapPackage().toString());
+        System.out.println(searchResults.getStandardPackage().toString());
+        System.out.println(searchResults.getLuxuryPackage().toString());
+        /*
         FlightFilter ff = new FlightFilter(from,to,depDate,retDate,meal);
-       /* HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
-                                noHotelRooms,threeStar,fourStar,fiveStar);*/
+        HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
+                                noHotelRooms,threeStar,fourStar,fiveStar);
         HotelFilter hf = new HotelFilter(LocalDate.now().plus(3, ChronoUnit.DAYS),LocalDate.now().plus(6,ChronoUnit.DAYS),
                 "Akureyri",1,
                 1,true,true,true);
@@ -121,7 +161,7 @@ public class Controller extends CommonMethods implements Initializable {
         AppState appState = AppState.getInstance();
         appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));
         searchResultsController.results();
-       /* try {
+        try {
         root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
         stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);

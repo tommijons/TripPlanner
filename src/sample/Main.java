@@ -33,7 +33,20 @@ public class Main extends Application {
         Hotel hotel = new Hotel();
         Tour tour = new Tour();
         TravelPackage tp = new TravelPackage(hotel,flight1,flight2,tour);
-        System.out.println(tp);
+       // System.out.println(tp);
+        TourController t = new TourController();
+        FlightSearchController f = new FlightSearchController();
+        Searcher s = new Searcher(f,1,t);
+        ObservableList<Flight> list = s.searchForFlights(new FlightFilter("REY","awer",LocalDate.now(),LocalDate.now(),true));
+        ObservableList<Hotel> list2 = s.searchForHotels(new HotelFilter());
+        ObservableList<Tour> list3 = s.searchForTours(new TourFilter());
+       // System.out.println(list);
+        for(int i = 0; i < list2.size();i++) {
+            System.out.println(list2.get(i));
+        }
+        //System.out.println(list3);
+        FlightFilter filter = new FlightFilter("REY", "AEY",LocalDate.of(2021,01,01),LocalDate.of(2021,01,01),true);
+       // System.out.println("lala: " + f.searchByAttribute(filter.getDepartureLocation(), filter.getArrivalLocation(), filter.getDepartureDate().toString(), filter.isMeal()));
         launch(args);
     }
 

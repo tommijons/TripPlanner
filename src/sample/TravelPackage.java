@@ -12,7 +12,7 @@ public class TravelPackage {
         this.flight = flight;
         this.returnFlight = returnFlight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + returnFlight.getPrice() + daytrip.getTourPrice();
+        this.totalPrice = 1 + flight.getPrice() + returnFlight.getPrice() + daytrip.getTourPrice();
     }
 
     public Hotel getHotel() {
@@ -47,8 +47,8 @@ public class TravelPackage {
 
     @Override
     public String toString() {
-        return "Flug út: " + getFlight().getDepartureTime().toString() + "\n"
-                + "Flug heim: " + getReturnFlight().getDepartureTime().toString() + "\n"
+        return "Flug út: " + getFlight().getFlightDate().toString() + "\n"
+                + "Flug heim: " + getReturnFlight().getFlightDate().toString() + "\n"
                 + "Hótel " + getHotel().getHotel_name() + "\n"
                 + "Dagsferð " + getDaytrip().getTourName() + "\n";
     }
