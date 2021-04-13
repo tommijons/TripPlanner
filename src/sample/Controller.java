@@ -43,14 +43,7 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox fxServices;
     @FXML
     private ComboBox fxNoHotel;
-    @FXML
-    private CheckBox fxMeal;
-    @FXML
-    private CheckBox fx3Star;
-    @FXML
-    private CheckBox fx4Star;
-    @FXML
-    private CheckBox fx5Star;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -110,53 +103,32 @@ public class Controller extends CommonMethods implements Initializable {
         int travellers = Integer.parseInt(String.valueOf(fxNoTravellers.getValue()));
         int noHotelRooms = Integer.parseInt(String.valueOf(fxNoHotel.getValue()));
         String services = String.valueOf(fxServices.getValue());
-        boolean threeStar = fx3Star.isSelected();
-        boolean fourStar = fx4Star.isSelected();
-        boolean fiveStar = fx5Star.isSelected();
-        boolean meal = fxMeal.isSelected();
+
 
         String fromFlug = switch (from) {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
-            case "Ísafjörður" -> "ÍSF";
-            case "Egilsstaðir" -> "EGS";
+            case "Ísafjörður" -> "IFJ";
+            case "Egilstaðir" -> "EGS";
             default -> "";
         };
 
         String toFlug = switch (to) {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
-            case "Ísafjörður" -> "ÍSF";
-            case "Egilsstaðir" -> "EGS";
+            case "Ísafjörður" -> "IFJ";
+            case "Egilstaðir" -> "EGS";
             default -> "";
         };
-
-        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,meal);
+        System.out.println("controller: " + fromFlug);
+        System.out.println("controller: " + toFlug);
+        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
 
         SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
         searchResultsController.results(searchResults);
 
-        /*
-        FlightFilter ff = new FlightFilter(from,to,depDate,retDate,meal);
-        HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
-                                noHotelRooms,threeStar,fourStar,fiveStar);
-        HotelFilter hf = new HotelFilter(LocalDate.now().plus(3, ChronoUnit.DAYS),LocalDate.now().plus(6,ChronoUnit.DAYS),
-                "Akureyri",1,
-                1,true,true,true);
-        TourFilter tf = new TourFilter(LocalDate.now(),LocalDate.now().plus(1,ChronoUnit.DAYS),"Reykjavík",99999,"Action",0,100,1);
-        searcher = new Searcher(new FlightSearchController(),1,new TourController());
-        AppState appState = AppState.getInstance();
-        appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));
-
-        try {
-        root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
-        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        }catch (IOException io){}*/
     }
 
     public void closeMenu(MouseEvent actionEvent){

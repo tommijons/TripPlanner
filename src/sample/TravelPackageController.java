@@ -28,7 +28,7 @@ public class TravelPackageController {
     }
 
     public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
-        Hotel hotel = hotels.get(1);
+        Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
         Tour tour = tours.get(0);
@@ -59,7 +59,7 @@ public class TravelPackageController {
     }
 
     public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
-        Hotel hotel = hotels.get(0);
+        Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
         Tour tour = tours.get(0);
@@ -89,7 +89,7 @@ public class TravelPackageController {
     }
 
     public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
-        Hotel hotel = hotels.get(2);
+        Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
         Tour tour = tours.get(0);
