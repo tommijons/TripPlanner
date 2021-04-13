@@ -31,13 +31,13 @@ public class TravelPackageController {
         Hotel hotel = hotels.get(1);
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
-        Tour tour = new Tour();
-       /* for (int i = 0; i < hotels.size();i++){
+        Tour tour = tours.get(0);
+        for (int i = 0; i < hotels.size();i++){
             if (hotels.get(i).getHotel_star_rating() == Hotel.StarRating.FOUR){
-                hotel = hotels.get(i).getHotel();
+                hotel = hotels.get(i);
                 break;
             }
-        }
+        }/*
         for (int i = 0; i < flights.size();i++){
             for (int j = 0;j<fdf.getSeats(flights.get(i).getId()).size(); j++) {
                 if (fdf.getSeats(flights.get(i).getId()).get(j).isAvailable()){
@@ -53,7 +53,9 @@ public class TravelPackageController {
             }
         }
         TravelPackage tp = new TravelPackage(hotel,flightOut,flightHome,tour);*/
-        return new TravelPackage(hotel,flightOut,flightHome,tour);
+        TravelPackage tp = new TravelPackage(hotel,flightOut,flightHome,tour);
+        System.out.println(tp);
+        return tp;
     }
 
     public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
@@ -61,12 +63,12 @@ public class TravelPackageController {
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
         Tour tour = tours.get(0);
-    /*    for (int i = 0; i < hotels.size();i++){
+       for (int i = 0; i < hotels.size();i++){
             if (hotels.get(i).getHotel_star_rating() == Hotel.StarRating.THREE){
-                hotel = hotels.get(i).getHotel();
+                hotel = hotels.get(i);
                 break;
             }
-        }
+        }/*
         for (int i = 0; i < flights.size();i++){
             for (int j = 0;j<fdf.getSeats(flights.get(i).getId()).size(); j++) {
                 if (!fdf.getSeats(flights.get(i).getId()).get(j).isFirstClass() && fdf.getSeats(flights.get(i).getId()).get(j).isAvailable()){
@@ -81,17 +83,16 @@ public class TravelPackageController {
                 }
             }
         }*/
-        return new TravelPackage(hotel,flightOut,flightHome,tour);
+        TravelPackage tp = new TravelPackage(hotel,flightOut,flightHome,tour);
+        System.out.println(tp);
+        return tp;
     }
 
     public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
-        Hotel hotel = hotels.get(1);
+        Hotel hotel = hotels.get(2);
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
-        Tour tour = new Tour();
-        System.out.println(hotel);
-        System.out.println(flights);
-        System.out.println(returnFlights);
+        Tour tour = tours.get(0);
        for (int i = 0; i < hotels.size();i++){
             if (hotels.get(i).getHotel_star_rating() == Hotel.StarRating.FIVE){
                 hotel = hotels.get(i);
@@ -112,6 +113,8 @@ public class TravelPackageController {
                 }
             }
         }*/
-        return new TravelPackage(hotel,flightOut,flightHome,tour);
+        TravelPackage tp = new TravelPackage(hotel,flightOut,flightHome,tour);
+        System.out.println(tp);
+        return tp;
     }
 }

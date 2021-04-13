@@ -101,7 +101,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return hotel_name;
+        return hotel_city;
     }
 
     public Hotel(String hotel_city) {

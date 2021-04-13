@@ -24,16 +24,16 @@ public class TourDataFactory{
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
-        LocalDate d1 = LocalDate.of(2021,4,01);
-        LocalDate d2 = LocalDate.of(2021,4,05);
-        LocalDate d3 = LocalDate.of(2021,5,11);
-        LocalDate d4 = LocalDate.of(2021,5,21);
-        LocalDate d5 = LocalDate.of(2021,6,04);
-        LocalDate d6 = LocalDate.of(2021,6,16);
-        LocalDate d7 = LocalDate.of(2021,7,10);
-        LocalDate d8 = LocalDate.of(2021,7,11);
-        LocalDate d9 = LocalDate.of(2021,8,07);
-        LocalDate d10 = LocalDate.of(2021,8,24);
+        LocalDate d1 = LocalDate.of(2021,1,02);
+        LocalDate d2 = LocalDate.of(2021,1,02);
+        LocalDate d3 = LocalDate.of(2021,1,02);
+        LocalDate d4 = LocalDate.of(2021,1,02);
+        LocalDate d5 = LocalDate.of(2021,1,02);
+        LocalDate d6 = LocalDate.of(2021,1,02);
+        LocalDate d7 = LocalDate.of(2021,1,02);
+        LocalDate d8 = LocalDate.of(2021,1,02);
+        LocalDate d9 = LocalDate.of(2021,1,02);
+        LocalDate d10 = LocalDate.of(2021,1,02);
 
 
         Tour tour1 = (new Tour(

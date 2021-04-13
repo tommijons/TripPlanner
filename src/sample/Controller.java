@@ -131,7 +131,7 @@ public class Controller extends CommonMethods implements Initializable {
         };
 
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,meal);
-        HotelFilter hf = new HotelFilter(LocalDate.now(),LocalDate.now().plus(1,ChronoUnit.DAYS),to,travellers,noHotelRooms,true,true,true);
+        HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
 
         SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);

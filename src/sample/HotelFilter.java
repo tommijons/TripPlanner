@@ -37,6 +37,20 @@ public class HotelFilter {
         fiveStar = true;
     }
 
+    @Override
+    public String toString() {
+        return "HotelFilter{" +
+                "checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", location='" + location + '\'' +
+                ", selectedNumOfGuests=" + selectedNumOfGuests +
+                ", selectedNumOfRooms=" + selectedNumOfRooms +
+                ", threeStar=" + threeStar +
+                ", fourStar=" + fourStar +
+                ", fiveStar=" + fiveStar +
+                '}';
+    }
+
     public String getLocation() { return location; }
 
     public int getSelectedNumOfGuests() { return selectedNumOfGuests; }

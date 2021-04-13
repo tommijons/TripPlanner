@@ -19,7 +19,7 @@ public class HotelSearchController {
                                                               LocalDate selectedArrDate, LocalDate selectedDepDate,
                                                               int selectedNumOfGuests, int selectedNumOfRooms,
                                                               boolean threeStar, boolean fourStar, boolean fiveStar) {
-        try {
+ /*       try {
             if (hotels.isEmpty() || location.equals("")) {
                 throw new NullPointerException();
             } else if (selectedArrDate.isAfter(selectedDepDate)) {
@@ -30,7 +30,7 @@ public class HotelSearchController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+*/
         ObservableList<Hotel> searchResults = FXCollections.observableArrayList();
         ArrayList<Hotel> filteredHotels = filterHotelsByLocation(hotels, location);
 
