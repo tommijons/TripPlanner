@@ -20,7 +20,7 @@ public class Searcher {
 
 
     
-    public Searcher(FlightSearchController flightSearchController , int HotelSearchService, TourController tourSearcher) {
+    public Searcher(FlightSearchController flightSearchController, TourController tourSearcher) {
         ts = tourSearcher;
         fsc = flightSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.

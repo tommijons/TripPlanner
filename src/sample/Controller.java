@@ -64,7 +64,8 @@ public class Controller extends CommonMethods implements Initializable {
         uiInitialize();
         fsc = new FlightSearchController();
         tsc = new TourController();
-        searcher = new Searcher(fsc,1,tsc);
+
+        searcher = new Searcher(fsc,tsc);
 
        try {
             searchResultsController = loadSearchResults();
@@ -96,7 +97,7 @@ public class Controller extends CommonMethods implements Initializable {
         fxNoHotel.setItems(NrHotelChoice);
         travelersChoice.addAll("1","2","3");
         fxNoTravellers.setItems(travelersChoice);
-        serviceChoice.addAll("Family Friendly", "Action", "Wheelchair accessible");
+        serviceChoice.addAll("Family friendly", "Action", "Wheelchair accessible");
         fxServices.setItems(serviceChoice);
     }
 
