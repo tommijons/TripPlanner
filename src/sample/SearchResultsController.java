@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -21,15 +24,21 @@ public class SearchResultsController extends CommonMethods implements Initializa
     private Parent root;
     @FXML
     private BorderPane fxPane;
+    @FXML
+    private ListView<TravelPackage> fxTourList;
+    private ObservableList<TravelPackage> cheapPackage = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         scene = new Scene(fxPane);
     }
 
-    public void results() {
+    public void results(SearchResults searchResults) {
         Stage window = new Stage();
         window. setScene(scene);
         window.show();
+        cheapPackage.add(searchResults.getCheapPackage());
+        fxTourList.setItems(cheapPackage);
     }
 
     public void BookingButtonClicked(MouseEvent mouseEvent) throws IOException {

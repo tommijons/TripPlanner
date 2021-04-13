@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
    <top>
       <AnchorPane prefHeight="44.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -89,4 +91,14 @@
          </children>
       </AnchorPane>
    </bottom>
+   <left>
+      <AnchorPane prefHeight="561.0" prefWidth="276.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane layoutX="14.0" layoutY="33.0" prefHeight="389.0" prefWidth="264.0">
+               <content>
+                  <ListView fx:id="fxTourList" prefHeight="378.0" prefWidth="257.0" />
+               </content></ScrollPane>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

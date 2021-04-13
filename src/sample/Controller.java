@@ -61,7 +61,7 @@ public class Controller extends CommonMethods implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        UIinitialize();
+        uiInitialize();
        try {
             searchResultsController = loadSearchResults();
         } catch(IOException e) {
@@ -75,7 +75,7 @@ public class Controller extends CommonMethods implements Initializable {
         return dLoader.getController();
     }
 
-    private void UIinitialize() {
+    private void uiInitialize() {
         ObservableList<String> departureChoices = FXCollections.observableArrayList();
         ObservableList<String> destinationChoices = FXCollections.observableArrayList();
       //  ObservableList<String> priceBoxChoice = FXCollections.observableArrayList();
@@ -149,6 +149,8 @@ public class Controller extends CommonMethods implements Initializable {
         System.out.println(searchResults.getCheapPackage().toString());
         System.out.println(searchResults.getStandardPackage().toString());
         System.out.println(searchResults.getLuxuryPackage().toString());
+        searchResultsController.results(searchResults);
+
         /*
         FlightFilter ff = new FlightFilter(from,to,depDate,retDate,meal);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,
@@ -160,7 +162,7 @@ public class Controller extends CommonMethods implements Initializable {
         searcher = new Searcher(new FlightSearchController(),1,new TourController());
         AppState appState = AppState.getInstance();
         appState.setSearchResult(searcher.searchForPackages(ff,hf,tf));
-        searchResultsController.results();
+
         try {
         root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
         stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();

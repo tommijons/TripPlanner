@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -9,51 +10,72 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
-      <AnchorPane prefHeight="44.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="891.0" layoutY="14.0" onMouseClicked="#closeMenu">
+            <Label layoutX="903.0" layoutY="17.0" onMouseClicked="#closeMenu" prefHeight="17.0" prefWidth="10.0">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@x.png" />
+                        <Image url="@images/x.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="855.0" layoutY="14.0" prefHeight="17.0" prefWidth="27.0">
+            <Label layoutX="864.0" layoutY="19.0" prefHeight="17.0" prefWidth="27.0">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@-.png" />
+                        <Image url="@images/-.png" />
                      </image>
                   </ImageView>
                </graphic>
+            </Label>
+            <Label layoutX="325.0" layoutY="27.0" text="Trip planner">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="49.0" />
+               </font>
             </Label>
          </children>
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightpink;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="fxDepartureDate" layoutX="11.0" layoutY="14.0" promptText="Departure" />
-            <DatePicker fx:id="fxArrivalDate" layoutX="11.0" layoutY="51.0" promptText="Return" />
-            <ComboBox fx:id="fxDepartureLoc" layoutX="23.0" layoutY="92.0" prefWidth="150.0" promptText="From" />
-            <ComboBox fx:id="fxDestination" layoutX="25.0" layoutY="134.0" prefWidth="150.0" promptText="To" />
-            <ComboBox fx:id="fxNoTravellers" layoutX="25.0" layoutY="186.0" prefWidth="150.0" promptText="No. of Travellers" />
-            <ComboBox fx:id="fxServices" layoutX="23.0" layoutY="288.0" prefWidth="150.0" promptText="Services" />
-            <Button fx:id="fxSearchButton" layoutX="74.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#searchHandler" text="Search" />
-            <ComboBox fx:id="fxNoHotel" layoutX="23.0" layoutY="238.0" prefWidth="150.0" promptText="No. of Hotel Rooms" />
-            <CheckBox fx:id="fxMeal" layoutX="23.0" layoutY="337.0" mnemonicParsing="false" text="In-flight-meal" />
-            <CheckBox fx:id="fx3Star" layoutX="23.0" layoutY="366.0" mnemonicParsing="false" text="3-Star Hotel" />
-            <CheckBox fx:id="fx4Star" layoutX="23.0" layoutY="395.0" mnemonicParsing="false" text="4-Star Hotel" />
-            <CheckBox fx:id="fx5Star" layoutX="23.0" layoutY="423.0" mnemonicParsing="false" text="5-Star Hotel" />
+            <Button fx:id="fxSearchButton" layoutX="62.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
+            <VBox prefHeight="426.0" prefWidth="203.0" spacing="10.0">
+               <children>
+                  <DatePicker fx:id="fxDepartureDate" prefHeight="30.0" prefWidth="150.0" promptText="Departure" />
+                  <DatePicker fx:id="fxArrivalDate" prefHeight="30.0" prefWidth="150.0" promptText="Return" />
+                  <ComboBox fx:id="fxDepartureLoc" prefHeight="30.0" prefWidth="150.0" promptText="From" />
+                  <ComboBox fx:id="fxDestination" prefHeight="30.0" prefWidth="150.0" promptText="To" />
+                  <ComboBox fx:id="fxNoTravellers" prefHeight="30.0" prefWidth="150.0" promptText="No. of Travellers" />
+                  <ComboBox fx:id="fxNoHotel" prefHeight="30.0" prefWidth="150.0" promptText="No. of Hotel Rooms" />
+                  <ComboBox fx:id="fxServices" prefHeight="30.0" prefWidth="150.0" promptText="Services" />
+                  <CheckBox fx:id="fxMeal" mnemonicParsing="false" prefHeight="17.0" prefWidth="100.0" text="In-flight-meal" />
+                  <CheckBox fx:id="fx3Star" mnemonicParsing="false" text="3-Star Hotel" />
+                  <CheckBox fx:id="fx4Star" mnemonicParsing="false" text="4-Star Hotel" />
+                  <CheckBox fx:id="fx5Star" mnemonicParsing="false" text="5-Star Hotel" />
+               </children>
+               <padding>
+                  <Insets left="25.0" top="25.0" />
+               </padding>
+            </VBox>
          </children>
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="557.0" prefWidth="650.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="555.0" fitWidth="747.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/2020-Travel-Destinations.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </center>
 </BorderPane>
