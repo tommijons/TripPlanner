@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
    <top>
-      <AnchorPane prefHeight="44.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="891.0" layoutY="14.0" onMouseClicked="#closeMenu">
                <graphic>
@@ -22,14 +18,10 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="855.0" layoutY="14.0" prefHeight="17.0" prefWidth="27.0">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@-.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Label layoutX="325.0" layoutY="34.0" text="Trip planner">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="49.0" />
+               </font>
             </Label>
          </children>
       </AnchorPane>
@@ -37,68 +29,52 @@
    <center>
       <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="316.0" layoutY="190.0" prefHeight="45.0" prefWidth="250.0">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="190.0" prefHeight="45.0" prefWidth="250.0">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/cheap.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="645.0" layoutY="190.0" prefHeight="45.0" prefWidth="250.0">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/lux.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="349.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/standard.png" />
-               </image>
-            </ImageView>
+            <VBox layoutX="488.0" layoutY="161.0" prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Luxury package">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <ListView fx:id="fxLuxuryPackage" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            <VBox layoutX="259.0" layoutY="161.0" prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Standard package">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <ListView fx:id="fxStandardPackage" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            <VBox layoutX="34.0" layoutY="161.0" prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="200.0" text="Cheap package">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <ListView fx:id="fxCheapPackage" onMouseClicked="#getSelectedPackage" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            <Button layoutX="309.0" layoutY="475.0" mnemonicParsing="false" onAction="#bookingHandler" prefHeight="30.0" prefWidth="100.0" text="Book" />
          </children></AnchorPane>
    </center>
-   <bottom>
-      <AnchorPane prefHeight="97.0" prefWidth="941.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="364.0" layoutY="32.0" />
-            <Label layoutX="532.0" layoutY="55.0" prefHeight="17.0" prefWidth="26.0" />
-            <ImageView fitHeight="23.0" fitWidth="39.0" layoutX="364.0" layoutY="32.0" onMouseClicked="#BackButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/TilBaka.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="504.0" layoutY="31.0" onMouseClicked="#BookingButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/Velja.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </bottom>
    <left>
-      <AnchorPane prefHeight="561.0" prefWidth="276.0" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane layoutX="14.0" layoutY="33.0" prefHeight="389.0" prefWidth="264.0">
-               <content>
-                  <ListView fx:id="fxTourList" prefHeight="378.0" prefWidth="257.0" />
-               </content></ScrollPane>
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="460.0" prefWidth="203.0" style="-fx-background-color: lightpink;" BorderPane.alignment="CENTER" />
    </left>
 </BorderPane>

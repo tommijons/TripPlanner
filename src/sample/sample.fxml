@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" styleClass="backGround" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
       <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -26,15 +19,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="864.0" layoutY="19.0" prefHeight="17.0" prefWidth="27.0">
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/-.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
+            <Label layoutX="864.0" layoutY="19.0" prefHeight="17.0" prefWidth="27.0" />
             <Label layoutX="325.0" layoutY="27.0" text="Trip planner">
                <font>
                   <Font name="Arial Rounded MT Bold" size="49.0" />
@@ -46,7 +31,7 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightpink;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="fxSearchButton" layoutX="62.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
+            <Button layoutX="62.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
             <VBox prefHeight="426.0" prefWidth="203.0" spacing="10.0">
                <children>
                   <DatePicker fx:id="fxDepartureDate" prefHeight="30.0" prefWidth="150.0" promptText="Departure" />

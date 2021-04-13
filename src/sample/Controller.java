@@ -36,8 +36,6 @@ public class Controller extends CommonMethods implements Initializable {
     @FXML
     private ComboBox fxDestination;
     @FXML
-    private Button fxSearchButton;
-    @FXML
     private ComboBox fxDepartureLoc;
     @FXML
     private ComboBox fxNoTravellers;
@@ -58,10 +56,16 @@ public class Controller extends CommonMethods implements Initializable {
     private Parent root;
     private Searcher searcher;
     private SearchResultsController searchResultsController;
+    private FlightSearchController fsc;
+    private TourController tsc;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         uiInitialize();
+        fsc = new FlightSearchController();
+        tsc = new TourController();
+        searcher = new Searcher(fsc,1,tsc);
+
        try {
             searchResultsController = loadSearchResults();
         } catch(IOException e) {
@@ -109,46 +113,28 @@ public class Controller extends CommonMethods implements Initializable {
         boolean fourStar = fx4Star.isSelected();
         boolean fiveStar = fx5Star.isSelected();
         boolean meal = fxMeal.isSelected();
-        String toFlug = "";
-        String fromFlug = "";
-        /*System.out.println(depDate);
-        System.out.println(retDate);
-        System.out.println(from);
-        System.out.println(to);
-        System.out.println(travellers);
-        System.out.println(noHotelRooms);
-        System.out.println(services);
-        System.out.println(threeStar);
-        System.out.println(fourStar);
-        System.out.println(fiveStar);*/
-        if (from.equals("Reykjavík")){
-            fromFlug = "REY";
-        }else if (from.equals("Akureyri")) {
-            fromFlug = "AEY";
-        }else if (from.equals("Ísafjörður")) {
-            fromFlug = "ÍSF";
-        }else if (from.equals("Egilsstaðir")) {
-            fromFlug = "EGS";
-        }
-        if (to.equals("Reykjavík")){
-            toFlug = "REY";
-        }else if (to.equals("Akureyri")) {
-            toFlug = "AEY";
-        }else if (to.equals("Ísafjörður")) {
-            toFlug = "ÍSF";
-        }else if (to.equals("Egilsstaðir")) {
-            toFlug = "EGS";
-        }
+
+        String fromFlug = switch (from) {
+            case "Reykjavík" -> "REY";
+            case "Akureyri" -> "AEY";
+            case "Ísafjörður" -> "ÍSF";
+            case "Egilsstaðir" -> "EGS";
+            default -> "";
+        };
+
+        String toFlug = switch (to) {
+            case "Reykjavík" -> "REY";
+            case "Akureyri" -> "AEY";
+            case "Ísafjörður" -> "ÍSF";
+            case "Egilsstaðir" -> "EGS";
+            default -> "";
+        };
+
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,meal);
         HotelFilter hf = new HotelFilter(LocalDate.now(),LocalDate.now().plus(1,ChronoUnit.DAYS),to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
-        FlightSearchController fsc = new FlightSearchController();
-        TourController tsc = new TourController();
-        searcher = new Searcher(fsc,1,tsc);
+
         SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
-        System.out.println(searchResults.getCheapPackage().toString());
-        System.out.println(searchResults.getStandardPackage().toString());
-        System.out.println(searchResults.getLuxuryPackage().toString());
         searchResultsController.results(searchResults);
 
         /*
