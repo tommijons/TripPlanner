@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserLoginController">
+   <top>
+      <AnchorPane prefHeight="109.0" prefWidth="414.0" style="-fx-background-color: lightgreen;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="100.0" layoutY="14.0" text="Trip planner">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="107.0" layoutY="22.0" prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="200.0" text="Please Login">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label prefHeight="30.0" prefWidth="200.0" text="Username" />
+                  <TextField fx:id="fxUserName" prefHeight="30.0" prefWidth="200.0" />
+                  <Label prefHeight="30.0" prefWidth="200.0" text="Email" />
+                  <TextField fx:id="fxEmail" prefHeight="30.0" prefWidth="200.0" />
+                  <Label prefHeight="30.0" prefWidth="200.0" text="Password" />
+                  <PasswordField fx:id="fxPassword" prefHeight="30.0" prefWidth="200.0" />
+                  <Label prefHeight="30.0" />
+                  <Label fx:id="fxError" maxWidth="200.0" prefHeight="30.0" textFill="#eb2222" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

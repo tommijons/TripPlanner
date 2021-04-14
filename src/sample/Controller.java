@@ -1,29 +1,16 @@
 package sample;
 
-import javafx.application.Platform;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 public class Controller extends CommonMethods implements Initializable {
@@ -42,10 +29,12 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox<String> fxServices;
     @FXML
     private ComboBox<String> fxNoHotel;
+    @FXML
+    private Label fxUserName;
 
-    private final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilstaðir"};
-    private final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
-    private final String[] numbers = {"1","2","3","4","5"};
+    private static final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilstaðir"};
+    private static final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
+    private static final String[] numbers = {"1","2","3","4","5"};
 
     private Searcher searcher;
     private SearchResultsController searchResultsController;
@@ -119,6 +108,13 @@ public class Controller extends CommonMethods implements Initializable {
 
         SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
         searchResultsController.results(searchResults);
+    }
+
+    public User newUser (String name, String email, String password) {
+        User user = new User(name, email, password);
+        fxUserName.setText("Hi " + name);
+        return user;
+
     }
 
     public void closeMenu(MouseEvent actionEvent){
