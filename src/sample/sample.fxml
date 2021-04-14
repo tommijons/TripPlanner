@@ -31,6 +31,10 @@
                   <Font name="Arial Rounded MT Bold" size="49.0" />
                </font>
             </Label>
+            <Label fx:id="fxUserName" layoutX="29.0" layoutY="98.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </top>
