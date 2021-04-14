@@ -1,5 +1,7 @@
 package sample;
 
+import Flight.Flight;
+
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
@@ -47,10 +49,10 @@ public class TravelPackage {
 
     @Override
     public String toString() {
-        return "Flug út: " + getFlight().getFlightDate().toString() + "\n"
-                + "Flug heim: " + getReturnFlight().getFlightDate().toString() + "\n"
-                + "Hótel " + getHotel().getHotel_name() + "\n"
-                + "Dagsferð " + getDaytrip().getTourName() + "\n"
+        return "Flug út: " + getFlight() + "\n"
+                + "Flug heim: " + getReturnFlight() + "\n"
+                + "Hótel " + getHotel() + "\n"
+                + "Dagsferð " + getDaytrip() + "\n"
                 + "Verð " + getTotalPrice() + "\n";
     }
 }

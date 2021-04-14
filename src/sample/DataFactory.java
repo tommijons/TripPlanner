@@ -1,5 +1,6 @@
 package sample;
 
+import Flight.Flight;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 import static sample.Hotel.HotelAmenities.BREAKFAST_INCLUDED;
 import static sample.Hotel.HotelAmenities.PARKING;
 import static sample.Hotel.StarRating.THREE;
-import static sample.Room.RoomAmenities;
 import static sample.Room.RoomAmenities.*;
 import static sample.Room.RoomCategory.*;
 

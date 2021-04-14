@@ -1,13 +1,7 @@
 package sample;
 
-import javafx.collections.FXCollections;
+import Flight.Flight;
 import javafx.collections.ObservableList;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
-import static sample.Hotel.HotelAmenities.*;
 
 public class Searcher {
     DataFactory df = new DataFactory();

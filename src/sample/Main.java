@@ -1,6 +1,8 @@
 package sample;
 
+import Flight.Flight;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +30,9 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        FlightSearchController fsc = new FlightSearchController();
+        ObservableList<Flight> flights = fsc.searchByAttribute("REY","AEY",LocalDate.of(2021,01,01).toString(),true);
+        System.out.println(flights);
         launch(args);
     }
 

@@ -37,8 +37,7 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightpink;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="62.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
-            <VBox prefHeight="426.0" prefWidth="203.0" spacing="10.0">
+            <VBox layoutX="1.0" layoutY="6.0" prefHeight="426.0" prefWidth="203.0" spacing="10.0">
                <children>
                   <DatePicker fx:id="fxDepartureDate" prefHeight="30.0" prefWidth="150.0" promptText="Departure" />
                   <DatePicker fx:id="fxArrivalDate" prefHeight="30.0" prefWidth="150.0" promptText="Return" />
@@ -47,11 +46,13 @@
                   <ComboBox fx:id="fxNoTravellers" prefHeight="30.0" prefWidth="150.0" promptText="No. of Travellers" />
                   <ComboBox fx:id="fxNoHotel" prefHeight="30.0" prefWidth="150.0" promptText="No. of Hotel Rooms" />
                   <ComboBox fx:id="fxServices" prefHeight="30.0" prefWidth="150.0" promptText="Services" />
+                  <Button mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
                </children>
                <padding>
                   <Insets left="25.0" top="25.0" />
                </padding>
             </VBox>
+            <Label fx:id="fxErrorText" layoutX="14.0" layoutY="432.0" prefHeight="111.0" prefWidth="167.0" />
          </children>
       </AnchorPane>
    </left>

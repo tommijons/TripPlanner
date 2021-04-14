@@ -1,5 +1,6 @@
 package sample;
 
+import Flight.Flight;
 import javafx.collections.ObservableList;
 
 public class TravelPackageController {

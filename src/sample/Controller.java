@@ -43,6 +43,8 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox fxServices;
     @FXML
     private ComboBox fxNoHotel;
+    @FXML
+    private Label fxErrorText;
 
     private Stage stage;
     private Scene scene;
@@ -80,9 +82,9 @@ public class Controller extends CommonMethods implements Initializable {
         ObservableList<String> travelersChoice = FXCollections.observableArrayList();
         ObservableList<String> serviceChoice = FXCollections.observableArrayList();
         ObservableList<String> NrHotelChoice = FXCollections.observableArrayList();
-        departureChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilstaðir");
+        departureChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilsstaðir");
         fxDepartureLoc.setItems(departureChoices);
-        destinationChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilstaðir");
+        destinationChoices.addAll("Reykjavík","Akureyri", "Ísafjörður","Egilsstaðir");
         fxDestination.setItems(destinationChoices);
       //  priceBoxChoice.addAll("Cheap Package", "Standard Package", "Luxury Package");
       //  fxPrice.setItems(priceBoxChoice);
@@ -92,6 +94,7 @@ public class Controller extends CommonMethods implements Initializable {
         fxNoTravellers.setItems(travelersChoice);
         serviceChoice.addAll("Family friendly", "Action", "Wheelchair accessible");
         fxServices.setItems(serviceChoice);
+        fxErrorText.setText("");
     }
 
     @FXML
@@ -109,7 +112,7 @@ public class Controller extends CommonMethods implements Initializable {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
             case "Ísafjörður" -> "IFJ";
-            case "Egilstaðir" -> "EGS";
+            case "Egilsstaðir" -> "EGS";
             default -> "";
         };
 
@@ -117,18 +120,20 @@ public class Controller extends CommonMethods implements Initializable {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
             case "Ísafjörður" -> "IFJ";
-            case "Egilstaðir" -> "EGS";
+            case "Egilsstaðir" -> "EGS";
             default -> "";
         };
-        System.out.println("controller: " + fromFlug);
-        System.out.println("controller: " + toFlug);
+
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
-
-        SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
-        searchResultsController.results(searchResults);
-
+        try {
+            fxErrorText.setText("");
+            SearchResults searchResults = searcher.searchForPackages(ff, hf, tf);
+            searchResultsController.results(searchResults);
+        }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+            fxErrorText.setText("Engir pakkar í boði fyrir\n valin leitarskilyrði");
+        }
     }
 
     public void closeMenu(MouseEvent actionEvent){

@@ -18,7 +18,7 @@ public class Tour {
 
     @Override
     public String toString() {
-        return tourName;
+        return "\n" + tourName + "\nVerð: " + tourPrice + "\nLengd: " + duration + "\nDagsetning: " + tourDate;
     }
 
     public Tour(String tourName, String tourInfo, LocalDate tourDate, int availableSpots, int tourPrice, String tourRegion, int duration, String services) {

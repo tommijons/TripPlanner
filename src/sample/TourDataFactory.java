@@ -63,23 +63,41 @@ public class TourDataFactory{
                 "Reykjavík", 6, "Action"));
         tour5.setTourID(5);
         tours.add(tour5);
+
+        Tour tour7 = (new Tour( "Walk around Reykjavík","Come dressed according to weather.",d7, 25,7000,
+                "Reykjavík",2, "Wheelchair accessible"));
+        tour7.setTourID(7);
+        tours.add(tour7);
+        Tour tour8 = (new Tour( "Biking around Þingvellir","Bring warm clothes. Bikes are available for rent.",d8, 15,10000,
+                "Reykjavík",8, "Family friendly"));
+        tour8.setTourID(8);
+        tours.add(tour8);
+        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing accuipment is available for rent",d9, 20,15000,
+                "Akureyri",5, "Action"));
+        tour9.setTourID(9);
+        tours.add(tour9);
+
+        Tour tour12 =(new Tour( "Labbitúr","Gott fyrir bakið",d3,10,15000,
+                "Egilsstaðir", 3, "Action"));
+        tour12.setTourID(12);
+        tours.add(tour12);
+
         Tour tour6=(new Tour( "Snowmobil trip","Bring warm clothes.",d6,15,25000,
                 "Ísafjörður", 6, "Action"));
         tour6.setTourID(6);
         tours.add(tour6);
-        Tour tour7 = (new Tour( "Walk around Reykjavík","Come dressed according to weather.",d7, 25,7000,
-                "Reykjavík",2, "Wheelchair accessible"));
-        tour1.setTourID(7);
-        tours.add(tour7);
-        Tour tour8 = (new Tour( "Biking around Þingvellir","Bring warm clothes. Bikes are available for rent.",d8, 15,10000,
-                "Reykjavík",8, "Family friendly"));
-        tour1.setTourID(8);
-        tours.add(tour8);
-        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing accuipment is available for rent",d9, 20,15000,
-                "Akureyri",5, "Action"));
-        tour1.setTourID(9);
-        tours.add(tour9);
-
+        Tour tour13 = (new Tour( "Sunnudagsbíltúr","Nýbílalykt",d9, 20,15000,
+                "Ísafjörður",5, "Wheelchair assessible"));
+        tour13.setTourID(13);
+        tours.add(tour13);
+        Tour tour10 = (new Tour( "Labbitúr","Gott fyrir hjartað",d9, 20,15000,
+                "Ísafjörður",5, "Family friendly"));
+        tour10.setTourID(10);
+        tours.add(tour10);
+        Tour tour11 = (new Tour( "Sunnudagsbíltúr","Nýbílalykt",d9, 20,15000,
+                "Egilsstaðir",5, "Wheelchair assessible"));
+        tour11.setTourID(11);
+        tours.add(tour11);
         return tours;
     }
 

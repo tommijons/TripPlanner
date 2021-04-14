@@ -1,8 +1,8 @@
 package sample;
 
+import Flight.Flight;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.io.IOException;
 
 public class FlightSearchController {
 
@@ -32,15 +32,9 @@ public class FlightSearchController {
 
 
     public static void main(String[] args) {
-        FlightSearchController searcher = new FlightSearchController();
 
-        // Dæmi um að leita eftir flugum frá Reykjavík
-        ObservableList<Flight> searchedFlights = searcher.searchByAttribute("REY", null, null, null);
-        // Prenta útkomu
-        for(Flight flight: searchedFlights) {
-            System.out.println(flight);
         }
     }
 
-}
+
 

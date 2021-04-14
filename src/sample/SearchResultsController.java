@@ -29,9 +29,9 @@ public class SearchResultsController extends CommonMethods implements Initializa
     private ListView<TravelPackage> fxStandardPackage;
     @FXML
     private ListView<TravelPackage> fxLuxuryPackage;
-    private ObservableList<TravelPackage> cheapPackage = FXCollections.observableArrayList();
-    private ObservableList<TravelPackage> standardPackage = FXCollections.observableArrayList();
-    private ObservableList<TravelPackage> luxuryPackage = FXCollections.observableArrayList();
+    private ObservableList<TravelPackage> cheapPackage;
+    private ObservableList<TravelPackage> standardPackage;
+    private ObservableList<TravelPackage> luxuryPackage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,6 +46,9 @@ public class SearchResultsController extends CommonMethods implements Initializa
         Stage window = new Stage();
         window. setScene(scene);
         window.show();
+        cheapPackage = FXCollections.observableArrayList();
+        standardPackage = FXCollections.observableArrayList();
+        luxuryPackage = FXCollections.observableArrayList();
         cheapPackage.add(searchResults.getCheapPackage());
         fxCheapPackage.setItems(cheapPackage);
         standardPackage.add(searchResults.getStandardPackage());
