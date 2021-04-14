@@ -1,6 +1,11 @@
 package sample;
 
 
+import Flight.FlightFilter;
+import Flight.FlightSearchController;
+import Hotel.HotelFilter;
+import Tour.TourController;
+import Tour.TourFilter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,6 +36,8 @@ public class Controller extends CommonMethods implements Initializable {
     private ComboBox<String> fxNoHotel;
     @FXML
     private Label fxUserName;
+    @FXML
+    private Label fxNoPackagesText;
 
     private static final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilstaðir"};
     private static final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
@@ -72,6 +79,7 @@ public class Controller extends CommonMethods implements Initializable {
         fxNoHotel.setItems(nrHotelChoice);
         fxNoTravellers.setItems(travelersChoice);
         fxServices.setItems(serviceChoice);
+        fxNoPackagesText.setText("");
     }
 
     @FXML
@@ -105,9 +113,12 @@ public class Controller extends CommonMethods implements Initializable {
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
-
-        SearchResults searchResults = searcher.searchForPackages(ff,hf,tf);
-        searchResultsController.results(searchResults);
+        try {
+            SearchResults searchResults = searcher.searchForPackages(ff, hf, tf);
+            searchResultsController.results(searchResults);
+        }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+            fxNoPackagesText.setText("Engir pakkar til út frá \n völdum leitarskilyrðum");
+        }
     }
 
     public User newUser (String name, String email, String password) {

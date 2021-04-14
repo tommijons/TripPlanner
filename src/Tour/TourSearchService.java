@@ -1,10 +1,10 @@
-package sample;
+package Tour;
 
 import javafx.collections.ObservableList;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public interface TourSearchService {
     ObservableList<Tour> tours = null;

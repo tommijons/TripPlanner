@@ -1,6 +1,8 @@
 package sample;
 
 import Flight.Flight;
+import Hotel.Hotel;
+import Tour.Tour;
 import javafx.collections.ObservableList;
 
 public class SearchResults {

@@ -1,6 +1,11 @@
 package sample;
 
-import Flight.Flight;
+import Flight.*;
+import Hotel.*;
+import Tour.Tour;
+import Tour.TourController;
+import Tour.TourDataFactory;
+import Tour.TourFilter;
 import javafx.collections.ObservableList;
 
 public class Searcher {

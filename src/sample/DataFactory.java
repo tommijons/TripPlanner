@@ -1,23 +1,19 @@
 package sample;
 
 import Flight.Flight;
+import Hotel.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static sample.Hotel.HotelAmenities.BREAKFAST_INCLUDED;
-import static sample.Hotel.HotelAmenities.PARKING;
-import static sample.Hotel.StarRating.THREE;
-import static sample.Room.RoomAmenities.*;
-import static sample.Room.RoomCategory.*;
 
 public class DataFactory {
-    public ArrayList<Room> all_rooms = this.createRooms();
+ /*   public ArrayList<Room> all_rooms = this.createRooms();
     public DataFactory(){
     }
-    /*
+
     public ObservableList<TravelPackage> getTravelPackages(){
         ObservableList<TravelPackage> travelPackages = FXCollections.observableArrayList();
         ObservableList<Tour> tours = getTours();
@@ -30,7 +26,7 @@ public class DataFactory {
         travelPackages.add(travelPackage2);
         travelPackages.add(travelPackage3);
         return travelPackages;
-    }*/
+    }
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
@@ -162,7 +158,7 @@ public class DataFactory {
 
         // Setjum oll herbergi fyrir hotel 1 inn i adallistann
         all_rooms.add(rooms_for_hotel_1);
-        return all_rooms;
+        return all_rooms;*/
     }
 
-}
+

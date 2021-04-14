@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("Trip planner");
         primaryStage.setResizable(false);
         Scene scene = new Scene(root, 941,702);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
         primaryStage.setScene(scene);
         primaryStage.show();
         Controller c = loader.getController();

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResultsController">
    <top>
-      <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="891.0" layoutY="14.0" onMouseClicked="#closeMenu">
                <graphic>
@@ -27,7 +27,7 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="488.0" layoutY="161.0" prefHeight="300.0" prefWidth="200.0">
                <children>

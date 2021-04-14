@@ -1,11 +1,10 @@
-package sample;
+package Tour;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class TourDataFactory{
     /*

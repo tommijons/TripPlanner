@@ -1,6 +1,7 @@
-package sample;
+package Tour;
 
 import javafx.collections.ObservableList;
+import sample.User;
 
 import java.time.LocalDate;
 

@@ -1,7 +1,7 @@
-package sample;
+package Flight;
 
-import Flight.Flight;
 import javafx.collections.ObservableList;
+import sample.Seat;
 
 public interface FlightSearchService {
     public ObservableList<Flight> getFlights(String departureLocation, String arrivalLocation, String flightDate, Boolean mealService);

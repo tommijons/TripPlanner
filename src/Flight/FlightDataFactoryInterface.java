@@ -1,7 +1,8 @@
-package sample;
+package Flight;
 
-import Flight.Flight;
 import javafx.collections.ObservableList;
+import sample.Seat;
+import sample.User;
 
 public interface FlightDataFactoryInterface {
     ObservableList<User> getUsers(String email);

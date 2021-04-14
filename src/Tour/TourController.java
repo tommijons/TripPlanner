@@ -1,9 +1,9 @@
-package sample;
+package Tour;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.User;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

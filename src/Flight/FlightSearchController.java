@@ -1,6 +1,5 @@
-package sample;
+package Flight;
 
-import Flight.Flight;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

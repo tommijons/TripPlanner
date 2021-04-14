@@ -1,12 +1,13 @@
-package sample;
+package Test;
 
+import Tour.Tour;
+import Tour.TourSearchService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MockTourController implements TourSearchService {
     ObservableList<Tour> tours = null;

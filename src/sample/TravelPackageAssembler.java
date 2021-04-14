@@ -1,6 +1,8 @@
 package sample;
 
-import Flight.Flight;
+import Flight.*;
+import Hotel.Hotel;
+import Tour.Tour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -43,7 +45,7 @@ public class TravelPackageAssembler {
         this.availableDayTrips = availableDayTrips;
     }
 
-    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours,FlightDataFactory fdf) {
+    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours, FlightDataFactory fdf) {
         availableFlights = FXCollections.observableArrayList();
         availableReturnFlights = FXCollections.observableArrayList();
         availableHotels = FXCollections.observableArrayList();

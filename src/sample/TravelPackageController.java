@@ -1,6 +1,7 @@
 package sample;
-
-import Flight.Flight;
+import Flight.*;
+import Hotel.*;
+import Tour.Tour;
 import javafx.collections.ObservableList;
 
 public class TravelPackageController {
@@ -28,7 +29,8 @@ public class TravelPackageController {
         travelPackage.setDaytrip(dayTrip);
     }
 
-    public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
+
+    public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours, FlightDataFactory fdf){
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
@@ -59,7 +61,7 @@ public class TravelPackageController {
         return tp;
     }
 
-    public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
+    public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours, FlightDataFactory fdf){
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
@@ -89,7 +91,7 @@ public class TravelPackageController {
         return tp;
     }
 
-    public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights,ObservableList<Flight> returnFlights, ObservableList<Tour> tours,FlightDataFactory fdf){
+    public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours, FlightDataFactory fdf){
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);

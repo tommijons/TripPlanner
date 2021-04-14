@@ -1,4 +1,5 @@
-package sample;
+package Tour;
+
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package sample;
+package Hotel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,10 +7,10 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import static sample.Hotel.HotelAmenities.*;
-import static sample.Hotel.StarRating.*;
-import static sample.Room.RoomAmenities.*;
-import static sample.Room.RoomCategory.*;
+import static Hotel.Hotel.HotelAmenities.*;
+import static Hotel.Hotel.StarRating.*;
+import static Hotel.Room.RoomAmenities.*;
+import static Hotel.Room.RoomCategory.*;
 
 public class HotelDataFactory {
     // Create all rooms
