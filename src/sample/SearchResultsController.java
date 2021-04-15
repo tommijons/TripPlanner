@@ -2,13 +2,13 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -32,20 +32,31 @@ public class SearchResultsController extends CommonMethods implements Initializa
     private ObservableList<TravelPackage> cheapPackage;
     private ObservableList<TravelPackage> standardPackage;
     private ObservableList<TravelPackage> luxuryPackage;
+    private SearchResults cheap;
+    private SearchResults standard;
+    private SearchResults lux;
+    @FXML
+    private Button fxCheapInfo;
+    @FXML
+    private Button fxStandardInfo;
+    @FXML
+    private Button fxLuxuryInfo;
+    private PackageInfoController packageInfoController;
+    private SearchResults sr;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scene = new Scene(fxPane);
+
     }
+
+
 
     /**
      * Birtir niðurstöðu leitar.
      * @param searchResults leitarniðurstöður
      */
     public void results(SearchResults searchResults) {
-        Stage window = new Stage();
-        window. setScene(scene);
-        window.show();
+        sr = searchResults;
         cheapPackage = FXCollections.observableArrayList();
         standardPackage = FXCollections.observableArrayList();
         luxuryPackage = FXCollections.observableArrayList();
@@ -58,27 +69,59 @@ public class SearchResultsController extends CommonMethods implements Initializa
     }
 
     /**
-     * Velja pakka. TODO
-     * @param mouseEvent
+     * Birtir nánari uppl um ódýra pakkann.
+     * @param actionEvent
+     * @throws java.io.IOException
      */
     @FXML
-    private void getSelectedPackage(MouseEvent mouseEvent) {
-        ObservableList selectedPackage = FXCollections.observableArrayList();
-        ListView lv =(ListView)mouseEvent.getSource();
-        selectedPackage = lv.getSelectionModel().getSelectedItems();
+    private void cheapInfoHandler(MouseEvent actionEvent) throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PackageInfo.fxml"));
+        Parent parent = loader.load();
+        Scene tableViewScene = new Scene(parent);
+        PackageInfoController c = loader.getController();
+        c.selectedPackage(sr.getCheapPackage());
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+        /*Button b =(Button)actionEvent.getSource();
+        String selected = b.getId();
+
+        if (selected.equals(fxCheapInfo.toString())){
+            packageInfoController.selectedPackage(cheapPackage);
+        } else if (selected.equals(fxStandardInfo.toString())) {
+            packageInfoController.selectedPackage(standardPackage);
+        } else if (selected.equals(fxLuxuryInfo.toString())) {
+            packageInfoController.selectedPackage(luxuryPackage);
+        }*/
     }
 
     /**
-     * Handler fyrir bókanir. TODO
-     * @param event
-     * @throws IOException
+     *
+     * @param mouseEvent
+     * @throws java.io.IOException
      */
-    @FXML
-    private void bookingHandler(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("booking.fxml"));
-        Scene scene = new Scene(parent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
+    public void standInfoHandler(MouseEvent mouseEvent) throws java.io.IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PackageInfo.fxml"));
+        Parent parent = loader.load();
+        Scene tableViewScene = new Scene(parent);
+        PackageInfoController c = loader.getController();
+        c.selectedPackage(sr.getStandardPackage());
+        Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    public void luxInfoHandler(MouseEvent mouseEvent) throws  java.io.IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PackageInfo.fxml"));
+        Parent parent = loader.load();
+        Scene tableViewScene = new Scene(parent);
+        PackageInfoController c = loader.getController();
+        c.selectedPackage(sr.getLuxuryPackage());
+        Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
         window.show();
     }
 
@@ -89,9 +132,11 @@ public class SearchResultsController extends CommonMethods implements Initializa
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+    /*
     public void closeMenu(MouseEvent actionEvent){
         System.exit(0);
-    }
-
-
+    }*/
 }

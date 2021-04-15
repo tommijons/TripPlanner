@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PackageInfoController">
+    <top>
+        <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="891.0" layoutY="14.0">
+                    <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/x.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <Label layoutX="325.0" layoutY="34.0" text="Trip planner">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="49.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="194.0" layoutY="33.0" prefHeight="500.0" prefWidth="350.0">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="350.0" text="Package Information">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                        </Label>
+                        <ScrollPane prefHeight="350.0" prefWidth="350.0">
+                            <content>
+                                <ListView fx:id="fxPackageInfo" prefHeight="350.0" prefWidth="350.0" />
+                            </content>
+                        </ScrollPane>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Book This Package">
+                     <VBox.margin>
+                        <Insets left="100.0" top="50.0" />
+                     </VBox.margin>
+                  </Button>
+                    </children>
+                </VBox>
+            </children></AnchorPane>
+    </center>
+    <left>
+        <AnchorPane prefHeight="460.0" prefWidth="203.0" style="-fx-background-color: lightpink;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="2.0" layoutY="25.0" prefHeight="520.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Change Package">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Change Flight">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                        </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Change Hotel">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Change Tour">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#backHandler" prefHeight="30.0" prefWidth="150.0" text="Back">
+                     <VBox.margin>
+                        <Insets left="25.0" top="150.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    </left>
+</BorderPane>

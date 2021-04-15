@@ -11,8 +11,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -55,18 +60,18 @@ public class Controller extends CommonMethods implements Initializable {
         tsc = new TourController();
         searcher = new Searcher(fsc,tsc);
 
-       try {
+      /* try {
             searchResultsController = loadSearchResults();
         } catch(IOException e) {
                 e.printStackTrace();
-        }
+        }*/
     }
 
-    private SearchResultsController loadSearchResults() throws java.io.IOException{
+    /*private SearchResultsController loadSearchResults() throws java.io.IOException{
         FXMLLoader dLoader = new FXMLLoader(getClass().getResource("SearchResults.fxml"));
         dLoader.load();
         return dLoader.getController();
-    }
+    }*/
 
     private void uiInitialize() {
         ObservableList<String> departureChoices = FXCollections.observableArrayList(locations);
@@ -83,7 +88,7 @@ public class Controller extends CommonMethods implements Initializable {
     }
 
     @FXML
-    private void searchHandler(MouseEvent mouseEvent) {
+    private void searchHandler(MouseEvent mouseEvent) throws java.io.IOException {
         LocalDate depDate = fxDepartureDate.getValue();
         LocalDate retDate = fxArrivalDate.getValue();
         String from = String.valueOf(fxDepartureLoc.getValue());
@@ -113,9 +118,18 @@ public class Controller extends CommonMethods implements Initializable {
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,1);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
+
         try {
             SearchResults searchResults = searcher.searchForPackages(ff, hf, tf);
-            searchResultsController.results(searchResults);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("SearchResults.fxml"));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            SearchResultsController c = loader.getController();
+            c.results(searchResults);
+            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
         }catch (IndexOutOfBoundsException indexOutOfBoundsException){
             fxNoPackagesText.setText("Engir pakkar til út frá \n völdum leitarskilyrðum");
         }
