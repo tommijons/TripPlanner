@@ -6,6 +6,8 @@ import Tour.Tour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 public class TravelPackageAssembler {
     private ObservableList<Flight> availableFlights;
     private ObservableList<Flight> availableReturnFlights;
@@ -13,6 +15,8 @@ public class TravelPackageAssembler {
     private ObservableList<Tour> availableDayTrips;
     private int travellers;
     private int rooms;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private TravelPackageController tpc = new TravelPackageController();
     FlightDataFactory fdf;
 
@@ -47,7 +51,7 @@ public class TravelPackageAssembler {
         this.availableDayTrips = availableDayTrips;
     }
 
-    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours,int travellers,int rooms, FlightDataFactory fdf) {
+    public TravelPackageAssembler(ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Hotel> hotels, ObservableList<Tour> tours, int travellers, int rooms, LocalDate checkIn,LocalDate checkOut, FlightDataFactory fdf) {
         availableFlights = FXCollections.observableArrayList();
         availableReturnFlights = FXCollections.observableArrayList();
         availableHotels = FXCollections.observableArrayList();
@@ -59,6 +63,8 @@ public class TravelPackageAssembler {
         this.fdf = fdf;
         this.travellers = travellers;
         this.rooms = rooms;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
         //SortByPrice();
     }
 
@@ -70,14 +76,14 @@ public class TravelPackageAssembler {
     }*/
 
     public TravelPackage getCheapPackage() {
-        return tpc.createCheapPackage(availableHotels,availableFlights, availableReturnFlights,availableDayTrips,travellers,rooms,fdf);
+        return tpc.createCheapPackage(availableHotels,availableFlights, availableReturnFlights,availableDayTrips,travellers,rooms,checkIn,checkOut,fdf);
     }
 
     public TravelPackage getStandardPackage() {
-        return tpc.createStandardPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,travellers,rooms,fdf);
+        return tpc.createStandardPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,travellers,rooms,checkIn,checkOut,fdf);
     }
 
     public TravelPackage getLuxuryPackage() {
-        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,travellers,rooms,fdf);
+        return tpc.createLuxuryPackage(availableHotels,availableFlights,availableReturnFlights,availableDayTrips,travellers,rooms,checkIn,checkOut,fdf);
     }
 }

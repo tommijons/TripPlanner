@@ -113,8 +113,6 @@ public class Controller extends CommonMethods implements Initializable {
             case "Egilstaðir" -> "EGS";
             default -> "";
         };
-        System.out.println("controller: " + fromFlug);
-        System.out.println("controller: " + toFlug);
 
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,1);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);

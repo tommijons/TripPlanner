@@ -5,7 +5,7 @@ import Hotel.Hotel;
 import Tour.Tour;
 import Flight.Seat;
 import javafx.collections.ObservableList;
-
+import Hotel.*;
 
 public class TravelPackage {
     private Hotel hotel;
@@ -14,9 +14,11 @@ public class TravelPackage {
     private Tour daytrip;
     private ObservableList<Seat> seatsOut;
     private ObservableList<Seat> seatsHome;
+    private ObservableList<Room> rooms;
     private int totalPrice;
 
-    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip,ObservableList<Seat> seatsOut,ObservableList<Seat> seatsHome){
+
+    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip,ObservableList<Seat> seatsOut,ObservableList<Seat> seatsHome,ObservableList<Room> rooms){
         this.hotel = hotel;
         this.flight = flight;
         this.returnFlight = returnFlight;
@@ -24,6 +26,7 @@ public class TravelPackage {
         this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + returnFlight.getPrice() + daytrip.getTourPrice();
         this.seatsOut = seatsOut;
         this.seatsHome = seatsHome;
+        this.rooms = rooms;
     }
 
     public Hotel getHotel() {
@@ -56,12 +59,27 @@ public class TravelPackage {
 
     public int getTotalPrice() { return totalPrice; }
 
+    public ObservableList<Seat> getSeatsOut() {
+        return seatsOut;
+    }
+
+    public ObservableList<Seat> getSeatsHome() {
+        return seatsHome;
+    }
+
+    public ObservableList<Room> getRooms() {
+        return rooms;
+    }
+
     @Override
     public String toString() {
-        return "Flug út: " + getFlight() + "\n"
-                + "Flug heim: " + getReturnFlight() + "\n"
-                + "Hótel " + getHotel() + "\n"
-                + "Dagsferð " + getDaytrip() + "\n"
-                + "Verð " + getTotalPrice() + "\n";
+        return "FLUG ÚT: \n" + getFlight() + "\n\n"
+                + "SÆTI \n" + getSeatsOut() + "\n\n"
+                + "FLUG HEIM: \n" + getReturnFlight() + "\n\n"
+                + "SÆTI \n" + getSeatsHome() + "\n\n"
+                + "HÓTEL \n" + getHotel() + "\n\n"
+                + "HERBERGI \n" + getRooms() + "\n\n"
+                + "DAGSFERÐ \n" + getDaytrip() + "\n\n"
+                + "VERÐ \n" + getTotalPrice() + "\n\n";
     }
 }

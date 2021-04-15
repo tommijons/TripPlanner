@@ -76,7 +76,7 @@ public class Searcher {
         ObservableList<Flight> returnFlights = searchForReturnFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
-        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(), fdf);
+        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
         TravelPackage luxury = assembler.getLuxuryPackage();

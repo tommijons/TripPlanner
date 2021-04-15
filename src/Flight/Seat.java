@@ -53,10 +53,10 @@ public class Seat {
 
     @Override
     public String toString() {
-        return "flight_id: " + flight_id + "\t" +
-                "seatID: " + seatID + "\t" +
-                "isAvailable: " + isAvailable + "\t" +
-                "isFirstClass: " + isFirstClass + "\t" +
+        return "flight_id: " + flight_id + "\n" +
+                "seatID: " + seatID + "\n" +
+                "isAvailable: " + isAvailable + "\n" +
+                "isFirstClass: " + isFirstClass + "\n" +
                 "isEmergency: " + isEmergency + "\n";
     }
 }

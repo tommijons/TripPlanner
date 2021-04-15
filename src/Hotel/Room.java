@@ -4,6 +4,7 @@ import javafx.scene.control.CheckBox;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Room {
     public Room() {
@@ -156,4 +157,19 @@ public class Room {
         this.room_price = hotel_base_price * room_price_multiplier;
     }
  */
+
+    @Override
+    public String toString() {
+        return
+                "\nroom_id=" + room_id +
+                "\nhotel_id=" + hotel_id +
+                "\nroom_category=" + room_category +
+                "\nroom_price_multiplier=" + room_price_multiplier +
+                "\nroom_price=" + room_price +
+                "\nroom_amenities=" + Arrays.toString(room_amenities) +
+                "\nroom_occupancy=" + room_occupancy +
+                "\nroom_capacity=" + room_capacity +
+                "\ncheckBox=" + checkBox +
+                "\nroomAmenityString='" + roomAmenityString;
+    }
 }

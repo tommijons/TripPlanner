@@ -1,4 +1,4 @@
-package sample;
+package Test;
 
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
