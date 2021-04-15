@@ -50,7 +50,7 @@
                </padding>
             </VBox>
             <Label fx:id="fxErrorText" layoutX="14.0" layoutY="432.0" prefHeight="111.0" prefWidth="167.0" />
-            <Label fx:id="fxNoPackagesText" layoutX="23.0" layoutY="436.0" prefHeight="103.0" prefWidth="159.0" />
+            <Label fx:id="fxNoPackagesText" layoutX="19.0" layoutY="421.0" prefHeight="103.0" prefWidth="159.0" textFill="#d00e0e" />
             <Button layoutX="58.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#searchHandler" prefHeight="30.0" prefWidth="80.0" text="Search" />
          </children>
       </AnchorPane>

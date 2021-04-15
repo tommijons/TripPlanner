@@ -47,6 +47,7 @@ public class Controller extends CommonMethods implements Initializable {
     private static final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilstaðir"};
     private static final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
     private static final String[] numbers = {"1","2","3","4","5"};
+    private static final String ERROR_SEARCH = "No Packages found based \non selected search criteria";
 
     private Searcher searcher;
     private SearchResultsController searchResultsController;
@@ -132,7 +133,7 @@ public class Controller extends CommonMethods implements Initializable {
             window.setScene(scene);
             window.show();
         }catch (IndexOutOfBoundsException indexOutOfBoundsException){
-            fxNoPackagesText.setText("Engir pakkar til út frá \n völdum leitarskilyrðum");
+            fxNoPackagesText.setText(ERROR_SEARCH);
         }
     }
 

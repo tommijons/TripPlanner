@@ -143,7 +143,7 @@ public class SearchResultsController extends CommonMethods implements Initializa
         window.show();
     }
 
-    public void BackButtonClicked(MouseEvent mouseEvent) throws IOException {
+    public void backHandler(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);

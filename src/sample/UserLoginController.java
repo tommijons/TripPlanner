@@ -26,7 +26,7 @@ public class UserLoginController implements Initializable {
     @FXML
     private Label fxError;
 
-    public static final String ERROR_EMAIL = "Must be a valid email address";
+    private static final String ERROR_EMAIL = "Must be a valid email address";
     private BooleanBinding validEmail;
 
     @Override
