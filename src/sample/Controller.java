@@ -110,7 +110,7 @@ public class Controller extends CommonMethods implements Initializable {
         System.out.println("controller: " + fromFlug);
         System.out.println("controller: " + toFlug);
 
-        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true);
+        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,1);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
         try {

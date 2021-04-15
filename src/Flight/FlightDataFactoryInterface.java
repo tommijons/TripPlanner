@@ -1,7 +1,6 @@
 package Flight;
 
 import javafx.collections.ObservableList;
-import sample.Seat;
 import sample.User;
 
 public interface FlightDataFactoryInterface {

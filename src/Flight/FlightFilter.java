@@ -9,13 +9,15 @@ public class FlightFilter {
     private LocalDate departureDate;
     private LocalDate returnDate;
     private boolean meal;
+    private int numberOfPassengers;
 
-    public FlightFilter(String depLoc, String arrLoc, LocalDate d, LocalDate r , boolean m) {
+    public FlightFilter(String depLoc, String arrLoc, LocalDate d, LocalDate r , boolean m,int numberOfPassengers) {
         departureLocation = depLoc;
         arrivalLocation = arrLoc;
         departureDate = d;
         returnDate = r;
         meal = m;
+        this.numberOfPassengers = numberOfPassengers;
     }
 
     @Override
@@ -27,6 +29,10 @@ public class FlightFilter {
                 ", returnDate=" + returnDate +
                 ", meal=" + meal +
                 '}';
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
     }
 
     public String getDepartureLocation() {

@@ -33,10 +33,6 @@ public class Searcher {
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-    //    ObservableList<Hotel> hotels = FXCollections.observableArrayList();
-     //   hotels.add(new Hotel(1,"economy", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.THREE,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
-     //   hotels.add(new Hotel(1,"first class", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.FOUR,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
-      //  hotels.add(new Hotel(1,"luxury", filter.getLocation(), "strætisgata1",105,4254141,Hotel.StarRating.FIVE,new Hotel.HotelAmenities[]{BREAKFAST_INCLUDED, PARKING},hdf.getRoomsByHotelId(1),2,10000));
         return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
                 filter.getCheckIn(),filter.getCheckOut(),filter.getSelectedNumOfGuests(), filter.getSelectedNumOfRooms(),true,true,true);
     }
@@ -80,7 +76,7 @@ public class Searcher {
         ObservableList<Flight> returnFlights = searchForReturnFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
-        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours, fdf);
+        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(), fdf);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();
         TravelPackage luxury = assembler.getLuxuryPackage();

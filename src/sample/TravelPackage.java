@@ -3,20 +3,27 @@ package sample;
 import Flight.Flight;
 import Hotel.Hotel;
 import Tour.Tour;
+import Flight.Seat;
+import javafx.collections.ObservableList;
+
 
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
     private Flight returnFlight;
     private Tour daytrip;
+    private ObservableList<Seat> seatsOut;
+    private ObservableList<Seat> seatsHome;
     private int totalPrice;
 
-    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip){
+    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip,ObservableList<Seat> seatsOut,ObservableList<Seat> seatsHome){
         this.hotel = hotel;
         this.flight = flight;
         this.returnFlight = returnFlight;
         this.daytrip = daytrip;
         this.totalPrice = hotel.getHotel_base_price() + flight.getPrice() + returnFlight.getPrice() + daytrip.getTourPrice();
+        this.seatsOut = seatsOut;
+        this.seatsHome = seatsHome;
     }
 
     public Hotel getHotel() {
