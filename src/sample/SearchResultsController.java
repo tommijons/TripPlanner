@@ -46,7 +46,17 @@ public class SearchResultsController extends CommonMethods implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
+        cheapPackage = FXCollections.observableArrayList();
+        standardPackage = FXCollections.observableArrayList();
+        luxuryPackage = FXCollections.observableArrayList();
+        cheapPackage.add(searchR.getCheapPackage());
+        fxCheapPackage.setItems(cheapPackage);
+        standardPackage.add(searchR.getStandardPackage());
+        fxStandardPackage.setItems(standardPackage);
+        luxuryPackage.add(searchR.getLuxuryPackage());
+        fxLuxuryPackage.setItems(luxuryPackage);
     }
 
 
@@ -57,14 +67,16 @@ public class SearchResultsController extends CommonMethods implements Initializa
      */
     public void results(SearchResults searchResults) {
         sr = searchResults;
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
         cheapPackage = FXCollections.observableArrayList();
         standardPackage = FXCollections.observableArrayList();
         luxuryPackage = FXCollections.observableArrayList();
-        cheapPackage.add(searchResults.getCheapPackage());
+        cheapPackage.add(searchR.getCheapPackage());
         fxCheapPackage.setItems(cheapPackage);
-        standardPackage.add(searchResults.getStandardPackage());
+        standardPackage.add(searchR.getStandardPackage());
         fxStandardPackage.setItems(standardPackage);
-        luxuryPackage.add(searchResults.getLuxuryPackage());
+        luxuryPackage.add(searchR.getLuxuryPackage());
         fxLuxuryPackage.setItems(luxuryPackage);
     }
 
@@ -75,12 +87,14 @@ public class SearchResultsController extends CommonMethods implements Initializa
      */
     @FXML
     private void cheapInfoHandler(MouseEvent actionEvent) throws java.io.IOException {
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
         Scene tableViewScene = new Scene(parent);
         PackageInfoController c = loader.getController();
-        c.selectedPackage(sr.getCheapPackage());
+        c.selectedPackage(searchR.getCheapPackage());
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
@@ -102,24 +116,28 @@ public class SearchResultsController extends CommonMethods implements Initializa
      * @throws java.io.IOException
      */
     public void standInfoHandler(MouseEvent mouseEvent) throws java.io.IOException {
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
         Scene tableViewScene = new Scene(parent);
         PackageInfoController c = loader.getController();
-        c.selectedPackage(sr.getStandardPackage());
+        c.selectedPackage(searchR.getStandardPackage());
         Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
 
     public void luxInfoHandler(MouseEvent mouseEvent) throws  java.io.IOException {
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
         Scene tableViewScene = new Scene(parent);
         PackageInfoController c = loader.getController();
-        c.selectedPackage(sr.getLuxuryPackage());
+        c.selectedPackage(searchR.getLuxuryPackage());
         Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();

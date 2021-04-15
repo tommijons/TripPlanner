@@ -1,6 +1,7 @@
 package sample;
 
 public class User {
+    private int user_id;
     private String userName;
     private String email;
     private String password;
@@ -10,7 +11,11 @@ public class User {
         email = e;
         password = p;
     }
-
+    public User(){
+        userName = "Resu";
+        email = "email";
+        password = "password123";
+    }
     public String getUserName() {
         return userName;
     }
@@ -35,4 +40,11 @@ public class User {
         this.password = password;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 }

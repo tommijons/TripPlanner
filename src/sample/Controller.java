@@ -118,9 +118,10 @@ public class Controller extends CommonMethods implements Initializable {
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,1);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
-
+        AppState app = AppState.getInstance();
         try {
             SearchResults searchResults = searcher.searchForPackages(ff, hf, tf);
+            app.setSearchResult(searchResults);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("SearchResults.fxml"));
             Parent parent = loader.load();
