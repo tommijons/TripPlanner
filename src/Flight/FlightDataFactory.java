@@ -484,6 +484,7 @@ public class FlightDataFactory implements FlightDataFactoryInterface {
         return flight;
     }
 
+
     public static void main(String[] args) throws IOException {
 
     }

@@ -59,6 +59,7 @@ public class BookingController extends CommonMethods implements Initializable {
         hdm.addNewBooking(hb);
         tdf.insertBooking(user.getUserName(),travelPackage.getDaytrip().getTourID(),travelPackage.getSeatsHome().size());
         tdf.insertUser(user);
+        fdf.createUser(user.getUserName(),user.getEmail(),user.getPassword());
         ArrayList<Integer> seat_id = new ArrayList<>();
         for (int i = 0;i < travelPackage.getSeatsOut().size();i++){
             seat_id.add(travelPackage.getSeatsOut().get(i).getSeatID());
