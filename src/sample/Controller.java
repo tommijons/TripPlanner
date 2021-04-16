@@ -18,7 +18,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -136,11 +135,9 @@ public class Controller extends CommonMethods implements Initializable {
         }
     }
 
-    public User newUser (String name, String email, String password) {
-        
-        User user = new User(name, email, password);
+    public void newUser (String name, String email, String password) {
+        theUser = new User(name, email, password);
         fxUserName.setText("Hi " + name);
-        return user;
 
     }
 

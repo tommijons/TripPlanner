@@ -44,6 +44,7 @@ public class BookingController extends CommonMethods implements Initializable {
     private HotelDatabaseManager hdm;
     private FlightDataFactory fdf;
     private TourDataFactory tdf;
+    private TravelPackage selectedPackage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,7 +53,47 @@ public class BookingController extends CommonMethods implements Initializable {
         tdf = new TourDataFactory();
 
     }
+    public void getPackage(TravelPackage travelPackage) {
+        selectedPackage = travelPackage;
+    }
 
+    public void bookingHandler(ActionEvent actionEvent) {
+
+        AppState state = AppState.getInstance();
+        User user = state.getUser();
+
+        ArrayList<Room> rooms = new ArrayList<>(selectedPackage.getRooms());
+        HotelBooking hb = new HotelBooking(selectedPackage.getHotel(), user, LocalDate.of(2021,01,01),LocalDate.of(2021,02,01), rooms,selectedPackage.getSeatsHome().size(),true);
+        hdm.addNewBooking(hb);
+        tdf.insertBooking(user.getUserName(),selectedPackage.getDaytrip().getTourID(),selectedPackage.getSeatsHome().size());
+        tdf.insertUser(user);
+        fdf.createUser(user.getUserName(),user.getEmail(),user.getPassword());
+        ArrayList<Integer> seat_id = new ArrayList<>();
+        for (int i = 0;i < selectedPackage.getSeatsOut().size();i++){
+            seat_id.add(selectedPackage.getSeatsOut().get(i).getSeatID());
+        }
+        for(int id : seat_id) {
+            Seat seat = fdf.getSeat(selectedPackage.getFlight().getId(), id);
+            Flight.Booking currentBooking = new Booking(selectedPackage.getFlight(), user, seat);
+            // bóka sæti
+            fdf.reserveSeat(currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID(), false);
+            // bæta bókun við gagnagrunn
+            fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
+        }
+        ArrayList<Integer> seat_id2 = new ArrayList<>();
+        for (int i = 0;i < selectedPackage.getSeatsHome().size();i++){
+            seat_id2.add(selectedPackage.getSeatsHome().get(i).getSeatID());
+        }
+        for(int id : seat_id2) {
+            Seat seat = fdf.getSeat(selectedPackage.getReturnFlight().getId(), id);
+            Flight.Booking currentBooking = new Booking(selectedPackage.getReturnFlight(), user, seat);
+            // bóka sæti
+            fdf.reserveSeat(currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID(), false);
+            // bæta bókun við gagnagrunn
+            fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
+        }
+    }
+    /*
     public void createBooking(User user, TravelPackage travelPackage) {
         ArrayList<Room> rooms = new ArrayList<>(travelPackage.getRooms());
         HotelBooking hb = new HotelBooking(travelPackage.getHotel(), user, LocalDate.of(2021,01,01),LocalDate.of(2021,02,01), rooms,travelPackage.getSeatsHome().size(),true);
@@ -84,7 +125,7 @@ public class BookingController extends CommonMethods implements Initializable {
             // bæta bókun við gagnagrunn
             fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
         }
-    }
+    }*/
     public void removeBooking() {
         //
     }
@@ -98,4 +139,6 @@ public class BookingController extends CommonMethods implements Initializable {
     public void closeMenu(MouseEvent actionEvent){
         System.exit(0);
     }
+
+
 }

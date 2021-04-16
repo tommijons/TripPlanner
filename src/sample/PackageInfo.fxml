@@ -64,7 +64,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Change Flight">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#changeFlightHandler" prefHeight="30.0" prefWidth="150.0" text="Change Flight">
                      <VBox.margin>
                         <Insets left="25.0" />
                      </VBox.margin>

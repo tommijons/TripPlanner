@@ -19,8 +19,6 @@ import java.util.ResourceBundle;
 
 public class SearchResultsController extends CommonMethods implements Initializable {
 
-
-    private Scene scene;
     @FXML
     private Label fxDepDate;
     @FXML
@@ -56,7 +54,23 @@ public class SearchResultsController extends CommonMethods implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        AppState app = AppState.getInstance();
+        SearchResults searchR = app.getSearchResults();
+        fxHotel.setText(searchR.getCheapPackage().getHotel().getHotel_name());
+        fxTour.setText(searchR.getCheapPackage().getDaytrip().getTourName());
+        fxDepDate.setText(searchR.getCheapPackage().getFlight().getFlightDate());
+        fxRetDate.setText(searchR.getCheapPackage().getReturnFlight().getFlightDate());
+        fxStHotel.setText(searchR.getStandardPackage().getHotel().getHotel_name());
+        fxStTour.setText(searchR.getStandardPackage().getDaytrip().getTourName());
+        fxStDepDate.setText(searchR.getStandardPackage().getFlight().getFlightDate());
+        fxStRetDate.setText(searchR.getStandardPackage().getReturnFlight().getFlightDate());
+        fxLuxHotel.setText(searchR.getLuxuryPackage().getHotel().getHotel_name());
+        fxLuxTour.setText(searchR.getLuxuryPackage().getDaytrip().getTourName());
+        fxLuxDepDate.setText(searchR.getLuxuryPackage().getFlight().getFlightDate());
+        fxLuxRetDate.setText(searchR.getLuxuryPackage().getReturnFlight().getFlightDate());
+        fxCheapPrice.setText(Integer.toString(searchR.getCheapPackage().getTotalPrice()));
+        fxStPrice.setText(Integer.toString(searchR.getStandardPackage().getTotalPrice()));
+        fxLuxPrice.setText(Integer.toString(searchR.getLuxuryPackage().getTotalPrice()));
     }
 
     /**
@@ -102,16 +116,6 @@ public class SearchResultsController extends CommonMethods implements Initializa
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
-        /*Button b =(Button)actionEvent.getSource();
-        String selected = b.getId();
-
-        if (selected.equals(fxCheapInfo.toString())){
-            packageInfoController.selectedPackage(cheapPackage);
-        } else if (selected.equals(fxStandardInfo.toString())) {
-            packageInfoController.selectedPackage(standardPackage);
-        } else if (selected.equals(fxLuxuryInfo.toString())) {
-            packageInfoController.selectedPackage(luxuryPackage);
-        }*/
     }
 
     /**
@@ -150,7 +154,7 @@ public class SearchResultsController extends CommonMethods implements Initializa
     public void backHandler(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Stage stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

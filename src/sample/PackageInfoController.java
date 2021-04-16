@@ -23,9 +23,7 @@ public class PackageInfoController implements Initializable {
 
     @FXML
     private ListView<TravelPackage> fxPackageInfo;
-
-    private ObservableList<TravelPackage> packageInfo;
-
+    private ObservableList<TravelPackage> packageInfo = FXCollections.observableArrayList();
     private TravelPackage selectedPackage;
 
     @Override
@@ -34,24 +32,34 @@ public class PackageInfoController implements Initializable {
     }
     public void selectedPackage(TravelPackage travelPackages) {
         selectedPackage = travelPackages;
-        packageInfo = FXCollections.observableArrayList();
-
         packageInfo.add(travelPackages);
         fxPackageInfo.setItems(packageInfo);
     }
 
-    public void bookHandler(MouseEvent mouseEvent) throws java.io.IOException {
-        AppState state = AppState.getInstance();
-        User user = state.getUser();
+    @FXML
+    private void bookHandler(MouseEvent mouseEvent) throws java.io.IOException {
+        //AppState state = AppState.getInstance();
+        //User user = state.getUser();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Booking.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         BookingController bc = loader.getController();
-        bc.createBooking(user,selectedPackage);
+        bc.getPackage(selectedPackage);
         Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    }
+
+    /**
+     * Breyta flugi. TODO.
+     * @param actionEvent
+     */
+    @FXML
+    private void changeFlightHandler(ActionEvent actionEvent) {
+        AppState state = AppState.getInstance();
+        SearchResults searchResults = state.getSearchResults();
+
     }
 
     public void backHandler(MouseEvent mouseEvent) throws java.io.IOException {
@@ -61,4 +69,7 @@ public class PackageInfoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
 }

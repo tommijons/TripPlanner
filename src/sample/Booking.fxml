@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BookingController">
+<BorderPane fx:id="fxPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="941.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BookingController">
    <top>
       <AnchorPane prefHeight="145.0" prefWidth="941.0" style="-fx-background-color: lightgreen;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -64,7 +57,7 @@
                   <TextField prefHeight="30.0" />
                   <Label prefHeight="30.0" prefWidth="250.0" text="Credid card number" />
                   <TextField prefHeight="30.0" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Confirm Booking">
+                  <Button mnemonicParsing="false" onAction="#bookingHandler" prefHeight="30.0" prefWidth="150.0" text="Confirm Booking">
                      <VBox.margin>
                         <Insets left="50.0" top="50.0" />
                      </VBox.margin>
