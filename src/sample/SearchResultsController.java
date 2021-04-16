@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,9 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
+
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,46 +19,45 @@ import java.util.ResourceBundle;
 
 public class SearchResultsController extends CommonMethods implements Initializable {
 
+
     private Scene scene;
     @FXML
-    private BorderPane fxPane;
+    private Label fxDepDate;
     @FXML
-    private ListView<TravelPackage> fxCheapPackage;
+    private Label fxRetDate;
     @FXML
-    private ListView<TravelPackage> fxStandardPackage;
+    private Label fxHotel;
     @FXML
-    private ListView<TravelPackage> fxLuxuryPackage;
-    private ObservableList<TravelPackage> cheapPackage;
-    private ObservableList<TravelPackage> standardPackage;
-    private ObservableList<TravelPackage> luxuryPackage;
-    private SearchResults cheap;
-    private SearchResults standard;
-    private SearchResults lux;
+    private Label fxTour;
     @FXML
-    private Button fxCheapInfo;
+    private Label fxStDepDate;
     @FXML
-    private Button fxStandardInfo;
+    private Label fxStRetDate;
     @FXML
-    private Button fxLuxuryInfo;
-    private PackageInfoController packageInfoController;
+    private Label fxStHotel;
+    @FXML
+    private Label fxStTour;
+    @FXML
+    private Label fxLuxDepDate;
+    @FXML
+    private Label fxLuxRetDate;
+    @FXML
+    private Label fxLuxHotel;
+    @FXML
+    private Label fxLuxTour;
+    @FXML
+    private Label fxCheapPrice;
+    @FXML
+    private Label fxStPrice;
+    @FXML
+    private Label fxLuxPrice;
+
     private SearchResults sr;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        AppState app = AppState.getInstance();
-        SearchResults searchR = app.getSearchResults();
-        cheapPackage = FXCollections.observableArrayList();
-        standardPackage = FXCollections.observableArrayList();
-        luxuryPackage = FXCollections.observableArrayList();
-        cheapPackage.add(searchR.getCheapPackage());
-        fxCheapPackage.setItems(cheapPackage);
-        standardPackage.add(searchR.getStandardPackage());
-        fxStandardPackage.setItems(standardPackage);
-        luxuryPackage.add(searchR.getLuxuryPackage());
-        fxLuxuryPackage.setItems(luxuryPackage);
+
     }
-
-
 
     /**
      * Birtir niðurstöðu leitar.
@@ -69,15 +67,21 @@ public class SearchResultsController extends CommonMethods implements Initializa
         sr = searchResults;
         AppState app = AppState.getInstance();
         SearchResults searchR = app.getSearchResults();
-        cheapPackage = FXCollections.observableArrayList();
-        standardPackage = FXCollections.observableArrayList();
-        luxuryPackage = FXCollections.observableArrayList();
-        cheapPackage.add(searchR.getCheapPackage());
-        fxCheapPackage.setItems(cheapPackage);
-        standardPackage.add(searchR.getStandardPackage());
-        fxStandardPackage.setItems(standardPackage);
-        luxuryPackage.add(searchR.getLuxuryPackage());
-        fxLuxuryPackage.setItems(luxuryPackage);
+        fxHotel.setText(searchR.getCheapPackage().getHotel().getHotel_name());
+        fxTour.setText(searchR.getCheapPackage().getDaytrip().getTourName());
+        fxDepDate.setText(searchR.getCheapPackage().getFlight().getFlightDate());
+        fxRetDate.setText(searchR.getCheapPackage().getReturnFlight().getFlightDate());
+        fxStHotel.setText(searchR.getStandardPackage().getHotel().getHotel_name());
+        fxStTour.setText(searchR.getStandardPackage().getDaytrip().getTourName());
+        fxStDepDate.setText(searchR.getStandardPackage().getFlight().getFlightDate());
+        fxStRetDate.setText(searchR.getStandardPackage().getReturnFlight().getFlightDate());
+        fxLuxHotel.setText(searchR.getLuxuryPackage().getHotel().getHotel_name());
+        fxLuxTour.setText(searchR.getLuxuryPackage().getDaytrip().getTourName());
+        fxLuxDepDate.setText(searchR.getLuxuryPackage().getFlight().getFlightDate());
+        fxLuxRetDate.setText(searchR.getLuxuryPackage().getReturnFlight().getFlightDate());
+        fxCheapPrice.setText(Integer.toString(searchR.getCheapPackage().getTotalPrice()));
+        fxStPrice.setText(Integer.toString(searchR.getStandardPackage().getTotalPrice()));
+        fxLuxPrice.setText(Integer.toString(searchR.getLuxuryPackage().getTotalPrice()));
     }
 
     /**
