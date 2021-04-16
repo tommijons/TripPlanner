@@ -64,15 +64,12 @@ public class TourController {
         return isFull;
     }
 
-    public ObservableList<Tour> tourRegionSearch(String region, ObservableList<Tour> full) {
+    public ObservableList<Tour> tourRegionSearch(String region) {
         ObservableList<Tour> result = FXCollections.observableArrayList();
-        for (Tour tour : full) {
-            if (tour.getTourRegion().contains(region)) {
-                result.add(tour);
-            }
-        }
-        return result;
-    }
+        tours.forEach((tab) -> {
+            if (tab.getTourRegion().equals(region)){
+                result.add(tab);}});
+        return  result;}
 
     public ObservableList<Tour> tourDurationSearch(int duration1, int duration2, ObservableList<Tour> full) {
         ObservableList<Tour> result = FXCollections.observableArrayList();

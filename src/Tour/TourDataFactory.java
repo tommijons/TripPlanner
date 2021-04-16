@@ -22,7 +22,7 @@ public class TourDataFactory {
         return date;
     }
 
-    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:./src/database/Team5D.DB";
     //private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
     //private final static String url = "jdbc:sqlite:/Users/thorhallureythorsson/Desktop/Skólinn/Vor 21/HBV401G - Þróun Hugbúnaðar/Team5D/database/Team5D.DB";
 
