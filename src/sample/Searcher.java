@@ -8,6 +8,8 @@ import Tour.TourDataFactory;
 import Tour.TourFilter;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 public class Searcher {
     DataFactory df = new DataFactory();
     HotelDatabaseManager hdf = new HotelDatabaseManager();
@@ -38,37 +40,15 @@ public class Searcher {
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
-     /*   ObservableList<Tour> tours = ts.tours;
-        tours = ts.tourServicesSearch(filter.getServices(), tours);
-        tours = ts.tourDateSearch(filter.getEarliestDate(), filter.getLatestDate(), tours);
-        tours = ts.tourRegionSearch(filter.getLocation(), tours);
-        tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
-        ObservableList<Tour> removeTours = FXCollections.observableArrayList();
-        for (Tour tour:tours) {
-            if(filter.getMinSpots() > tour.getAvailableSpots()) {
-                removeTours.add(tour);
-            } else if(filter.getMaxPrice() < tour.getTourPrice()) {
-                removeTours.add(tour);
-            }
-        }
-
-        for (Tour tour:removeTours) {
-            if(filter.getMinSpots() > tour.getAvailableSpots()) {
-                tours.remove(tour);
-            } else if(filter.getMaxPrice() < tour.getTourPrice()) {
-                tours.remove(tour);
-            }
-        }
-        return tours;*/
         ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
+        System.out.println(tours.size());
+        for (int i = 0;i < tours.size();i++){
+            tours.get(i).setTourDate(LocalDate.of(2021,01,02));
+        }
         tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
         tours = ts.tourServicesSearch(filter.getServices(),tours);
-        return tours;/*
-        ObservableList<Tour> tours = FXCollections.observableArrayList();
-        tours.add(new Tour("Buggy Tour in Rauðhólar","Children must be under parent supervision",
-                LocalDate.now(),20,20000, "Reykjavík",5, "Action"));
-        return tours;*/
+        return tours;
     }
 
     public SearchResults searchForPackages(FlightFilter ff, HotelFilter hf, TourFilter tf){

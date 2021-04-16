@@ -4,9 +4,12 @@ import Flight.FlightFilter;
 import Flight.FlightSearchController;
 import Hotel.Hotel;
 import Hotel.HotelFilter;
+import Tour.Tour;
 import Tour.TourController;
+import Tour.TourDataFactory;
 import Tour.TourFilter;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,7 +46,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
+        TourDataFactory tdf = new TourDataFactory();
+        ObservableList<Tour> tours = tdf.getTours();
+        System.out.println(tours.size());
+        long date = 161922240;
+        LocalDate localDate = tdf.millisToLocalDate(date);
+        System.out.println(localDate);
         launch(args);
     }
 
