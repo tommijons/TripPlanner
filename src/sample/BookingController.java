@@ -15,12 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.FixedWidth;
 
 
+import javax.swing.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
@@ -57,7 +59,7 @@ public class BookingController extends CommonMethods implements Initializable {
         selectedPackage = travelPackage;
     }
 
-    public void bookingHandler(ActionEvent actionEvent) {
+    public void bookingHandler(ActionEvent actionEvent) throws IOException {
 
         AppState state = AppState.getInstance();
         User user = state.getUser();
@@ -92,6 +94,17 @@ public class BookingController extends CommonMethods implements Initializable {
             // bæta bókun við gagnagrunn
             fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Package booked!");
+        a.show();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("sample.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Controller c = loader.getController();
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
     /*
     public void createBooking(User user, TravelPackage travelPackage) {

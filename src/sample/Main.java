@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -49,21 +50,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-      /*  HotelDatabaseManager hdm = new HotelDatabaseManager();
-        System.out.println("hdmusers: " + hdm.getUsers());
-        FlightDataFactory fdf = new FlightDataFactory();
-        ObservableList<User> users = FXCollections.observableArrayList();
-        users.addAll(fdf.getUsers("test@email.com"));
-        ObservableList<Booking> bookings = FXCollections.observableArrayList();
-        bookings.addAll(fdf.getBookings("test@email.com"));
-        for(int i = 0; i < users.size();i++){
-            System.out.println(bookings.get(i));
-            System.out.println(users.get(i));
-        }
 
-        TourDataFactory tdf = new TourDataFactory();
-        System.out.println("tdfbookings: "+tdf.getBookings());
-        System.out.println("tdfusers: "+tdf.getUsers());*/
         launch(args);
     }
 
