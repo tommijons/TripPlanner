@@ -1,10 +1,11 @@
 package sample;
 
+import Flight.Booking;
 import Flight.FlightDataFactory;
+import Flight.Seat;
 import Hotel.HotelBooking;
 import Hotel.HotelDatabaseManager;
 import Hotel.Room;
-import Tour.Booking;
 import Tour.TourBookingController;
 import Tour.TourDataFactory;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.FixedWi
 
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -53,18 +55,34 @@ public class BookingController extends CommonMethods implements Initializable {
 
     public void createBooking(User user, TravelPackage travelPackage) {
         ArrayList<Room> rooms = new ArrayList<>(travelPackage.getRooms());
-        //HotelBooking hb = new HotelBooking(travelPackage.getHotel(), user, LocalDate.now(),LocalDate.now().plus(1, ChronoUnit.DAYS), rooms,travelPackage.getSeatsHome().size(),true);
-        //hdm.addNewBooking(hb);
-        for (int i =0; i < travelPackage.getSeatsOut().size(); i++) {
-            fdf.createBooking(user.getEmail(),travelPackage.getFlight().getId(),travelPackage.getSeatsOut().get(i).getSeatID()); 
-        }
-        for (int i =0; i < travelPackage.getSeatsHome().size(); i++) {
-            fdf.createBooking(user.getEmail(),travelPackage.getReturnFlight().getId(),travelPackage.getSeatsHome().get(i).getSeatID());
-        }
+        HotelBooking hb = new HotelBooking(travelPackage.getHotel(), user, LocalDate.of(2021,01,01),LocalDate.of(2021,02,01), rooms,travelPackage.getSeatsHome().size(),true);
+        hdm.addNewBooking(hb);
         tdf.insertBooking(user.getUserName(),travelPackage.getDaytrip().getTourID(),travelPackage.getSeatsHome().size());
-
-        
-
+        tdf.insertUser(user);
+        ArrayList<Integer> seat_id = new ArrayList<>();
+        for (int i = 0;i < travelPackage.getSeatsOut().size();i++){
+            seat_id.add(travelPackage.getSeatsOut().get(i).getSeatID());
+        }
+        for(int id : seat_id) {
+            Seat seat = fdf.getSeat(travelPackage.getFlight().getId(), id);
+            Flight.Booking currentBooking = new Booking(travelPackage.getFlight(), user, seat);
+            // bóka sæti
+            fdf.reserveSeat(currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID(), false);
+            // bæta bókun við gagnagrunn
+            fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
+        }
+        ArrayList<Integer> seat_id2 = new ArrayList<>();
+        for (int i = 0;i < travelPackage.getSeatsHome().size();i++){
+            seat_id2.add(travelPackage.getSeatsHome().get(i).getSeatID());
+        }
+        for(int id : seat_id2) {
+            Seat seat = fdf.getSeat(travelPackage.getReturnFlight().getId(), id);
+            Flight.Booking currentBooking = new Booking(travelPackage.getReturnFlight(), user, seat);
+            // bóka sæti
+            fdf.reserveSeat(currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID(), false);
+            // bæta bókun við gagnagrunn
+            fdf.createBooking(currentBooking.getUser().getEmail() ,currentBooking.getFlight().getId(), currentBooking.getSeat().getSeatID());
+        }
     }
     public void removeBooking() {
         //

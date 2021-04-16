@@ -115,7 +115,7 @@ public class Controller extends CommonMethods implements Initializable {
             default -> "";
         };
 
-        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,1);
+        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,travellers);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
         AppState app = AppState.getInstance();
