@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 
 public class AppState {
     private SearchResults searchResults;
+    private User user;
 
     private final static AppState INSTANCE = new AppState();
 
@@ -22,4 +23,10 @@ public class AppState {
         this.searchResults = searchResults;
     }
 
+    public void setUser(User user){
+        this.user = user;
+    }
+    public User getUser(){
+        return user;
+    }
 }

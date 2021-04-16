@@ -35,6 +35,10 @@ public class Main extends Application {
         primaryStage.show();
         Controller c = loader.getController();
         c.newUser(userInfo[0],userInfo[1],userInfo[2]);
+        User user = new User(userInfo[0],userInfo[1],userInfo[2]);
+        AppState state = AppState.getInstance();
+        state.setUser(user);
+        User user1 = state.getUser();
     }
 
     private String[] getUserInfo() throws java.io.IOException {
@@ -46,12 +50,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        TourDataFactory tdf = new TourDataFactory();
-        ObservableList<Tour> tours = tdf.getTours();
-        System.out.println(tours.size());
-        long date = 161922240;
-        LocalDate localDate = tdf.millisToLocalDate(date);
-        System.out.println(localDate);
+
         launch(args);
     }
 
