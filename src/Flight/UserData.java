@@ -1,6 +1,6 @@
 package Flight;
 
-import sample.User;
+import tripPackage.User;
 import java.util.ArrayList;
 
 class UserData {

@@ -1,4 +1,4 @@
-package sample;
+package tripPackage;
 
 public class Review {
     private User user;

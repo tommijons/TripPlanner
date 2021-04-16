@@ -1,8 +1,5 @@
-package sample;
+package tripPackage;
 
-import Flight.Flight;
-import Hotel.Hotel;
-import Tour.Tour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

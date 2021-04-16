@@ -2,7 +2,7 @@ package Tour;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import sample.User;
+import tripPackage.User;
 
 import java.time.Instant;
 import java.time.LocalDate;

@@ -1,12 +1,4 @@
-package sample;
-
-import Flight.Flight;
-import Hotel.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
+package tripPackage;
 
 
 public class DataFactory {

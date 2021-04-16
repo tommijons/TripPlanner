@@ -1,7 +1,7 @@
 package Tour;
 
 import javafx.collections.ObservableList;
-import sample.User;
+import tripPackage.User;
 
 import java.time.LocalDate;
 

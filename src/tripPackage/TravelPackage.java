@@ -1,4 +1,4 @@
-package sample;
+package tripPackage;
 
 import Flight.Flight;
 import Hotel.Hotel;

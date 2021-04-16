@@ -1,7 +1,7 @@
 package Tour;
 
 import javafx.collections.ObservableList;
-import sample.User;
+import tripPackage.User;
 
 public class TourUserController {
     private TourDataFactory tourdataFactory = new TourDataFactory();

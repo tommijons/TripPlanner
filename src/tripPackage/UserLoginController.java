@@ -1,4 +1,4 @@
-package sample;
+package tripPackage;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;

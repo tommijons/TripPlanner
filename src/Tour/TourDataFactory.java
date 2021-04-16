@@ -2,13 +2,11 @@ package Tour;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Cursor;
-import sample.User;
+import tripPackage.User;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

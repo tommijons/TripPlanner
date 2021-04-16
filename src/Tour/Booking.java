@@ -1,6 +1,6 @@
 package Tour;
 
-import sample.User;
+import tripPackage.User;
 
 public class Booking {
     private int bookingID;

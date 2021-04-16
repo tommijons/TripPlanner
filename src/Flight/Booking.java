@@ -1,6 +1,6 @@
 package Flight;
 
-import sample.User;
+import tripPackage.User;
 
 public class Booking {
     private Flight flight;

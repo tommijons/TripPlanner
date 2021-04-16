@@ -1,4 +1,4 @@
-package sample;
+package tripPackage;
 
 import Flight.Booking;
 import Flight.FlightDataFactory;
@@ -6,7 +6,6 @@ import Flight.Seat;
 import Hotel.HotelBooking;
 import Hotel.HotelDatabaseManager;
 import Hotel.Room;
-import Tour.TourBookingController;
 import Tour.TourDataFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,34 +14,39 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.FixedWidth;
 
 
-import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BookingController extends CommonMethods implements Initializable {
 
     @FXML
+    private Button fxConfirm;
+    @FXML
     private TextField fxName;
     @FXML
-    private TextField fxEmail;
+    private TextField fxAddress;
     @FXML
-    private TextField fxCCNo;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private TextField fxPhone;
+    @FXML
+    private TextField fxCCN;
+    @FXML
+    private Label fxDepDate;
+    @FXML
+    private Label fxRetDate;
+    @FXML
+    private Label fxHotel;
+    @FXML
+    private Label fxTour;
+    @FXML
+    private Label fxPrice;
     private HotelDatabaseManager hdm;
     private FlightDataFactory fdf;
     private TourDataFactory tdf;
@@ -53,12 +57,26 @@ public class BookingController extends CommonMethods implements Initializable {
         hdm = new HotelDatabaseManager();
         fdf = new FlightDataFactory();
         tdf = new TourDataFactory();
-
+        confirmOkay();
     }
+
     public void getPackage(TravelPackage travelPackage) {
         selectedPackage = travelPackage;
+        fxDepDate.setText(selectedPackage.getFlight().getFlightDate());
+        fxRetDate.setText(selectedPackage.getReturnFlight().getFlightDate());
+        fxHotel.setText(selectedPackage.getHotel().getHotel_name());
+        fxTour.setText(selectedPackage.getDaytrip().getTourName());
+        fxPrice.setText(Integer.toString(selectedPackage.getTotalPrice()));
     }
 
+    private void confirmOkay() {
+        fxConfirm.disableProperty()
+                .bind(fxName.textProperty().isEmpty()
+                        .or(fxAddress.textProperty().isEmpty())
+                        .or(fxPhone.textProperty().isEmpty())
+                        .or(fxCCN.textProperty().isEmpty()
+                        ));
+    }
     public void bookingHandler(ActionEvent actionEvent) throws IOException {
 
         AppState state = AppState.getInstance();
@@ -143,9 +161,9 @@ public class BookingController extends CommonMethods implements Initializable {
         //
     }
     public void backHandler(MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
-        stage = (Stage) ((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

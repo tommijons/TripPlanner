@@ -1,7 +1,7 @@
 package Hotel;
 
 
-import sample.User;
+import tripPackage.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

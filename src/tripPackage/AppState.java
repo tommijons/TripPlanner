@@ -1,6 +1,4 @@
-package sample;
-
-import javafx.collections.ObservableList;
+package tripPackage;
 
 public class AppState {
     private SearchResults searchResults;

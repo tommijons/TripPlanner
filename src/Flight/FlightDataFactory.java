@@ -2,7 +2,7 @@ package Flight;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import sample.User;
+import tripPackage.User;
 
 import java.sql.*;
 
