@@ -71,6 +71,10 @@ public class TravelPackageController {
                 break;
             }
         }
+        if (hotel.getHotel_name() == "Enginn pakki"){
+            ObservableList<Room> noRooms = FXCollections.observableArrayList();
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
+        }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
         chosenRoom.add(availableRooms.get(0));
@@ -114,6 +118,10 @@ public class TravelPackageController {
                 break;
             }
         }
+        if (hotel.getHotel_name() == "Enginn pakki"){
+            ObservableList<Room> noRooms = FXCollections.observableArrayList();
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
+        }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
         chosenRoom.add(availableRooms.get(0));
@@ -156,6 +164,10 @@ public class TravelPackageController {
                 hotel = hotels.get(i);
                 break;
             }
+        }
+        if (hotel.getHotel_name() == "Enginn pakki"){
+            ObservableList<Room> noRooms = FXCollections.observableArrayList();
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
         }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();

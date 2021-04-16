@@ -2,6 +2,7 @@ package sample;
 
 import Flight.FlightFilter;
 import Flight.FlightSearchController;
+import Hotel.Hotel;
 import Hotel.HotelFilter;
 import Tour.TourController;
 import Tour.TourFilter;

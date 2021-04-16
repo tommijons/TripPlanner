@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 
 public class Searcher {
     DataFactory df = new DataFactory();
-    HotelDataFactory hdf = new HotelDataFactory();
+    HotelDatabaseManager hdf = new HotelDatabaseManager();
     FlightDataFactory fdf = new FlightDataFactory();
     TourDataFactory tdf = new TourDataFactory();
     FlightSearchController fsc;
@@ -33,7 +33,7 @@ public class Searcher {
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-        return HotelSearchController.getHotelSearchResults(hdf.getHotels(), filter.getLocation(),
+        return HotelSearchController.getHotelSearchResults(hdf.getAllHotels(), filter.getLocation(),
                 filter.getCheckIn(),filter.getCheckOut(),filter.getSelectedNumOfGuests(), filter.getSelectedNumOfRooms(),true,true,true);
     }
 

@@ -40,7 +40,7 @@ public class Hotel {
 
     public Hotel() {
         this.hotel_id = 999; //Removed redundant null checks (ILG)
-        this.hotel_name = "Hotel California";
+        this.hotel_name = "Enginn pakki";
         this.hotel_location = "Hvergistan";
         this.hotel_address = "Dúfnahólar 10";
         this.hotel_postal_code = 420;
@@ -82,6 +82,7 @@ public class Hotel {
         this.hotel_base_price = hotel_base_price;
         */
     }
+
 
     public String getHotel_address() {
         return hotel_address;

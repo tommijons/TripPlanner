@@ -25,7 +25,7 @@ public class Flight {
         this.airline = airline;
         this.mealService = mealService;
     }
-  /*  public Flight() {
+    public Flight() {
         this.id = 999;
         this.departureLocation = "REY";
         this.arrivalLocation = "AEY";
@@ -33,9 +33,9 @@ public class Flight {
         this.arrivalTime = LocalDate.of(2021,05,02).toString();
         this.flightDate = LocalDate.of(2021,05,01).toString();
         this.price = 9999;
-        this.airline = "Flugleiðir";
+        this.airline = "Enginn Pakki";
         this.mealService = true;
-    }*/
+    }
     public String getAirline() {
         return airline;
     }
