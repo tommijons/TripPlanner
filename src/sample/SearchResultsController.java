@@ -92,11 +92,11 @@ public class SearchResultsController extends CommonMethods implements Initializa
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
-        Scene tableViewScene = new Scene(parent);
+        Scene scene = new Scene(parent);
         PackageInfoController c = loader.getController();
         c.selectedPackage(searchR.getCheapPackage());
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
+        window.setScene(scene);
         window.show();
         /*Button b =(Button)actionEvent.getSource();
         String selected = b.getId();

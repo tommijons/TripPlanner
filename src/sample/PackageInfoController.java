@@ -5,6 +5,7 @@ import Hotel.Hotel;
 import Tour.Tour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,22 +25,33 @@ public class PackageInfoController implements Initializable {
     private ListView<TravelPackage> fxPackageInfo;
 
     private ObservableList<TravelPackage> packageInfo;
-    private ObservableList<Hotel> hotelInfo;
-    private ObservableList<Tour> tourInfo;
-    private SearchResults searchResults;
 
-    private ObservableList<TravelPackage> selectedPackage;
+    private TravelPackage selectedPackage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
     public void selectedPackage(TravelPackage travelPackages) {
+        selectedPackage = travelPackages;
         packageInfo = FXCollections.observableArrayList();
-        hotelInfo = FXCollections.observableArrayList();
-        tourInfo = FXCollections.observableArrayList();
+
         packageInfo.add(travelPackages);
         fxPackageInfo.setItems(packageInfo);
+    }
+
+    public void bookHandler(MouseEvent mouseEvent) throws java.io.IOException {
+        AppState state = AppState.getInstance();
+        User user = state.getUser();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Booking.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        BookingController bc = loader.getController();
+        bc.createBooking(user,selectedPackage);
+        Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     public void backHandler(MouseEvent mouseEvent) throws java.io.IOException {

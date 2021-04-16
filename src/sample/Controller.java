@@ -53,6 +53,7 @@ public class Controller extends CommonMethods implements Initializable {
     private SearchResultsController searchResultsController;
     private FlightSearchController fsc;
     private TourController tsc;
+    private User theUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -136,6 +137,7 @@ public class Controller extends CommonMethods implements Initializable {
     }
 
     public User newUser (String name, String email, String password) {
+        
         User user = new User(name, email, password);
         fxUserName.setText("Hi " + name);
         return user;
