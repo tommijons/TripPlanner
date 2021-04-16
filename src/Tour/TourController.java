@@ -4,45 +4,64 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.User;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 
 public class TourController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Tour> tours= tourdataFactory.getTours();
-    private ObservableList<Tour> filteredTours = FXCollections.observableArrayList();
 
+    public long localDateToMillis (LocalDate value){
+        Instant i = value.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        long timeInMillis = i.toEpochMilli();
 
-    public ObservableList<Tour> tourRegionSearch(String region) {
-        ObservableList<Tour> result = FXCollections.observableArrayList();
-        tours.forEach((tab) -> {
-            if (tab.getTourRegion().equals(region)){
-                result.add(tab);}});
-        return  result;}
-
-
-
-
-    public ArrayList<User> getTourEmailList(String tourID){
-        ArrayList<User> users = new ArrayList<>();
-
-        return users;
+        return timeInMillis;
     }
 
-    public ArrayList<Tour> findTourByName(String tourName){
-        ArrayList<Tour> tours = new ArrayList<>();
-
-        return tours;
+    public void changesSpotsAfterBooking(Tour tour, int spots){
+        int newAvailableSpots= tour.getAvailableSpots()-spots;
+        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
     }
+    public void changesSpotsAfterDeleteBooking(Tour tour, int spots){
+        int newAvailableSpots= tour.getAvailableSpots() +spots;
+        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
+    }
+
+    public Tour findTourByID(int ID){
+        ObservableList<Tour> tours= tourdataFactory.getTours();
+        Tour theTour = null;
+        for (Tour tour: tours){
+            if (tour.getTourID()==ID){
+                theTour=tour;
+            }
+        }
+        return theTour;
+    }
+
     public void addTour(Tour tour) {
-
+        long millis = localDateToMillis(tour.getTourDate());
+        tourdataFactory.insertTour(tour.getTourName(),
+                tour.getTourInfo(), tour.getAvailableSpots(),tour.getTourPrice(),
+                tour.getTourRegion(), tour.getDuration(), tour.getServices(),
+                millis);
     }
+
     public void deleteTour(int tourID) {
-
+        tourdataFactory.deleteTour(tourID);
     }
+
     public Boolean isFullyBooked(int tourID){
-        return false;
+        boolean isFull=false;
+        for (Tour tour: tours){
+            if (tour.getTourID()==tourID){
+                if(tour.getAvailableSpots()<=0)
+                    isFull=true;
+            }
+        }
+        return isFull;
     }
 
     public ObservableList<Tour> tourRegionSearch(String region, ObservableList<Tour> full) {
@@ -84,6 +103,25 @@ public class TourController {
         }
         return result;
     }
+    public ArrayList<User> getTourEmailList(int tourID){
+        ArrayList<User> users = new ArrayList<>();
+        ObservableList<Booking> bookings= tourdataFactory.getBookings();
+        for (Booking booking : bookings){
+            if (booking.getTour().getTourID()==tourID){
+                users.add(booking.getUser());
+            }
+        }
+        return users;
+    }
 
+    public Tour findTourByName(String tourName){
+        Tour theTour =null;
+        ObservableList<Tour> tour= tourdataFactory.getTours();
+        for (Tour t: tour){
+            if (t.getTourName().equals(tourName)){
+                theTour=t;
+            }
+        }
+        return theTour;
+    }
 }
-
