@@ -71,7 +71,7 @@ public class TravelPackageController {
                 break;
             }
         }
-        if (hotel.getHotel_name() == "Enginn pakki"){
+        if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
             return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
         }
@@ -118,7 +118,7 @@ public class TravelPackageController {
                 break;
             }
         }
-        if (hotel.getHotel_name() == "Enginn pakki"){
+        if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
             return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
         }
@@ -165,7 +165,7 @@ public class TravelPackageController {
                 break;
             }
         }
-        if (hotel.getHotel_name() == "Enginn pakki"){
+        if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
             return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
         }

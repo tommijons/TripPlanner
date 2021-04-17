@@ -122,31 +122,33 @@ public class SearchResultsController extends CommonMethods implements Initializa
      * @param mouseEvent
      * @throws java.io.IOException
      */
-    public void standInfoHandler(MouseEvent mouseEvent) throws java.io.IOException {
+    @FXML
+    private void standInfoHandler(MouseEvent mouseEvent) throws java.io.IOException {
         AppState app = AppState.getInstance();
         SearchResults searchR = app.getSearchResults();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
-        Scene tableViewScene = new Scene(parent);
+        Scene scene = new Scene(parent);
         PackageInfoController c = loader.getController();
         c.selectedPackage(searchR.getStandardPackage());
         Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
+        window.setScene(scene);
         window.show();
     }
 
-    public void luxInfoHandler(MouseEvent mouseEvent) throws  java.io.IOException {
+    @FXML
+    private void luxInfoHandler(MouseEvent mouseEvent) throws  java.io.IOException {
         AppState app = AppState.getInstance();
         SearchResults searchR = app.getSearchResults();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("PackageInfo.fxml"));
         Parent parent = loader.load();
-        Scene tableViewScene = new Scene(parent);
+        Scene scene = new Scene(parent);
         PackageInfoController c = loader.getController();
         c.selectedPackage(searchR.getLuxuryPackage());
         Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
+        window.setScene(scene);
         window.show();
     }
 

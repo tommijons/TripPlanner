@@ -104,11 +104,11 @@ public class Flight {
 
     @Override
     public String toString() {
-        String s = "\nFlugfélag:  " + airline +
-                "\nFrá: \t\t" + departureLocation + "\nTil: \t\t" + arrivalLocation +
-                "\nVerð: \t" + price + "kr." + "\n" +
-                "Brottför: " + departureTime + "\n" + "Lending: " + arrivalTime + "\n" +
-                "Dagsetning: " + flightDate;
+        String s = "\nAirline:  " + airline +
+                "\nFrom: " + departureLocation + "\nTo:  " + arrivalLocation +
+                "\nPrice: " + price + " ISK" + "\n" +
+                "Departure time: " + departureTime + "\n" + "Arrival time: " + arrivalTime + "\n" +
+                "Flight date: " + flightDate;
 
         String s2 = "id: " + id + "\n" +
                 "departureLocation: " + departureLocation + "\n" +

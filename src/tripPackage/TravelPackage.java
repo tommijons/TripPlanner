@@ -73,13 +73,13 @@ public class TravelPackage {
 
     @Override
     public String toString() {
-        return "FLUG ÚT: \n" + getFlight() + "\n\n"
-                + "SÆTI \n" + getSeatsOut().size() + "\n\n"
-                + "FLUG HEIM: \n" + getReturnFlight() + "\n\n"
-                + "SÆTI \n" + getSeatsHome().size() + "\n\n"
-                + "HÓTEL \n" + getHotel() + "\n\n"
-                + "HERBERGI \n" + getRooms().size() + "\n\n"
-                + "DAGSFERÐ \n" + getDaytrip() + "\n\n"
-                + "VERÐ \n" + getTotalPrice() + "\n\n";
+        return "DEPARTURE FLIGHT: \n" + getFlight() + "\n"
+                + "seats: " + getSeatsOut().size() + "\n\n"
+                + "RETURN FLIGHT: \n" + getReturnFlight() + "\n"
+                + "seats: " + getSeatsHome().size() + "\n\n"
+                + "HOTEL \n" + getHotel() + "\n"
+                + "Rooms: " + getRooms().size() + "\n\n"
+                + "TOUR \n" + getDaytrip() + "\n\n"
+                + "TOTAL PRICE \n" + getTotalPrice() + "\n\n";
     }
 }

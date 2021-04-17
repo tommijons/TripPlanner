@@ -18,7 +18,7 @@ public class Tour {
 
     @Override
     public String toString() {
-        return "\n" + tourName + "\nVerð: " + tourPrice + "\nLengd: " + duration + "\nDagsetning: " + tourDate;
+        return "\n" + tourName + "\nPrice: " + tourPrice + "\nDuration: " + duration +" hours" + "\nDate: " + tourDate;
     }
 
     public Tour(String tourName, String tourInfo, LocalDate tourDate, int availableSpots, int tourPrice, String tourRegion, int duration, String services) {
@@ -32,14 +32,14 @@ public class Tour {
         this.services = services;
     }
     public Tour() {
-        this.tourName = "Enginn túr";
-        this.tourInfo = "Engar upplýsingar";
+        this.tourName = "No Tour";
+        this.tourInfo = "No Tour";
         this.tourDate = LocalDate.now();
         this.availableSpots = 0;
         this.tourPrice = 0;
-        this.tourRegion = "Hvergi";
+        this.tourRegion = " ";
         this.duration = 0;
-        this.services = "Engar";
+        this.services = " ";
     }
 
     public int getTourID() {

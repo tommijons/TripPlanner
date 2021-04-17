@@ -44,7 +44,7 @@ public class MyBookingsController implements Initializable {
        fxMyTours.setItems(tourBookings);
     }
     public void backHandler(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

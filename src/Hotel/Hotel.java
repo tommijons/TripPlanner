@@ -40,7 +40,7 @@ public class Hotel {
 
     public Hotel() {
         this.hotel_id = 999; //Removed redundant null checks (ILG)
-        this.hotel_name = "Enginn pakki";
+        this.hotel_name = "No hotel";
         this.hotel_location = "Hvergistan";
         this.hotel_address = "Dúfnahólar 10";
         this.hotel_postal_code = 420;
@@ -102,7 +102,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "\nNafn: "+ hotel_name + "\nStjörnur: "+ hotel_star_rating;
+        return "\nName: "+ hotel_name + "\nStar rating: "+ hotel_star_rating;
     }
 
     public Hotel(String hotel_city) {
