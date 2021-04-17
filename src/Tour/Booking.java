@@ -8,15 +8,15 @@ public class Booking {
     private Tour tour;
     private int spotsPerBooking;
 
-    @Override
-    public String toString() {
-        return String.valueOf(bookingID);
-    }
-
     public Booking(User user, Tour tour, int spotsPerBooking) {
         this.user = user;
         this.tour = tour;
         this.spotsPerBooking=spotsPerBooking;
+    }
+
+    @Override
+    public String toString() {
+        return tour.getTourName() + " " + tour.getTourDate() + " " + getUser();
     }
 
     public int getBookingID() {

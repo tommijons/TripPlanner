@@ -10,6 +10,7 @@ public class User {
         userName = un;
         email = e;
         password = p;
+        user_id = 23;
     }
     public User(){
         userName = "Resu";

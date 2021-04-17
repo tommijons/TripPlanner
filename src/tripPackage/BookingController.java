@@ -81,10 +81,10 @@ public class BookingController extends CommonMethods implements Initializable {
 
         AppState state = AppState.getInstance();
         User user = state.getUser();
-
         ArrayList<Room> rooms = new ArrayList<>(selectedPackage.getRooms());
         HotelBooking hb = new HotelBooking(selectedPackage.getHotel(), user, LocalDate.of(2021,01,01),LocalDate.of(2021,02,01), rooms,selectedPackage.getSeatsHome().size(),true);
         hdm.addNewBooking(hb);
+        hdm.addNewUser(user.getUserName(),user.getEmail());
         tdf.insertBooking(user.getUserName(),selectedPackage.getDaytrip().getTourID(),selectedPackage.getSeatsHome().size());
         tdf.insertUser(user);
         fdf.createUser(user.getUserName(),user.getEmail(),user.getPassword());
@@ -116,7 +116,7 @@ public class BookingController extends CommonMethods implements Initializable {
         a.setContentText("Package booked!");
         a.show();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("sample.fxml"));
+        loader.setLocation(getClass().getResource("MyBookings.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         Controller c = loader.getController();

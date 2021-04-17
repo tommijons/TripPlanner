@@ -1,8 +1,13 @@
 package tripPackage;
 
 
+import Flight.FlightDataFactory;
+import Hotel.HotelDatabaseManager;
+import Tour.Booking;
+import Tour.TourDataFactory;
 import javafx.application.Application;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,7 +46,22 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
+        TourDataFactory tdf = new TourDataFactory();
+        ObservableList<Booking> tours = tdf.getBookings();
+        ObservableList<User> users = tdf.getUsers();
+        for (int i = 0 ; i < users.size(); i++){
+           // System.out.println(tours.get(i));
+            System.out.print(users.get(i));
+        }
+        FlightDataFactory fdf = new FlightDataFactory();
+        ObservableList<Flight.Booking> fbook = fdf.getBookings("test@test");
+        for (int i = 0; i < fbook.size(); i++){
+            System.out.println(fbook.get(i));
+        }
+        ObservableList<User> fusers = fdf.getUsers("test@test");
+        for (int i = 0; i < fusers.size(); i++){
+            System.out.println("lala "+fusers.get(i));
+        }
         launch(args);
     }
 

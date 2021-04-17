@@ -42,7 +42,7 @@
                         </Label>
                         <ScrollPane prefHeight="251.0" prefWidth="200.0">
                             <content>
-                                <ListView prefHeight="350.0" prefWidth="196.0" />
+                                <ListView fx:id="fxMyHotels" prefHeight="350.0" prefWidth="196.0" />
                             </content>
                         </ScrollPane>
                     </children>
@@ -59,7 +59,7 @@
                   </Label>
                   <ScrollPane prefHeight="251.0" prefWidth="200.0">
                      <content>
-                        <ListView prefHeight="350.0" prefWidth="196.0" />
+                        <ListView fx:id="fxMyTours" prefHeight="350.0" prefWidth="196.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -76,7 +76,7 @@
                   </Label>
                   <ScrollPane prefHeight="251.0" prefWidth="200.0">
                      <content>
-                        <ListView prefHeight="350.0" prefWidth="196.0" />
+                        <ListView fx:id="fxMyFlights" prefHeight="350.0" prefWidth="196.0" />
                      </content>
                   </ScrollPane>
                </children>

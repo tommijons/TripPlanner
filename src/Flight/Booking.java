@@ -52,10 +52,6 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "flight=" + flight +
-                ", user=" + user +
-                ", seat=" + seat +
-                '}';
+        return "Frá " + flight.getDepartureLocation() + "\ntil " + flight.getArrivalLocation() + "\n " + flight.getFlightDate();
     }
 }

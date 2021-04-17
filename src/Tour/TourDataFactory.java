@@ -162,9 +162,9 @@ public class TourDataFactory {
 
             // loop through the result set
             while (rs.next()) {
-                String userID = rs.getString("userID");
-                String userName = rs.getString("userName");
-                String userEmail = rs.getString("userEmail");
+                String userID = rs.getString("userName");
+                String userName = rs.getString("userEmail");//Breytt
+                String userEmail = rs.getString("userID");
 
                 User user= new User(userID,userName,userEmail);
                 allUsers.add(user);
