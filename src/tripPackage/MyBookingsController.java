@@ -2,6 +2,8 @@ package tripPackage;
 
 import Flight.Booking;
 import Flight.FlightDataFactory;
+import Hotel.HotelBooking;
+import Hotel.HotelSearchController;
 import Tour.TourDataFactory;
 import Tour.TourUserController;
 import javafx.collections.FXCollections;
@@ -25,7 +27,8 @@ public class MyBookingsController implements Initializable {
     private ListView<Flight.Booking> fxMyFlights;
     @FXML
     private ListView<Tour.Booking> fxMyTours;
-
+    @FXML
+    private ListView<HotelBooking> fxMyHotels;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AppState state = AppState.getInstance();
@@ -34,6 +37,7 @@ public class MyBookingsController implements Initializable {
         TourDataFactory tdf = new TourDataFactory();
         TourUserController tuc = new TourUserController();
         fxMyFlights.setItems(fdf.getBookings(email));
+        HotelSearchController hsc = new HotelSearchController();
         ObservableList<Tour.Booking> tourBookings = FXCollections.observableArrayList();
         ObservableList<Tour.Booking> allTourBookings = tdf.getBookings();
        for (int i = 0; i < allTourBookings.size();i++){
@@ -42,6 +46,9 @@ public class MyBookingsController implements Initializable {
             }
         }
        fxMyTours.setItems(tourBookings);
+      /* ObservableList<HotelBooking> hotelBookings = hsc.getBookingsByUserName(state.getUser().getUserName());
+       System.out.println(hotelBookings.size());
+       fxMyHotels.setItems(hotelBookings);*/
     }
     public void backHandler(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));

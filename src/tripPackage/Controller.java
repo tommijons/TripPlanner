@@ -4,6 +4,7 @@ package tripPackage;
 import Flight.FlightFilter;
 import Flight.FlightSearchController;
 import Hotel.HotelFilter;
+import Hotel.HotelSearchController;
 import Tour.TourController;
 import Tour.TourFilter;
 import javafx.collections.FXCollections;
@@ -53,13 +54,15 @@ public class Controller extends CommonMethods implements Initializable {
     private FlightSearchController fsc;
     private TourController tsc;
     private User theUser;
+    private HotelSearchController hsc;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         uiInitialize();
         fsc = new FlightSearchController();
         tsc = new TourController();
-        searcher = new Searcher(fsc,tsc);
+        hsc = new HotelSearchController();
+        searcher = new Searcher(fsc,hsc, tsc);
 
       /* try {
             searchResultsController = loadSearchResults();
@@ -114,7 +117,7 @@ public class Controller extends CommonMethods implements Initializable {
             default -> "";
         };
 
-        FlightFilter ff = new FlightFilter(fromFlug,toFlug,depDate,retDate,true,travellers);
+        FlightFilter ff = new FlightFilter(fromFlug,toFlug,LocalDate.of(2021,01,01),LocalDate.of(2021,02,01),true,travellers);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);
         AppState app = AppState.getInstance();

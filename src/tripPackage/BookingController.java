@@ -3,9 +3,7 @@ package tripPackage;
 import Flight.Booking;
 import Flight.FlightDataFactory;
 import Flight.Seat;
-import Hotel.HotelBooking;
-import Hotel.HotelDatabaseManager;
-import Hotel.Room;
+import Hotel.*;
 import Tour.TourDataFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,14 +79,17 @@ public class BookingController extends CommonMethods implements Initializable {
 
         AppState state = AppState.getInstance();
         User user = state.getUser();
+        HotelFilter hf = state.getHf();
         ArrayList<Room> rooms = new ArrayList<>(selectedPackage.getRooms());
-        HotelBooking hb = new HotelBooking(selectedPackage.getHotel(), user, LocalDate.of(2021,01,01),LocalDate.of(2021,02,01), rooms,selectedPackage.getSeatsHome().size(),true);
-        hdm.addNewBooking(hb);
+        HotelSearchController hsc = new HotelSearchController();
         hdm.addNewUser(user.getUserName(),user.getEmail());
+        user.setUser_id(hdm.getMaxUserID());
+        hsc.createNewBooking(selectedPackage.getHotel(),user,hf.getCheckIn(),hf.getCheckOut(),rooms,hf.getSelectedNumOfGuests());
         tdf.insertBooking(user.getUserName(),selectedPackage.getDaytrip().getTourID(),selectedPackage.getSeatsHome().size());
         tdf.insertUser(user);
         fdf.createUser(user.getUserName(),user.getEmail(),user.getPassword());
         ArrayList<Integer> seat_id = new ArrayList<>();
+        System.out.println(selectedPackage);
         for (int i = 0;i < selectedPackage.getSeatsOut().size();i++){
             seat_id.add(selectedPackage.getSeatsOut().get(i).getSeatID());
         }

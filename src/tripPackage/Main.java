@@ -2,7 +2,10 @@ package tripPackage;
 
 
 import Flight.FlightDataFactory;
+import Hotel.Hotel;
+import Hotel.HotelBooking;
 import Hotel.HotelDatabaseManager;
+import Hotel.HotelSearchController;
 import Tour.Booking;
 import Tour.Tour;
 import Tour.TourDataFactory;
@@ -14,6 +17,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 
 public class Main extends Application {
@@ -48,6 +53,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        /*HotelSearchController hsc = new HotelSearchController();
+        System.out.println(hsc.getBookingsByUserName("Tester"));*/
         launch(args);
     }
 

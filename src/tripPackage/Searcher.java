@@ -9,6 +9,7 @@ import Tour.TourFilter;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Searcher {
     DataFactory df = new DataFactory();
@@ -17,13 +18,12 @@ public class Searcher {
     TourDataFactory tdf = new TourDataFactory();
     FlightSearchController fsc;
     TourController ts;
+    HotelSearchController hsc;
 
-
-
-    
-    public Searcher(FlightSearchController flightSearchController,TourController tourSearcher) {
+    public Searcher(FlightSearchController flightSearchController,HotelSearchController hotelSearchController,TourController tourSearcher) {
         ts = tourSearcher;
         fsc = flightSearchController;
+        hsc = hotelSearchController;
         //TODO add equivalent flight and hotel searchers change arguments from int.
     }
     
@@ -35,15 +35,14 @@ public class Searcher {
     }
 
     public ObservableList<Hotel> searchForHotels(HotelFilter filter){
-        return HotelSearchController.getHotelSearchResults(hdf.getAllHotels(), filter.getLocation(),
-                filter.getCheckIn(),filter.getCheckOut(),filter.getSelectedNumOfGuests(), filter.getSelectedNumOfRooms(),true,true,true);
+        return hsc.getHotelSearchResults(filter.getLocation(),filter.getCheckIn(),filter.getCheckOut(),filter.getSelectedNumOfGuests(),filter.getSelectedNumOfRooms(),true,true,true);
     }
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
         ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
-        for (int i = 0;i < tours.size();i++){
+       /* for (int i = 0;i < tours.size();i++){
             tours.get(i).setTourDate(LocalDate.of(2021,01,02));
-        }
+        }*/
         tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
         tours = ts.tourServicesSearch(filter.getServices(),tours);
@@ -55,6 +54,8 @@ public class Searcher {
         ObservableList<Flight> returnFlights = searchForReturnFlights(ff);
         ObservableList<Hotel> hotels = searchForHotels(hf);
         ObservableList<Tour> tours = searchForTours(tf);
+        AppState state = AppState.getInstance();
+        state.setHf(hf);
         TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
         TravelPackage cheap = assembler.getCheapPackage();
         TravelPackage standard = assembler.getStandardPackage();

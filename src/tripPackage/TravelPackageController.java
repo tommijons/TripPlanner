@@ -34,6 +34,7 @@ public class TravelPackageController {
 
 
     public TravelPackage createStandardPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours, int travellers, int rooms, LocalDate checkIn,LocalDate checkOut, FlightDataFactory fdf){
+        HotelSearchController hsc = new HotelSearchController();
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
@@ -75,7 +76,7 @@ public class TravelPackageController {
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
             return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
         }
-        ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
+        ObservableList<Room> availableRooms = hsc.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
         chosenRoom.add(availableRooms.get(0));
         return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
