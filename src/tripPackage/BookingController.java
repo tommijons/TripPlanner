@@ -119,7 +119,7 @@ public class BookingController extends CommonMethods implements Initializable {
         loader.setLocation(getClass().getResource("MyBookings.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
-        Controller c = loader.getController();
+        MyBookingsController mbc = loader.getController();
         Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();

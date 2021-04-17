@@ -10,7 +10,7 @@ public class TourUserController {
         ObservableList<User> users = tourdataFactory.getUsers();
         User theUser = null;
         for (User user : users) {
-            if (user.getPassword().equals(ID)){ //5T-ath: breytt úr userID í password
+            if (user.getUserName().equals(ID)){ //5T-ath: breytt úr userID í password
                 theUser=user;
             }
         }

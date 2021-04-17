@@ -4,7 +4,9 @@ package tripPackage;
 import Flight.FlightDataFactory;
 import Hotel.HotelDatabaseManager;
 import Tour.Booking;
+import Tour.Tour;
 import Tour.TourDataFactory;
+import Tour.TourUserController;
 import javafx.application.Application;
 
 import javafx.collections.ObservableList;
@@ -46,7 +48,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        TourDataFactory tdf = new TourDataFactory();
+     /*   TourDataFactory tdf = new TourDataFactory();
         ObservableList<Booking> tours = tdf.getBookings();
         ObservableList<User> users = tdf.getUsers();
         for (int i = 0 ; i < users.size(); i++){
@@ -59,9 +61,11 @@ public class Main extends Application {
             System.out.println(fbook.get(i));
         }
         ObservableList<User> fusers = fdf.getUsers("test@test");
+        TourUserController tuc = new TourUserController();
+        System.out.println(tuc.findUserByID("testpw").getPassword());
         for (int i = 0; i < fusers.size(); i++){
             System.out.println("lala "+fusers.get(i));
-        }
+        }*/
         launch(args);
     }
 

@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class MyBookingsController implements Initializable {
     @FXML
-    private ListView<Booking> fxMyFlights;
+    private ListView<Flight.Booking> fxMyFlights;
     @FXML
     private ListView<Tour.Booking> fxMyTours;
 
@@ -37,11 +37,11 @@ public class MyBookingsController implements Initializable {
         ObservableList<Tour.Booking> tourBookings = FXCollections.observableArrayList();
         ObservableList<Tour.Booking> allTourBookings = tdf.getBookings();
        for (int i = 0; i < allTourBookings.size();i++){
-            if (allTourBookings.get(i).getUser().getUserName() == state.getUser().getUserName()){
+            if (allTourBookings.get(i).getUser().getUserName().equals(state.getUser().getUserName())){
                 tourBookings.add(allTourBookings.get(i));
             }
         }
-        fxMyTours.setItems(tourBookings);
+       fxMyTours.setItems(tourBookings);
     }
     public void backHandler(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SearchResults.fxml"));
