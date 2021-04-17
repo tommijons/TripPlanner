@@ -48,24 +48,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-     /*   TourDataFactory tdf = new TourDataFactory();
-        ObservableList<Booking> tours = tdf.getBookings();
-        ObservableList<User> users = tdf.getUsers();
-        for (int i = 0 ; i < users.size(); i++){
-           // System.out.println(tours.get(i));
-            System.out.print(users.get(i));
-        }
-        FlightDataFactory fdf = new FlightDataFactory();
-        ObservableList<Flight.Booking> fbook = fdf.getBookings("test@test");
-        for (int i = 0; i < fbook.size(); i++){
-            System.out.println(fbook.get(i));
-        }
-        ObservableList<User> fusers = fdf.getUsers("test@test");
-        TourUserController tuc = new TourUserController();
-        System.out.println(tuc.findUserByID("testpw").getPassword());
-        for (int i = 0; i < fusers.size(); i++){
-            System.out.println("lala "+fusers.get(i));
-        }*/
         launch(args);
     }
 

@@ -216,12 +216,7 @@ public class TourDataFactory {
                 String userID = rs.getString("userID");
                 int tourID = rs.getInt("tourID");
                 int spots = rs.getInt("spots");
-                System.out.println("bookingID: " + bookingID);
-                System.out.println("userID: " + userID);
-                System.out.println("tourID: " + tourID);
-                System.out.println("spots: " + spots);
                 User user =userController.findUserByID(userID);
-                System.out.println("finduserbyid: " + userController.findUserByID(userID));
                 Tour tour = tourController.findTourByID(tourID);
 
                 Booking booking = new Booking(user, tour, spots);

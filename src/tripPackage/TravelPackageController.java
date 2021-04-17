@@ -90,7 +90,6 @@ public class TravelPackageController {
         ObservableList<Seat> seatsHome = fdf.getSeats(returnFlights.get(0).getId());
         ObservableList<Seat> chosenSeatsOut = FXCollections.observableArrayList();
         ObservableList<Seat> chosenSeatsHome = FXCollections.observableArrayList();
-        System.out.println("hér: " + seatsOut.size());
         for (int i = 0;i < seatsOut.size();i++){
             if (seatsOut.get(i).isAvailable() && !seatsOut.get(i).isFirstClass()){
                 chosenSeatsOut.add(seatsOut.get(i));
@@ -99,7 +98,6 @@ public class TravelPackageController {
                 }
             }
         }
-        System.out.println("hér: " + chosenSeatsOut.size());
         if (chosenSeatsOut.size() != travellers){
             throw new IndexOutOfBoundsException();
         }

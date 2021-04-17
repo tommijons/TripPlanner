@@ -41,7 +41,6 @@ public class Searcher {
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
         ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
-        System.out.println(tours.size());
         for (int i = 0;i < tours.size();i++){
             tours.get(i).setTourDate(LocalDate.of(2021,01,02));
         }
