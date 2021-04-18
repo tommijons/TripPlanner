@@ -1,15 +1,5 @@
 package tripPackage;
 
-
-import Flight.FlightDataFactory;
-import Hotel.Hotel;
-import Hotel.HotelBooking;
-import Hotel.HotelDatabaseManager;
-import Hotel.HotelSearchController;
-import Tour.Booking;
-import Tour.Tour;
-import Tour.TourDataFactory;
-import Tour.TourUserController;
 import javafx.application.Application;
 
 import javafx.collections.FXCollections;
@@ -38,7 +28,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 941,702);
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("file:/images/TRAVELLER.png"));
+        primaryStage.getIcons().add(new Image("/tripPackage/images/plane.png"));
         primaryStage.show();
         Controller c = loader.getController();
         c.newUser(userInfo[0],userInfo[1],userInfo[2]);
