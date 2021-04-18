@@ -81,15 +81,9 @@ public class HotelBooking {
 
     @Override
     public String toString() {
-        return "HotelBooking{" +
-                "booking_id=" + booking_id +
-                ", booking_hotel=" + booking_hotel +
-                ", booking_user=" + booking_user +
-                ", booking_arr_date=" + booking_arr_date +
-                ", booking_dep_date=" + booking_dep_date +
-                ", booking_rooms=" + booking_rooms +
-                ", booking_num_of_guests=" + booking_num_of_guests +
-                '}';
+        return "HÓTEL: " + getBooking_hotel().getHotel_name() + "\n" +
+                "FRÁ: " + getBooking_arr_date().toString() + "\n" +
+                "TIL: " + getBooking_dep_date().toString() + "\n";
     }
 
     public HotelBooking() {
