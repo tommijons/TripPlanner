@@ -28,7 +28,7 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="534.0" prefWidth="941.0" style="-fx-background-color: lightgrey;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="534.0" prefWidth="941.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="34.0" layoutY="181.0" prefHeight="300.0" prefWidth="200.0">
                <children>
@@ -177,7 +177,7 @@
          </children></AnchorPane>
    </center>
    <left>
-      <AnchorPane prefHeight="460.0" prefWidth="203.0" style="-fx-background-color: lightblue;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="460.0" prefWidth="203.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="27.0" layoutY="423.0" mnemonicParsing="false" onMouseClicked="#backHandler" prefHeight="30.0" prefWidth="150.0" text="Back" />
          </children></AnchorPane>
