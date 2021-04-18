@@ -27,13 +27,13 @@ public class Flight {
     }
     public Flight() {
         this.id = 999;
-        this.departureLocation = "REY";
-        this.arrivalLocation = "AEY";
-        this.departureTime = LocalDate.of(2021,05,01).toString();
-        this.arrivalTime = LocalDate.of(2021,05,02).toString();
-        this.flightDate = LocalDate.of(2021,05,01).toString();
-        this.price = 9999;
-        this.airline = "Enginn Pakki";
+        this.departureLocation = " ";
+        this.arrivalLocation = " ";
+        this.departureTime = null;
+        this.arrivalTime = null;
+        this.flightDate = null;
+        this.price = 0;
+        this.airline = " ";
         this.mealService = true;
     }
     public String getAirline() {

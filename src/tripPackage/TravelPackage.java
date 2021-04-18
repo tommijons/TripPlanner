@@ -7,6 +7,8 @@ import Flight.Seat;
 import javafx.collections.ObservableList;
 import Hotel.*;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
