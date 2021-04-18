@@ -40,9 +40,9 @@ public class Searcher {
 
     public ObservableList<Tour> searchForTours(TourFilter filter) {
         ObservableList<Tour> tours = ts.tourRegionSearch(filter.getLocation());
-       /* for (int i = 0;i < tours.size();i++){
-            tours.get(i).setTourDate(LocalDate.of(2021,01,02));
-        }*/
+       for (int i = 0;i < tours.size();i++){
+            tours.get(i).setTourDate(LocalDate.of(2021,05,02));
+        }
         tours = ts.tourDateSearch(filter.getEarliestDate(),filter.getLatestDate(),tours);
         tours = ts.tourDurationSearch(filter.getMinDuration(), filter.getMaxDuration(), tours);
         tours = ts.tourServicesSearch(filter.getServices(),tours);
