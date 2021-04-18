@@ -82,8 +82,8 @@ public class BookingController extends CommonMethods implements Initializable {
         HotelFilter hf = state.getHf();
         ArrayList<Room> rooms = new ArrayList<>(selectedPackage.getRooms());
         HotelSearchController hsc = new HotelSearchController();
-        hdm.addNewUser(user.getUserName(),user.getEmail());
-        user.setUser_id(hdm.getMaxUserID());
+        hsc.createNewUser(user.getUserName(),user.getEmail());
+        user.setUser_id(hsc.getUserIDByUserEmail(user.getEmail()));
         hsc.createNewBooking(selectedPackage.getHotel(),user,hf.getCheckIn(),hf.getCheckOut(),rooms,hf.getSelectedNumOfGuests());
         tdf.insertBooking(user.getUserName(),selectedPackage.getDaytrip().getTourID(),selectedPackage.getSeatsHome().size());
         tdf.insertUser(user);

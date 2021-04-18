@@ -46,9 +46,10 @@ public class MyBookingsController implements Initializable {
             }
         }
        fxMyTours.setItems(tourBookings);
-      /* ObservableList<HotelBooking> hotelBookings = hsc.getBookingsByUserName(state.getUser().getUserName());
+       ObservableList<HotelBooking> hotelBookings = hsc.getBookingsByUserName(state.getUser().getUserName());
+       System.out.println(state.getUser().getUserName());
        System.out.println(hotelBookings.size());
-       fxMyHotels.setItems(hotelBookings);*/
+       fxMyHotels.setItems(hotelBookings);
     }
     public void backHandler(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));

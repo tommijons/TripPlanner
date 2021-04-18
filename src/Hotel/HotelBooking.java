@@ -1,5 +1,4 @@
 package Hotel;
-
 import tripPackage.User;
 
 import java.time.LocalDate;
@@ -83,10 +82,13 @@ public class HotelBooking {
     @Override
     public String toString() {
         return "HotelBooking{" +
-                "booking_hotel=" + booking_hotel +
+                "booking_id=" + booking_id +
+                ", booking_hotel=" + booking_hotel +
                 ", booking_user=" + booking_user +
                 ", booking_arr_date=" + booking_arr_date +
                 ", booking_dep_date=" + booking_dep_date +
+                ", booking_rooms=" + booking_rooms +
+                ", booking_num_of_guests=" + booking_num_of_guests +
                 '}';
     }
 

@@ -338,6 +338,25 @@ public class HotelDatabaseManager {
         return maxBookingID;
     }
 
+    public int getUserIDByUserEmail(String userEmail) {
+        String getUserIdByUserNameString = "SELECT UserID FROM USER WHERE UserEmail = '" + userEmail + "'";
+        int userID = 0;
+        try {
+            Connection conn = new DBFactory().connect();
+            Statement stmtUserIDByName = conn.createStatement();
+            ResultSet rsUser = stmtUserIDByName.executeQuery(getUserIdByUserNameString);
+            userID = rsUser.getInt("UserID");
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Error in SQL getUserIDByUserEmail getting UserID");
+            System.out.println(e.getMessage());
+        }
+        if (userID == 0) {
+            throw new NullPointerException();
+        }
+        return userID;
+    }
+
     public ObservableList<HotelBooking> getBookingsByUserName(String userName) {
         ObservableList<HotelBooking> bookingsForUser = FXCollections.observableArrayList();
         String getUserIdByUserNameString = "SELECT * FROM USER WHERE UserName = '" + userName + "'";
@@ -356,13 +375,16 @@ public class HotelDatabaseManager {
             System.out.println(e.getMessage());
         }
 
-        user.setUserName(userName);
-        user.setEmail(userEmail);
-        user.setUser_id(userID);
 
         if (userID == 0) {
             return null;
+        } else {
+            user.setUserName(userName);
+            user.setEmail(userEmail);
+            user.setUser_id(userID);
         }
+
+
         String getBookingsByUserID = "SELECT * FROM BOOKING WHERE BookingUserID = " + userID;
         int hotelID;
         try {
@@ -524,7 +546,7 @@ public class HotelDatabaseManager {
                 }
                 h.setHotel_room_list(allRoomsForHotel);
                 nextBooking.setBooking_hotel(h);
-                String getBookingRoomsString = "SELECT * FROM BOOKING_ROOM WHERE BookingID = " + booking.getBooking_id();
+                String getBookingRoomsString = "SELECT * FROM BOOKING_ROOM WHERE BookingID = " + nextBooking.getBooking_id();
                 Statement stmtGetBookingRooms = conn.createStatement();
                 ResultSet rsBookingRooms = stmtGetBookingRooms.executeQuery(getBookingRoomsString);
                 ArrayList<Room> rooms = new ArrayList<>();

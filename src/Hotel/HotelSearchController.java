@@ -1,6 +1,5 @@
 package Hotel;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tripPackage.User;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class HotelSearchController {
-
 
     private HotelDatabaseManager databaseManager = new HotelDatabaseManager();
     private ArrayList<Hotel> hotels = databaseManager.getAllHotels();
@@ -33,13 +31,13 @@ public class HotelSearchController {
                                                        LocalDate selectedArrDate, LocalDate selectedDepDate,
                                                        int selectedNumOfGuests, int selectedNumOfRooms,
                                                        boolean threeStar, boolean fourStar, boolean fiveStar) {
-       try {
+        try {
             if (hotels.isEmpty() || selectedLocation.equals("") || selectedNumOfGuests <= 0 || selectedNumOfRooms <= 0 || selectedArrDate == null || selectedDepDate == null) {
                 throw new NullPointerException();
-            /*} else if (selectedArrDate.isAfter(selectedDepDate)) {
+            } else if (selectedArrDate.isAfter(selectedDepDate)) {
                 throw new IllegalArgumentException();
             } else if (selectedArrDate.isBefore(LocalDate.now()) || selectedDepDate.isBefore(LocalDate.now())) {
-                throw new IllegalArgumentException();*/
+                throw new IllegalArgumentException();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -223,6 +221,23 @@ public class HotelSearchController {
         HotelBooking booking = new HotelBooking(bookingID, hotel, user, arrDate, depDate, listOfRooms, numOfGuests);
         databaseManager.addNewBooking(booking);
         return booking;
+    }
+
+    public User createNewUser(String userName, String userEmail) {
+        int userID = databaseManager.getMaxUserID() + 1;
+        User user = new User(userID, userName, userEmail);
+        databaseManager.addNewUser(userName, userEmail);
+        return user;
+    }
+
+    public void addUserToDataBase(User user) {
+        String userName = user.getUserName();
+        String userEmail = user.getEmail();
+        databaseManager.addNewUser(userName, userEmail);
+    }
+
+    public int getUserIDByUserEmail(String userEmail) {
+        return databaseManager.getUserIDByUserEmail(userEmail);
     }
 
 

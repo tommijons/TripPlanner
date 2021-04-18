@@ -10,12 +10,16 @@ public class User {
         userName = un;
         email = e;
         password = p;
-        user_id = 23;
     }
     public User(){
         userName = "Resu";
         email = "email";
         password = "password123";
+    }
+    public User(int Userid, String userName, String email){
+        this.user_id = Userid;
+        this.userName = userName;
+        this.email = email;
     }
     public String getUserName() {
         return userName;

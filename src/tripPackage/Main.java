@@ -12,6 +12,7 @@ import Tour.TourDataFactory;
 import Tour.TourUserController;
 import javafx.application.Application;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,8 +54,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        /*HotelSearchController hsc = new HotelSearchController();
-        System.out.println(hsc.getBookingsByUserName("Tester"));*/
+
         launch(args);
     }
 

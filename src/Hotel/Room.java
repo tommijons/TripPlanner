@@ -1,6 +1,7 @@
 package Hotel;
 
-import javafx.scene.control.CheckBox;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,8 +36,9 @@ public class Room {
     private RoomAmenities[] room_amenities;
     private ArrayList<ArrayList<LocalDate>> room_occupancy;
     private int room_capacity;
-    private CheckBox checkBox;
+    private ObservableValue<Boolean> isChecked = new SimpleBooleanProperty(false);
     private String roomAmenityString;
+
 
     public Room(int room_id, RoomCategory room_category, double room_price_multiplier, RoomAmenities[] room_amenities,
                 ArrayList<ArrayList<LocalDate>> room_occupancy, int hotel_id, RoomCategory room_capacity) {
@@ -48,7 +50,6 @@ public class Room {
         this.room_occupancy = room_occupancy;
         this.room_price = -1;
 
-
         if (room_capacity == RoomCategory.SINGLE) {
             this.room_capacity = 1;
         } else if (room_capacity == RoomCategory.DOUBLE) {
@@ -58,10 +59,18 @@ public class Room {
         }
     }
 
-    public Room(RoomCategory room_category, int room_capacity, int room_price, String roomAmenityString) {
+
+    public Room(int room_id, RoomCategory room_category, double room_price_multiplier, int room_capacity, int room_price, int hotel_id,
+                ArrayList<ArrayList<LocalDate>> room_occupancy, RoomAmenities[] room_amenities,
+                String roomAmenityString) {
+        this.room_id = room_id;
+        this.hotel_id = hotel_id;
         this.room_category = room_category;
         this.room_capacity = room_capacity;
+        this.room_price_multiplier = room_price_multiplier;
         this.room_price = room_price;
+        this.room_occupancy = room_occupancy;
+        this.room_amenities = room_amenities;
         this.roomAmenityString = roomAmenityString;
     }
 
@@ -88,7 +97,6 @@ public class Room {
         this.room_capacity = room_capacity;
         this.roomAmenityString = roomAmenityString;
     }
-
      */
 
     public int getHotel_id() {
@@ -152,7 +160,16 @@ public class Room {
             this.room_capacity = 4;
         }
     }
-/*
+
+    public ObservableValue<Boolean> getIsChecked() {
+        return isChecked;
+    }
+
+    public void setIsChecked(ObservableValue<Boolean> isChecked) {
+        this.isChecked = isChecked;
+    }
+
+    /*
     public void setRoom_price(double hotel_base_price, double room_price_multiplier) {
         this.room_price = hotel_base_price * room_price_multiplier;
     }
@@ -160,16 +177,17 @@ public class Room {
 
     @Override
     public String toString() {
-        return
-                "\nroom_id=" + room_id +
-                "\nhotel_id=" + hotel_id +
-                "\nroom_category=" + room_category +
-                "\nroom_price_multiplier=" + room_price_multiplier +
-                "\nroom_price=" + room_price +
-                "\nroom_amenities=" + Arrays.toString(room_amenities) +
-                "\nroom_occupancy=" + room_occupancy +
-                "\nroom_capacity=" + room_capacity +
-                "\ncheckBox=" + checkBox +
-                "\nroomAmenityString='" + roomAmenityString;
+        return "Room{" +
+                "room_id=" + room_id +
+                ", hotel_id=" + hotel_id +
+                ", room_category=" + room_category +
+                ", room_price_multiplier=" + room_price_multiplier +
+                ", room_price=" + room_price +
+                ", room_amenities=" + Arrays.toString(room_amenities) +
+                ", room_occupancy=" + room_occupancy +
+                ", room_capacity=" + room_capacity +
+                ", isChecked=" + isChecked +
+                ", roomAmenityString='" + roomAmenityString + '\'' +
+                '}';
     }
 }
