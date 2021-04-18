@@ -17,8 +17,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.time.LocalDate;
 
 
@@ -33,9 +35,10 @@ public class Main extends Application {
         Parent root =loader.load();
         primaryStage.setTitle("Trip planner");
         primaryStage.setResizable(false);
-        Scene scene = new Scene(root, 941,702);
 
+        Scene scene = new Scene(root, 941,702);
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image("file:/images/TRAVELLER.png"));
         primaryStage.show();
         Controller c = loader.getController();
         c.newUser(userInfo[0],userInfo[1],userInfo[2]);
@@ -54,7 +57,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
         launch(args);
     }
 

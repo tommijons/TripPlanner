@@ -183,11 +183,7 @@ public class Room {
                 ", room_category=" + room_category +
                 ", room_price_multiplier=" + room_price_multiplier +
                 ", room_price=" + room_price +
-                ", room_amenities=" + Arrays.toString(room_amenities) +
                 ", room_occupancy=" + room_occupancy +
-                ", room_capacity=" + room_capacity +
-                ", isChecked=" + isChecked +
-                ", roomAmenityString='" + roomAmenityString + '\'' +
-                '}';
+                ", room_capacity=" + room_capacity +"\n";
     }
 }

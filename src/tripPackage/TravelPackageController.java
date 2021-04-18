@@ -78,7 +78,10 @@ public class TravelPackageController {
         }
         ObservableList<Room> availableRooms = hsc.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
-        chosenRoom.add(availableRooms.get(0));
+        for (int i = 0; i < rooms;i++){
+            chosenRoom.add(availableRooms.get(i));
+        }
+
         return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
     }
 
@@ -125,7 +128,9 @@ public class TravelPackageController {
         }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
-        chosenRoom.add(availableRooms.get(0));
+        for (int i = 0; i < rooms;i++){
+            chosenRoom.add(availableRooms.get(i));
+        }
         return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
     }
 
@@ -172,7 +177,9 @@ public class TravelPackageController {
         }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
-        chosenRoom.add(availableRooms.get(0));
+        for (int i = 0; i < rooms;i++){
+            chosenRoom.add(availableRooms.get(i));
+        }
         return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
     }
 }
