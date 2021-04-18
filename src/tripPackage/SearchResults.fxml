@@ -161,17 +161,17 @@
             </VBox>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../sample/images/cheap.png" />
+                  <Image url="@images/cheap.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="269.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../sample/images/standard.png" />
+                  <Image url="@images/standard.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="492.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../sample/images/lux.png" />
+                  <Image url="@images/lux.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
