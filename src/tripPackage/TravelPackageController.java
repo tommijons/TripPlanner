@@ -89,7 +89,14 @@ public class TravelPackageController {
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
-        Tour tour = tours.get(0);
+        Tour tour = new Tour();
+        int cheapestTour = 999999;
+        for (int i = 0; i < tours.size(); i++){
+            if (tours.get(i).getTourPrice() < cheapestTour){
+                tour= tours.get(i);
+                cheapestTour = tours.get(i).getTourPrice();
+            }
+        }
         ObservableList<Seat> seatsOut = fdf.getSeats(flights.get(0).getId());
         ObservableList<Seat> seatsHome = fdf.getSeats(returnFlights.get(0).getId());
         ObservableList<Seat> chosenSeatsOut = FXCollections.observableArrayList();
@@ -138,11 +145,18 @@ public class TravelPackageController {
         Hotel hotel = new Hotel();
         Flight flightOut = flights.get(0);
         Flight flightHome = returnFlights.get(0);
-        Tour tour = tours.get(0);
         ObservableList<Seat> seatsOut = fdf.getSeats(flights.get(0).getId());
         ObservableList<Seat> seatsHome = fdf.getSeats(returnFlights.get(0).getId());
         ObservableList<Seat> chosenSeatsOut = FXCollections.observableArrayList();
         ObservableList<Seat> chosenSeatsHome = FXCollections.observableArrayList();
+        Tour tour = new Tour();
+        int expensiveTour = -1;
+        for (int i = 0; i < tours.size(); i++){
+            if (tours.get(i).getTourPrice() > expensiveTour){
+                tour= tours.get(i);
+                expensiveTour = tours.get(i).getTourPrice();
+            }
+        }
         for (int i = 0;i < seatsOut.size();i++){
             if (seatsOut.get(i).isAvailable() && seatsOut.get(i).isFirstClass()){
                 chosenSeatsOut.add(seatsOut.get(i));

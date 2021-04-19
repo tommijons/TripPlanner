@@ -28,7 +28,7 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="534.0" prefWidth="941.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="534.0" prefWidth="941.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="34.0" layoutY="181.0" prefHeight="300.0" prefWidth="200.0">
                <children>

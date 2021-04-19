@@ -19,11 +19,13 @@ public class Searcher {
     FlightSearchController fsc;
     TourController ts;
     HotelSearchController hsc;
+    TravelPackageController tpc;
 
     public Searcher(FlightSearchController flightSearchController,HotelSearchController hotelSearchController,TourController tourSearcher) {
         ts = tourSearcher;
         fsc = flightSearchController;
         hsc = hotelSearchController;
+        tpc = new TravelPackageController();
         //TODO add equivalent flight and hotel searchers change arguments from int.
     }
     
@@ -56,10 +58,10 @@ public class Searcher {
         ObservableList<Tour> tours = searchForTours(tf);
         AppState state = AppState.getInstance();
         state.setHf(hf);
-        TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
-        TravelPackage cheap = assembler.getCheapPackage();
-        TravelPackage standard = assembler.getStandardPackage();
-        TravelPackage luxury = assembler.getLuxuryPackage();
+     //   TravelPackageAssembler assembler = new TravelPackageAssembler(flights, returnFlights, hotels, tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
+        TravelPackage cheap = tpc.createCheapPackage(hotels,flights, returnFlights,tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
+        TravelPackage standard = tpc.createStandardPackage(hotels,flights, returnFlights,tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
+        TravelPackage luxury = tpc.createLuxuryPackage(hotels,flights, returnFlights,tours,ff.getNumberOfPassengers(),hf.getSelectedNumOfRooms(),hf.getCheckIn(),hf.getCheckOut(),fdf);
 
         return new SearchResults(flights, returnFlights, hotels, tours, cheap, standard, luxury);
     }

@@ -12,7 +12,7 @@
     <center>
         <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
             <children>
-                <VBox layoutX="269.0" layoutY="97.0" prefHeight="436.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;">
+                <VBox layoutX="269.0" layoutY="97.0" prefHeight="298.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="350.0" text="My Hotels">
                             <font>
@@ -29,7 +29,7 @@
                         </ScrollPane>
                     </children>
                 </VBox>
-            <VBox layoutX="498.0" layoutY="97.0" prefHeight="436.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;">
+            <VBox layoutX="498.0" layoutY="97.0" prefHeight="296.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="350.0" text="My Tours">
                      <font>
@@ -46,7 +46,7 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox layoutX="44.0" layoutY="97.0" prefHeight="436.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;">
+            <VBox layoutX="44.0" layoutY="97.0" prefHeight="294.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="350.0" text="My Flights">
                      <font>
@@ -66,7 +66,7 @@
             </children></AnchorPane>
     </center>
     <left>
-        <AnchorPane prefHeight="460.0" prefWidth="203.0" style="-fx-background-color: lightgrey; -fx-border-width: 3; -fx-border-color: black;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="460.0" prefWidth="203.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;" BorderPane.alignment="CENTER">
          <children>
             <VBox layoutX="2.0" layoutY="25.0" prefHeight="255.0" prefWidth="200.0" spacing="30.0">
                <children>

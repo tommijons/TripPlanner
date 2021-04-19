@@ -16,7 +16,7 @@
     <center>
         <AnchorPane prefHeight="534.0" prefWidth="941.0" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
             <children>
-                <VBox layoutX="194.0" layoutY="19.0" prefHeight="514.0" prefWidth="350.0" style="-fx-background-color: lightgrey; -fx-border-width: 3; -fx-border-color: black;">
+                <VBox layoutX="194.0" layoutY="19.0" prefHeight="514.0" prefWidth="350.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;">
                     <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="344.0" text="Package Information">
                             <font>
@@ -43,7 +43,7 @@
     <left>
         <AnchorPane prefHeight="460.0" prefWidth="203.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="2.0" layoutY="25.0" prefHeight="520.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 3;">
+            <VBox layoutX="2.0" layoutY="25.0" prefHeight="520.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: lightgrey; -fx-opacity: 0.9;">
                <children>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="Change Package">
                      <font>
