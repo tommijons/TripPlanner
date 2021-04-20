@@ -19,6 +19,10 @@ public class TravelPackage {
     private ObservableList<Seat> seatsHome;
     private ObservableList<Room> rooms;
     private int totalPrice;
+    private LocalDate ffrom;
+    private LocalDate til;
+
+
 
 
     public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip, ObservableList<Seat> seatsOut, ObservableList<Seat> seatsHome, ObservableList<Room> rooms, LocalDate from, LocalDate until){
@@ -30,8 +34,16 @@ public class TravelPackage {
         this.seatsOut = seatsOut;
         this.seatsHome = seatsHome;
         this.rooms = rooms;
+        ffrom = from;
+        til = until;
     }
 
+    public LocalDate getFfrom() {
+        return ffrom;
+    }
+    public LocalDate getTil() {
+        return til;
+    }
     public Hotel getHotel() {
         return hotel;
     }

@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -50,6 +51,7 @@ public class Controller implements Initializable {
     private static final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
     private static final String[] numbers = {"1","2","3","4","5"};
     private static final String ERROR_SEARCH = "No Packages found based \non selected search criteria";
+    private static final String ERROR_BOOKING = "You have no booked trips";
 
     private Searcher searcher;
     private FlightSearchController fsc;
@@ -132,9 +134,28 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
+    private void myBookHandler(MouseEvent mouseEvent) throws java.io.IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("MyBookings.fxml"));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            MyBookingsController mbc = loader.getController();
+            Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        } catch (IOException e){
+            e.printStackTrace();
+            fxNoPackagesText.setText(ERROR_BOOKING);
+        }
+    }
+
     public void closeMenu(MouseEvent actionEvent){
         System.exit(0);
     }
+
+
 }
 
 

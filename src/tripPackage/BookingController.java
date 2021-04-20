@@ -57,8 +57,8 @@ public class BookingController implements Initializable {
 
     public void getPackage(TravelPackage travelPackage) {
         selectedPackage = travelPackage;
-        fxDepDate.setText(selectedPackage.getFlight().getFlightDate());
-        fxRetDate.setText(selectedPackage.getReturnFlight().getFlightDate());
+        fxDepDate.setText(selectedPackage.getFfrom().toString());
+        fxRetDate.setText(selectedPackage.getTil().toString());
         fxHotel.setText(selectedPackage.getHotel().getHotel_name());
         fxTour.setText(selectedPackage.getDaytrip().getTourName());
         fxPrice.setText(Integer.toString(selectedPackage.getTotalPrice()));
