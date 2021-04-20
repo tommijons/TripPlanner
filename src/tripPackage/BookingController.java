@@ -15,15 +15,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class BookingController extends CommonMethods implements Initializable {
+public class BookingController implements Initializable {
 
     @FXML
     private Button fxConfirm;

@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,9 +40,11 @@ public class MyBookingsController implements Initializable {
         ObservableList<Tour.Booking> tourBookings = FXCollections.observableArrayList();
         ObservableList<Tour.Booking> allTourBookings = tdf.getBookings();
        for (int i = 0; i < allTourBookings.size();i++){
-            if (allTourBookings.get(i).getUser().getUserName().equals(state.getUser().getUserName())){
-                tourBookings.add(allTourBookings.get(i));
-            }
+           if (allTourBookings.get(i).getUser() != null) {
+               if (allTourBookings.get(i).getUser().getUserName().equals(state.getUser().getUserName())) {
+                   tourBookings.add(allTourBookings.get(i));
+               }
+           }
         }
        fxMyTours.setItems(tourBookings);
        ObservableList<HotelBooking> hotelBookings = hsc.getBookingsByUserName(state.getUser().getUserName());

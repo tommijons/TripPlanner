@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SearchResultsController extends CommonMethods implements Initializable {
+public class SearchResultsController implements Initializable {
 
     @FXML
     private Label fxDepDate;
@@ -48,6 +49,12 @@ public class SearchResultsController extends CommonMethods implements Initializa
     private Label fxStPrice;
     @FXML
     private Label fxLuxPrice;
+    @FXML
+    private Button fxCheapInfo;
+    @FXML
+    private Button fxStandardInfo;
+    @FXML
+    private Button fxLuxInfo;
 
     private SearchResults sr;
 
@@ -70,6 +77,15 @@ public class SearchResultsController extends CommonMethods implements Initializa
         fxCheapPrice.setText(Integer.toString(searchR.getCheapPackage().getTotalPrice()));
         fxStPrice.setText(Integer.toString(searchR.getStandardPackage().getTotalPrice()));
         fxLuxPrice.setText(Integer.toString(searchR.getLuxuryPackage().getTotalPrice()));
+        if (searchR.getCheapPackage().getHotel().getHotel_name().equals("No hotel")) {
+            fxCheapInfo.setDisable(true);
+        }
+        if (searchR.getStandardPackage().getHotel().getHotel_name().equals("No hotel")) {
+            fxStandardInfo.setDisable(true);
+        }
+        if (searchR.getLuxuryPackage().getHotel().getHotel_name().equals("No hotel")) {
+            fxLuxInfo.setDisable(true);
+        }
     }
 
     /**
@@ -95,6 +111,7 @@ public class SearchResultsController extends CommonMethods implements Initializa
         fxCheapPrice.setText(Integer.toString(searchR.getCheapPackage().getTotalPrice()));
         fxStPrice.setText(Integer.toString(searchR.getStandardPackage().getTotalPrice()));
         fxLuxPrice.setText(Integer.toString(searchR.getLuxuryPackage().getTotalPrice()));
+
     }
 
     /**

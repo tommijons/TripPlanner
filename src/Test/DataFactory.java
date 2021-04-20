@@ -1,4 +1,4 @@
-package tripPackage;
+package Test;
 
 
 public class DataFactory {

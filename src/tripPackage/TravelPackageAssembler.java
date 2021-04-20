@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 
+// No longer used
 public class TravelPackageAssembler {
     private ObservableList<Flight> availableFlights;
     private ObservableList<Flight> availableReturnFlights;

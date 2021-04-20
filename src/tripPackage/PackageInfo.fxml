@@ -31,7 +31,7 @@
                                 <ListView fx:id="fxPackageInfo" prefHeight="350.0" prefWidth="350.0" />
                             </content>
                         </ScrollPane>
-                  <Button mnemonicParsing="false" onMousePressed="#bookHandler" prefHeight="30.0" prefWidth="150.0" text="Book This Package">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMousePressed="#bookHandler" prefHeight="30.0" prefWidth="150.0" text="Book This Package">
                      <VBox.margin>
                         <Insets left="100.0" top="50.0" />
                      </VBox.margin>

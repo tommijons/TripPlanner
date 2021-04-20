@@ -2,6 +2,7 @@ package tripPackage;
 
 import Flight.*;
 import Hotel.*;
+import Test.DataFactory;
 import Tour.Tour;
 import Tour.TourController;
 import Tour.TourDataFactory;
@@ -9,7 +10,6 @@ import Tour.TourFilter;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class Searcher {
     DataFactory df = new DataFactory();

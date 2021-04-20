@@ -23,7 +23,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class Controller extends CommonMethods implements Initializable {
+import static java.time.temporal.ChronoUnit.DAYS;
+
+public class Controller implements Initializable {
 
     @FXML
     private DatePicker fxArrivalDate;
@@ -44,13 +46,12 @@ public class Controller extends CommonMethods implements Initializable {
     @FXML
     private Label fxNoPackagesText;
 
-    private static final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilstaðir"};
+    private static final String[] locations = {"Reykjavík","Akureyri", "Ísafjörður","Egilsstaðir"};
     private static final String[] services = {"Family friendly", "Action", "Wheelchair accessible"};
     private static final String[] numbers = {"1","2","3","4","5"};
     private static final String ERROR_SEARCH = "No Packages found based \non selected search criteria";
 
     private Searcher searcher;
-    private SearchResultsController searchResultsController;
     private FlightSearchController fsc;
     private TourController tsc;
     private User theUser;
@@ -63,19 +64,7 @@ public class Controller extends CommonMethods implements Initializable {
         tsc = new TourController();
         hsc = new HotelSearchController();
         searcher = new Searcher(fsc,hsc, tsc);
-
-      /* try {
-            searchResultsController = loadSearchResults();
-        } catch(IOException e) {
-                e.printStackTrace();
-        }*/
     }
-
-    /*private SearchResultsController loadSearchResults() throws java.io.IOException{
-        FXMLLoader dLoader = new FXMLLoader(getClass().getResource("SearchResults.fxml"));
-        dLoader.load();
-        return dLoader.getController();
-    }*/
 
     private void uiInitialize() {
         ObservableList<String> departureChoices = FXCollections.observableArrayList(locations);
@@ -105,7 +94,7 @@ public class Controller extends CommonMethods implements Initializable {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
             case "Ísafjörður" -> "IFJ";
-            case "Egilstaðir" -> "EGS";
+            case "Egilsstaðir" -> "EGS";
             default -> "";
         };
 
@@ -113,10 +102,9 @@ public class Controller extends CommonMethods implements Initializable {
             case "Reykjavík" -> "REY";
             case "Akureyri" -> "AEY";
             case "Ísafjörður" -> "IFJ";
-            case "Egilstaðir" -> "EGS";
+            case "Egilsstaðir" -> "EGS";
             default -> "";
         };
-
         FlightFilter ff = new FlightFilter(fromFlug,toFlug,LocalDate.of(2021,01,01),LocalDate.of(2021,02,01),true,travellers);
         HotelFilter hf = new HotelFilter(depDate,retDate,to,travellers,noHotelRooms,true,true,true);
         TourFilter tf = new TourFilter(depDate,retDate,to,99999,services,1,99,travellers);

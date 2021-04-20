@@ -35,8 +35,6 @@ public class PackageInfoController implements Initializable {
 
     @FXML
     private void bookHandler(MouseEvent mouseEvent) throws java.io.IOException {
-        //AppState state = AppState.getInstance();
-        //User user = state.getUser();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Booking.fxml"));
         Parent parent = loader.load();
