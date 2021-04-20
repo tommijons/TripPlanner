@@ -25,7 +25,7 @@ public class TravelPackage {
         this.flight = flight;
         this.returnFlight = returnFlight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getHotel_base_price() * rooms.size() + flight.getPrice() * seatsOut.size() + returnFlight.getPrice() * seatsHome.size() + daytrip.getTourPrice();
+        this.totalPrice = hotel.getHotel_base_price() * rooms.size() + flight.getPrice() * seatsOut.size() + returnFlight.getPrice() * seatsHome.size() + daytrip.getTourPrice() * seatsOut.size();
         this.seatsOut = seatsOut;
         this.seatsHome = seatsHome;
         this.rooms = rooms;
