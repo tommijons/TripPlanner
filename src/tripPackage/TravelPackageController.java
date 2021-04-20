@@ -74,7 +74,7 @@ public class TravelPackageController {
         }
         if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
-            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms, checkIn, checkOut);
         }
         ObservableList<Room> availableRooms = hsc.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
@@ -82,7 +82,7 @@ public class TravelPackageController {
             chosenRoom.add(availableRooms.get(i));
         }
 
-        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
+        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom, checkIn, checkOut);
     }
 
     public TravelPackage createCheapPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours,int travellers, int rooms,LocalDate checkIn,LocalDate checkOut, FlightDataFactory fdf){
@@ -131,14 +131,14 @@ public class TravelPackageController {
         }
         if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
-            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms, checkIn, checkOut);
         }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
         for (int i = 0; i < rooms;i++){
             chosenRoom.add(availableRooms.get(i));
         }
-        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
+        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom, checkIn, checkOut);
     }
 
     public TravelPackage createLuxuryPackage(ObservableList<Hotel> hotels, ObservableList<Flight> flights, ObservableList<Flight> returnFlights, ObservableList<Tour> tours,int travellers, int rooms,LocalDate checkIn,LocalDate checkOut, FlightDataFactory fdf){
@@ -187,13 +187,13 @@ public class TravelPackageController {
         }
         if (hotel.getHotel_name() == "No hotel"){
             ObservableList<Room> noRooms = FXCollections.observableArrayList();
-            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms);
+            return new TravelPackage(new Hotel(),new Flight(), new Flight(),new Tour(),seatsOut,seatsHome,noRooms, checkIn, checkOut);
         }
         ObservableList<Room> availableRooms = HotelSearchController.filterRooms(hotel,checkIn,checkOut,travellers,rooms);
         ObservableList<Room> chosenRoom = FXCollections.observableArrayList();
         for (int i = 0; i < rooms;i++){
             chosenRoom.add(availableRooms.get(i));
         }
-        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom);
+        return new TravelPackage(hotel,flightOut,flightHome,tour,chosenSeatsOut,chosenSeatsHome,chosenRoom, checkIn, checkOut);
     }
 }

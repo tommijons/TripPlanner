@@ -7,6 +7,9 @@ import Flight.Seat;
 import javafx.collections.ObservableList;
 import Hotel.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class TravelPackage {
     private Hotel hotel;
     private Flight flight;
@@ -18,12 +21,12 @@ public class TravelPackage {
     private int totalPrice;
 
 
-    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip,ObservableList<Seat> seatsOut,ObservableList<Seat> seatsHome,ObservableList<Room> rooms){
+    public TravelPackage(Hotel hotel, Flight flight, Flight returnFlight, Tour daytrip, ObservableList<Seat> seatsOut, ObservableList<Seat> seatsHome, ObservableList<Room> rooms, LocalDate from, LocalDate until){
         this.hotel = hotel;
         this.flight = flight;
         this.returnFlight = returnFlight;
         this.daytrip = daytrip;
-        this.totalPrice = hotel.getHotel_base_price() * rooms.size() + flight.getPrice() * seatsOut.size() + returnFlight.getPrice() * seatsHome.size() + daytrip.getTourPrice() * seatsOut.size();
+        this.totalPrice = hotel.getHotel_base_price() * rooms.size() * Math.toIntExact(from.until(until, ChronoUnit.DAYS))+ flight.getPrice() * seatsOut.size() + returnFlight.getPrice() * seatsHome.size() + daytrip.getTourPrice() * seatsOut.size();
         this.seatsOut = seatsOut;
         this.seatsHome = seatsHome;
         this.rooms = rooms;
