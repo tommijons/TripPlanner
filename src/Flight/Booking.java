@@ -52,6 +52,6 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Frá " + flight.getDepartureLocation() + "\ntil " + flight.getArrivalLocation() + "\n " + flight.getFlightDate();
+        return "From " + flight.getDepartureLocation() + "\nTo " + flight.getArrivalLocation() + "\n " + flight.getFlightDate();
     }
 }
